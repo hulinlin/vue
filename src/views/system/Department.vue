@@ -1,49 +1,67 @@
 <template>
-	<section>
-		<!--工具条-->
-		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-			<el-form :inline="true" :model="filters">
-				<el-form-item>
-					<el-input v-model="filters.name" placeholder="姓名"></el-input>
-				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" v-on:click="getUsers">查询</el-button>
-				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" @click="handleAdd">新增</el-button>
-				</el-form-item>
-			</el-form>
-		</el-col>
+	<el-container>
 
-		<!--列表-->
-		<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-			<el-table-column type="selection" width="55">
-			</el-table-column>
-			<el-table-column type="index" width="60">
-			</el-table-column>
-			<el-table-column prop="name" label="姓名" width="120" sortable>
-			</el-table-column>
-			<el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
-			</el-table-column>
-			<el-table-column prop="age" label="年龄" width="100" sortable>
-			</el-table-column>
-			<el-table-column prop="birth" label="生日" width="120" sortable>
-			</el-table-column>
-			<el-table-column prop="addr" label="地址" min-width="180" sortable>
-			</el-table-column>
-			<el-table-column label="操作" width="150">
-				<template slot-scope="scope">
-					<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-					<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
-				</template>
-			</el-table-column>
-		</el-table>
+		<el-col :span="24" style="padding:0 20px;">
+			<section>
+				<!--工具条-->
+				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
+					<el-form :inline="true" :model="filters">
+						<el-form-item>
+							<el-input v-model="filters.name" size="small" placeholder="请输入部门名称"></el-input>
+						</el-form-item>
+						<el-form-item>
+							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
+						</el-form-item>
+						<el-form-item>
+							<el-button size="small" v-on:click="getUsers">重置</el-button>
+						</el-form-item>
+						<el-form-item>
+							<el-button size="small" type="primary" @click="handleAdd">新增</el-button>
+						</el-form-item>
+					</el-form>
+				</el-col>
 
-		<!--工具条-->
-		<el-col :span="24" class="toolbar">
-			<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
-			<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
-			</el-pagination>
+				<!--列表-->
+				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+					<el-table-column prop="name" label="部门名称" width="120">
+					</el-table-column>
+					<el-table-column prop="birth" label="职位" width="">
+					</el-table-column>
+					<el-table-column property="status" align="center" label="状态">
+						<template slot-scope="scope">
+							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
+							</el-switch>
+						</template>
+					</el-table-column>
+					<el-table-column prop="birth" label="操作人" width="120">
+					</el-table-column>
+					<el-table-column prop="addr" label="操作日期" min-width="120">
+					</el-table-column>
+					<el-table-column label="操作" width="200">
+						<template slot-scope="scope">
+							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+						</template>
+					</el-table-column>
+				</el-table>
+
+				<!--工具条-->
+				<el-col :span="24" class="toolbar">
+					<!--<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>-->
+					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
+					</el-pagination>-->
+					<el-pagination
+							@size-change="handleSizeChange"
+							@current-change="handleCurrentChange"
+							:current-page="currentPage4"
+							:page-sizes="[20, 50, 100]"
+							:page-size="20"
+							layout="total, sizes, prev, pager, next, jumper"
+							:total="total"
+							style="text-align: center">
+					</el-pagination>
+				</el-col>
+			</section>
 		</el-col>
 
 		<!--编辑界面-->
@@ -75,24 +93,18 @@
 		</el-dialog>
 
 		<!--新增界面-->
-		<el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
-			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
-				<el-form-item label="姓名" prop="name">
+		<el-dialog title="新建部门" v-model="addFormVisible" :close-on-click-modal="false"  width="30%" showClose="false">
+			<el-form :model="addForm" label-width="100px" :rules="addFormRules" ref="addForm">
+				<el-form-item label="部门名称：" prop="name">
 					<el-input v-model="addForm.name" auto-complete="off"></el-input>
 				</el-form-item>
-				<el-form-item label="性别">
+				<el-form-item label="状态：">
 					<el-radio-group v-model="addForm.sex">
-						<el-radio class="radio" :label="1">男</el-radio>
-						<el-radio class="radio" :label="0">女</el-radio>
+						<el-radio class="radio" :label="1">启用</el-radio>
+						<el-radio class="radio" :label="0">禁用</el-radio>
 					</el-radio-group>
 				</el-form-item>
-				<el-form-item label="年龄">
-					<el-input-number v-model="addForm.age" :min="0" :max="200"></el-input-number>
-				</el-form-item>
-				<el-form-item label="生日">
-					<el-date-picker type="date" placeholder="选择日期" v-model="addForm.birth"></el-date-picker>
-				</el-form-item>
-				<el-form-item label="地址">
+				<el-form-item label="备注：">
 					<el-input type="textarea" v-model="addForm.addr"></el-input>
 				</el-form-item>
 			</el-form>
@@ -101,7 +113,11 @@
 				<el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
 			</div>
 		</el-dialog>
-	</section>
+	</el-container>
+
+
+
+
 </template>
 
 <script>
@@ -145,7 +161,7 @@
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
 				},
-				//新增界面数据
+
 				addForm: {
 					name: '',
 					sex: -1,
@@ -216,6 +232,7 @@
 					birth: '',
 					addr: ''
 				};
+
 			},
 			//编辑
 			editSubmit: function () {
@@ -264,6 +281,19 @@
 						});
 					}
 				});
+			},
+			submitForm(formName) {
+				this.$refs[formName].validate((valid) => {
+					if (valid) {
+						alert('submit!');
+					} else {
+						console.log('error submit!!');
+						return false;
+					}
+				});
+			},
+			resetForm(formName) {
+				this.$refs[formName].resetFields();
 			},
 			selsChange: function (sels) {
 				this.sels = sels;

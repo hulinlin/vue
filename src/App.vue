@@ -33,6 +33,7 @@ body {
 	top: 0px;
 	bottom: 0px;
 	width: 100%;
+	background:#f0f0f0;
 }
 
 .el-submenu [class^=fa] {
@@ -46,9 +47,8 @@ body {
 }
 
 .toolbar {
-	background: #f2f2f2;
 	padding: 10px;
-	//border:1px solid #dfe6ec;
+	border-bottom:1px solid #f0f0f0;
 	margin: 10px 0px;
 	.el-form-item {
 		margin-bottom: 10px;

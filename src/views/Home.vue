@@ -209,11 +209,28 @@
 			aside {
 				flex:0 0 230px;
 				width: 230px;
+				overflow:auto;
 				// position: absolute;
 				// top: 0px;
 				// bottom: 0px;
 				.el-menu{
 					height: 100%;
+					background-color:#fff;
+					.el-submenu{
+						.el-menu{
+							background-color:#fff !important;
+							.el-menu-item{
+								padding-left: 60px !important;
+								height:45px;
+								line-height:45px;
+							}
+							.is-active{
+								color:#fff;
+								background:$color-primary;
+							}
+						}
+
+					}
 				}
 				.collapsed{
 					width:60px;
@@ -236,8 +253,8 @@
 				width: 60px;
 			}
 			.menu-expanded{
-				flex:0 0 230px;
-				width: 230px;
+				flex:0 0 200px;
+				width: 200px;
 			}
 			.content-container {
 				// background: #f1f2f7;
@@ -250,6 +267,8 @@
 				overflow-y: scroll;
 				padding: 20px;
 				.breadcrumb-container {
+					line-height:50px;
+					background:#fff;
 					//margin-bottom: 15px;
 					.title {
 						width: 200px;
@@ -263,6 +282,7 @@
 				.content-wrapper {
 					background-color: #fff;
 					box-sizing: border-box;
+					margin-top:20px;
 				}
 			}
 		}

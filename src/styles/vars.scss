@@ -1,1 +1,11 @@
-$color-primary: #20a0ff;//#18c79c
+$color-primary: #f00;//#18c79c
+.el-dialog--small{
+  width:350px;
+  border-radius: 10px;
+  .el-dialog__header{
+    padding: 20px;
+    background: $color-primary;
+    text-align: center;
+    color:#fff;
+  }
+}

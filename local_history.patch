@@ -1,0 +1,16 @@
+Index: src/views/system/MemberAdd.vue
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/views/system/MemberAdd.vue	(date 1548839304365)
++++ src/views/system/MemberAdd.vue	(date 1548839304365)
+@@ -1,7 +1,7 @@
+ <template>
+ 	<el-container>
+ 
+-			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm" size="small" style="padding:20px">
++			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm" size="small" style="padding:20px;">
+ 				<el-col :span="24">
+ 				<el-col :span="6">
+ 				<el-form-item label="姓名" prop="name">
