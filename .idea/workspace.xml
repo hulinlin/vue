@@ -1,72 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f098251d-18d0-42d6-9ccb-56995dd38164" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vue.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/element-variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local_history.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/appointment/Order.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/appointment/Triage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/approval/ApprovalLoss.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/approval/ApprovalOrder.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/approval/ApprovalRefund.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/approval/ApprovalRefundGoods.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/approval/DataAnalysis.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/charge/Charge.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/charge/Refund.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/charge/Statement.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/customer/Customer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/customer/Electronic.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/customer/Returnvisit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/CustomersMedicine.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/DifferenceAdjustment.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/InventoryManagement.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/LossAbandonment.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/MaterialsRecipients.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/MedicineRecord.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/ProcurementOutbound.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/ProcurementWarehousing.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/PurchaseReturn.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/PurchasingRequisition.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/medicine/WarehouseReport.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportBalanceDetails.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportChannel.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportConsultationProject.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportConsultationProjectM.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportConsumptionDetails.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportDevelopmentBusiness.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportDrawer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportMerchandiseSales.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportOperatedItems.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportProjectSales.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportRegionalInformation.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportRevenue.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/report/ReportTransactionOrder.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/system/Channel.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/system/Consulting.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/system/Department.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/system/Job.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/system/Member.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/system/MemberAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/system/Visit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/treatmentRoom/TreatmentRoom.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/waitingRoom/WaitingRoom.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/vars.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/vars.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/nav1/Table.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/nav1/Table.vue" afterDir="false" />
-    </list>
+    <list default="true" id="f098251d-18d0-42d6-9ccb-56995dd38164" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -81,8 +16,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="35" column="62" lean-forward="true" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
+            <state relative-caret-position="184">
+              <caret line="166" column="5" lean-forward="true" selection-start-line="166" selection-start-column="5" selection-end-line="166" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -301,17 +239,25 @@
       <workItem from="1548670251915" duration="1273000" />
       <workItem from="1548671799674" duration="3604000" />
       <workItem from="1548725146234" duration="25229000" />
-      <workItem from="1548811093503" duration="23876000" />
+      <workItem from="1548811093503" duration="25746000" />
     </task>
+    <task id="LOCAL-00001" summary="列表">
+      <created>1548839872529</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1548839872530</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53982000" />
+    <option name="totallyTimeSpent" value="55852000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15964173" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15964173" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -325,7 +271,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.14859003" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.14859003" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -333,6 +279,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="列表" />
+    <option name="LAST_COMMIT_MESSAGE" value="列表" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/views/system/Visit.vue">
@@ -792,8 +742,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="35" column="62" lean-forward="true" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
+        <state relative-caret-position="184">
+          <caret line="166" column="5" lean-forward="true" selection-start-line="166" selection-start-column="5" selection-end-line="166" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
