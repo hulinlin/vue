@@ -2,7 +2,8 @@
 	<el-row class="container">
 		<el-col :span="24" class="header">
 			<el-col :span="10" class="logo" :class="collapsed?'logo-collapse-width':'logo-width'">
-				{{collapsed?'':sysName}}
+					<!--<img v-bind:src="imgUrl"/>
+				 {{collapsed?'':sysName}} -->
 			</el-col>
 			<el-col :span="10">
 				<div class="tools" @click.prevent="collapse">
@@ -75,7 +76,7 @@
 	export default {
 		data() {
 			return {
-				sysName:'VUEADMIN',
+				imgUrl:'../assets/logo.png',
 				collapsed:false,
 				sysUserName: '',
 				sysUserAvatar: '',
@@ -176,11 +177,8 @@
 				border-color: rgba(238,241,146,0.3);
 				border-right-width: 1px;
 				border-right-style: solid;
-				img {
-					width: 40px;
-					float: left;
-					margin: 10px 10px 10px 18px;
-				}
+				background:url(../assets/logo.png) no-repeat ;
+				background-position:1em;
 				.txt {
 					color:#fff;
 				}
@@ -210,15 +208,18 @@
 				flex:0 0 230px;
 				width: 230px;
 				overflow:auto;
+				background:url(../assets/leftbg.png) no-repeat #fff;
+				background-size:auto 100%;
+
 				// position: absolute;
 				// top: 0px;
 				// bottom: 0px;
 				.el-menu{
 					height: 100%;
-					background-color:#fff;
+					background-color:none !important;
 					.el-submenu{
 						.el-menu{
-							background-color:#fff !important;
+							//background-color:#fff !important;
 							.el-menu-item{
 								padding-left: 60px !important;
 								height:45px;
