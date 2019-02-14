@@ -8,19 +8,28 @@ import user from './views/nav1/user.vue'
 import Member from './views/system/Member.vue'
 import MemberAdd from './views/system/MemberAdd.vue'
 import Job from './views/system/Job.vue'
+import CreateJob from './views/system/CreateJob.vue'
 import Department from './views/system/Department.vue'
 import Channel from './views/system/Channel.vue'
 import Consulting from './views/system/Consulting.vue'
+import CreateConsulting from './views/system/CreateConsulting.vue'
 import Visit from './views/system/Visit.vue'
 import Customer from './views/customer/Customer.vue'
+import CustomerAdd from './views/customer/CustomerAdd.vue'
 import Returnvisit from './views/customer/Returnvisit.vue'
 import Electronic from './views/customer/Electronic.vue'
+import ViewOrder from './views/customer/ViewOrder.vue'
+import CusVisit from './views/customer/Visit.vue'
 import Order from './views/appointment/Order.vue'
 import Triage from './views/appointment/Triage.vue'
 import WaitingRoom from './views/waitingRoom/WaitingRoom.vue'
+import Briefing from './views/waitingRoom/Briefing.vue'
+import Business from './views/waitingRoom/Business.vue'
 import TreatmentRoom from './views/treatmentRoom/TreatmentRoom.vue'
+import TreatmentDetail from './views/treatmentRoom/TreatmentDetail.vue'
 import Charge from './views/charge/Charge.vue'
 import Refund from './views/charge/Refund.vue'
+import RefundDetail from './views/charge/RefundDetail.vue'
 import Statement from './views/charge/Statement.vue'
 import PurchasingRequisition from './views/medicine/PurchasingRequisition.vue'
 import ProcurementWarehousing from './views/medicine/ProcurementWarehousing.vue'
@@ -39,6 +48,7 @@ import ApprovalRefund from './views/approval/ApprovalRefund.vue'
 import ApprovalRefundGoods from './views/approval/ApprovalRefundGoods.vue'
 import DataAnalysis from './views/approval/DataAnalysis.vue'
 import ReportRevenue from './views/report/ReportRevenue.vue'
+import ReportRevenueDetail from './views/report/ReportRevenueDetail.vue'
 import ReportDrawer from './views/report/ReportDrawer.vue'
 import ReportChannel from './views/report/ReportChannel.vue'
 import ReportProjectSales from './views/report/ReportProjectSales.vue'
@@ -51,8 +61,14 @@ import ReportConsultationProject from './views/report/ReportConsultationProject.
 import ReportConsultationProjectM from './views/report/ReportConsultationProjectM.vue'
 import ReportConsumptionDetails from './views/report/ReportConsumptionDetails.vue'
 import ReportDevelopmentBusiness from './views/report/ReportDevelopmentBusiness.vue'
-
-
+import CreateApply from "./views/medicine/CreateApply";
+import CreateWarehousing from "./views/medicine/CreateWarehousing";
+import CreateReturn from "./views/medicine/CreateReturn";
+import CreateOutbound from "./views/medicine/CreateOutbound";
+import CreateMatericalUse from "./views/medicine/CreateMatericalUse";
+import CreateMatericalReturn from "./views/medicine/CreateMatericalReturn";
+import CreateLoss from "./views/medicine/CreateLoss";
+import CreateInventory from "./views/medicine/CreateInventory";
 let routes = [
     {
         path: '/login',
@@ -88,10 +104,12 @@ let routes = [
             { path: '/member', component: Member, name: '成员管理'},
             { path: '/memberAdd', component: MemberAdd, name: '添加成员', hidden: true },
             { path: '/job', component: Job, name: '职位管理' },
+            { path: '/createJob', component: CreateJob, name: '添加成员', hidden: true },
             { path: '/department', component: Department, name: '部门管理' },
             { path: '/basics', component: Table, name: '基础设置' },
             { path: '/channel', component: Channel, name: '渠道管理' },
             { path: '/consulting', component: Consulting, name: '诊室管理' },
+            { path: '/createConsulting', component: CreateConsulting, name: '新建诊室', hidden: true },
             { path: '/visit', component: Visit, name: '回访设置' },
         ]
     },
@@ -102,8 +120,11 @@ let routes = [
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/customer', component: Customer, name: '顾客管理' },
+            { path: '/customerAdd', component: CustomerAdd, name: '新建顾客', hidden: true },
             { path: '/returnVisit', component: Returnvisit, name: '回访管理' },
             { path: '/electronic', component: Electronic, name: '电子病历' },
+            { path: '/viewOrder', component: ViewOrder, name: '查看订单', hidden: true },
+            { path: '/cusVisit', component: CusVisit, name: '查看订单', hidden: true },
         ]
     },
     {
@@ -123,6 +144,8 @@ let routes = [
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/waitingRoom', component: WaitingRoom, name: '候诊室管理' },
+            { path: '/briefing', component: Briefing, name: '门诊简报', hidden: true },
+            { path: '/business', component: Business, name: '业务管理', hidden: true },
         ]
     },
     {
@@ -132,6 +155,7 @@ let routes = [
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/treatmentRoom', component: TreatmentRoom, name: '治疗室管理' },
+            { path: '/treatmentDetail', component: TreatmentDetail, name: '个人治疗详情', hidden: true },
         ]
     },
     {
@@ -143,6 +167,7 @@ let routes = [
             { path: '/charge', component: Charge, name: '收费管理' },
             { path: '/refund', component: Refund, name: '顾客退款' },
             { path: '/statement', component: Statement, name: '储值消费明细' },
+            { path: '/RefundDetail', component: RefundDetail, name: '退款申请', hidden: true },
         ]
     },
     {
@@ -152,14 +177,22 @@ let routes = [
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/purchasingRequisition', component: PurchasingRequisition, name: '采购申请' },
+            { path: '/createApply', component: CreateApply, name: '新建采购申请', hidden: true },
             { path: '/procurementWarehousing', component: ProcurementWarehousing, name: '采购入库' },
+            { path: '/createWarehousing', component: CreateWarehousing, name: '新建采购入库申请', hidden: true },
             { path: '/purchaseReturn', component: PurchaseReturn, name: '采购退货' },
+            { path: '/createReturn', component: CreateReturn, name: '新建采购退货申请', hidden: true },
             { path: '/procurementOutbound', component: ProcurementOutbound, name: '采购出库' },
+            { path: '/createOutbound', component: CreateOutbound, name: '新建采购出库申请', hidden: true },
             { path: '/materialsRecipients', component: MaterialsRecipients, name: '材料领用' },
+            { path: '/createMatericalUse', component: CreateMatericalUse, name: '领用', hidden: true },
+            { path: '/createMatericalReturn', component: CreateMatericalReturn, name: '归还', hidden: true },
             { path: '/customersMedicine', component: CustomersMedicine, name: '顾客取药' },
             { path: '/medicineRecord', component: MedicineRecord, name: '取药记录' },
             { path: '/lossAbandonment', component: LossAbandonment, name: '丢失与报废' },
+            { path: '/createLoss', component: CreateLoss, name: '新建丢失与报废申请', hidden: true },
             { path: '/inventoryManagement', component: InventoryManagement , name: '盘点管理' },
+            { path: '/createInventory', component: CreateInventory, name: '新建盘点', hidden: true },
             { path: '/differenceAdjustment', component: DifferenceAdjustment, name: '盘点差异调整' },
             { path: '/warehouseReport', component: WarehouseReport, name: '仓储报表' },
         ]
@@ -184,6 +217,7 @@ let routes = [
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/reportRevenue', component: ReportRevenue, name: '院内营收统计查询' },
+            { path: '/reportRevenueDetail', component: ReportRevenueDetail, name: '营收明细', hidden: true },
             { path: '/reportDrawer', component: ReportDrawer, name: '开单人综合报表' },
             { path: '/reportChannel', component: ReportChannel, name: '渠道数据报表' },
             { path: '/reportProjectSales', component: ReportProjectSales, name: '项目销售分析报表' },

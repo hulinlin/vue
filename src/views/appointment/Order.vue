@@ -69,13 +69,13 @@
 				<el-col :span="24" class="toolbar" style="padding: 0px;">
 					<el-form :inline="true" :model="filters" label-width="100px">
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">确认到店</el-button>
+							<el-button type="primary" size="small" v-on:click="ordered">确认到店</el-button>
 						</el-form-item>
 						<el-form-item>
 							<el-button type="primary" size="small" v-on:click="getUsers">取消预约</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">调整预约时间</el-button>
+							<el-button type="primary" size="small" v-on:click="record">调整预约时间</el-button>
 						</el-form-item>
 
 
@@ -126,7 +126,53 @@
 				</el-col>
 			</section>
 		</el-col>
+		<!--确认到店-->
+		<el-dialog title="确认到店" v-model="orderedFormVisible" :close-on-click-modal="false">
+			<el-form :model="orderedForm" label-width="90px" :rules="editFormRules" ref="orderedForm">
+				<el-form-item label="短信验证码" class="code">
+					<el-input v-model="Register.sendcode" placeholder="请输入验证码"></el-input>
+					<el-button type="button" @click="sendcode" :disabled="disabled" v-if="disabled==false">发送验证码
+					</el-button>
+					<el-button type="button" @click="sendcode" :disabled="disabled" v-if="disabled==true">{{btntxt}}
+					</el-button>
+				</el-form-item>
+				<el-form-item label="来诊方式" prop="region">
+					<el-select v-model="ruleForm.region" placeholder="请选择">
+						<el-option label="出诊" value="shanghai"></el-option>
+						<el-option label="复诊" value="beijing"></el-option>
+						<el-option label="复查" value="shanghai"></el-option>
+						<el-option label="再消费" value="beijing"></el-option>
+						<el-option label="其他" value="beijing"></el-option>
+					</el-select>
+				</el-form-item>
+				<el-form-item label="私密管家" prop="name">
+					<el-input v-model="orderedForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="专家医生" prop="name">
+					<el-input v-model="orderedForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="客服人员" prop="name">
+					<el-input v-model="orderedForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
 
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="orderedFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<!--调整预约时间-->
+		<el-dialog title="调整预约时间" v-model="recordFormVisible" :close-on-click-modal="false" showClose=false>
+			<el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+				<el-form-item prop="date1" label="预约时间">
+					<el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">确定</el-button>
+				<el-button @click.native="recordFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -145,18 +191,32 @@
 				filters: {
 					name: ''
 				},
+				Register: {
+					phone: '',
+					sendcode: '',
+				},
+				disabled: false,
+				time: 0,
+				btntxt: "重新发送",
 				users: [],
 				total: 0,
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				orderedFormVisible: false,
+				recordFormVisible: false,//编辑界面是否显示
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
 					name: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
+				},
+				recordForm:{
+					name: '',
+				},
+				orderedForm:{
+					desc:''
 				},
 				//编辑界面数据
 				editForm: {
@@ -229,6 +289,46 @@
 				this.page = val;
 				this.getUsers();
 			},
+			//手机验证发送验证码
+			sendcode() {
+				/*const reg = 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/
+				if (this.Register.phone == '') {
+					this.$message({
+						message:'手机号不能为空',
+						center: true
+					})
+					return
+				}
+				if (!reg.test(this.Register.phone)) {
+					this.$message({
+						message:'请输入正确的手机号',
+						center:true
+					})
+					return
+				} else {*/
+					console.log(this.Register.phone);
+					this.$message({
+						message: '发送成功',
+						type: 'success',
+						center:true
+					});
+					this.time = 60;
+					this.disabled = true;
+					this.timer();
+				//}
+			},
+			//60S倒计时
+			timer() {
+				if (this.time > 0) {
+					this.time--;
+					this.btntxt = this.time + "s后获取";
+					setTimeout(this.timer, 1000);
+				} else {
+					this.time = 0;
+					this.btntxt = "获取验证码";
+					this.disabled = false;
+				}
+			},
 			//获取用户列表
 			getUsers() {
 				let para = {
@@ -264,6 +364,16 @@
 				}).catch(() => {
 
 				});
+			},
+			//显示预约界面
+			ordered: function (index, row) {
+				this.orderedFormVisible = true;
+				this.orderedForm = Object.assign({}, row);
+			},
+			//显示记录界面
+			record: function (index, row) {
+				this.recordFormVisible = true;
+				this.recordForm = Object.assign({}, row);
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {
@@ -369,6 +479,21 @@
 
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+	.code {
+	.el-input {
+		width: 55%;
+		border-radius: 0px;
+		float: left;
+		display: inline-block;
+	}
+	.el-button {
+		width: 45%;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+		border-left: 0px;
+		float: left;
+		display: inline-block;
+	}
+	}
 </style>

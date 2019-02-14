@@ -130,7 +130,7 @@
 									<el-button size="small" v-on:click="getUsers">重置</el-button>
 								</el-form-item>
 								<el-form-item>
-									<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+									<router-link to="/customerAdd"><el-button type="primary" size="small">新增</el-button></router-link>
 								</el-form-item>
 							</el-col>
 						</el-col>
@@ -140,21 +140,21 @@
 				<el-col :span="24" class="toolbar" style="padding: 0px;">
 					<el-form :inline="true" :model="filters" label-width="100px">
 					<el-form-item>
-						<el-button type="primary" size="small" v-on:click="getUsers">查看订单</el-button>
+						<router-link to="/viewOrder"><el-button type="primary" size="small" v-on:click="getUsers">查看订单</el-button></router-link>
 					</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">回访</el-button>
+							<router-link to="/returnVisit"><el-button type="primary" size="small" v-on:click="getUsers">回访</el-button></router-link>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">电子病历</el-button>
+							<router-link to="/electronic"><el-button type="primary" size="small" v-on:click="getUsers">电子病历</el-button></router-link>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">批量修改私密管家</el-button>
+							<el-button type="primary" size="small" v-on:click="editSteward">批量修改私密管家</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">批量修改专家医生</el-button>
+							<el-button type="primary" size="small" v-on:click="editDoctor">批量修改专家医生</el-button>
 						</el-form-item><el-form-item>
-						<el-button type="primary" size="small" v-on:click="getUsers">批量修改客服</el-button>
+						<el-button type="primary" size="small" v-on:click="editCustom">批量修改客服</el-button>
 					</el-form-item>
 
 					</el-form>
@@ -221,7 +221,42 @@
 				</el-col>
 			</section>
 		</el-col>
-
+		<!--批量修改私密管家-->
+		<el-dialog title="批量修改私密管家" v-model="editStewardFormVisible" :close-on-click-modal="false">
+			<el-form :model="editStewardForm" label-width="80px" :rules="editFormRules" ref="editStewardForm">
+				<el-form-item label="私密管家" prop="name">
+					<el-input v-model="editStewardForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click.native="editStewardFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+			</div>
+		</el-dialog>
+		<!--批量修改专家医生-->
+		<el-dialog title="批量修改专家医生" v-model="editDoctorFormVisible" :close-on-click-modal="false">
+			<el-form :model="editDoctorForm" label-width="80px" :rules="editFormRules" ref="editDoctorForm">
+				<el-form-item label="专家医生" prop="name">
+					<el-input v-model="editDoctorForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click.native="editDoctorFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+			</div>
+		</el-dialog>
+		<!--批量修改客服-->
+		<el-dialog title="批量修改客服" v-model="editCustomFormVisible" :close-on-click-modal="false">
+			<el-form :model="editCustomForm" label-width="80px" :rules="editFormRules" ref="editCustomForm">
+				<el-form-item label="客服人员" prop="name">
+					<el-input v-model="editCustomForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click.native="editCustomFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -247,12 +282,26 @@
 				sels: [],//列表选中列
 
 				editFormVisible: false,//编辑界面是否显示
+				editStewardFormVisible: false,//编辑界面是否显示
+				editDoctorFormVisible: false,//编辑界面是否显示
+				editCustomFormVisible: false,//编辑界面是否显示
+
 				editLoading: false,
 				editFormRules: {
 					name: [
-						{ required: true, message: '请输入姓名', trigger: 'blur' }
+						{ required: true, message: '请输入内容', trigger: 'blur' }
 					]
 				},
+				editStewardForm: {
+					name: ''
+				},
+				editDoctorForm: {
+					name: ''
+				},
+				editCustomForm: {
+					name: ''
+				},
+
 				//编辑界面数据
 				editForm: {
 					id: 0,
@@ -358,6 +407,21 @@
 				}).catch(() => {
 
 				});
+			},
+			//显示批量修改私密管家
+			editSteward: function (index, row) {
+				this.editStewardFormVisible = true;
+				this.editStewardForm = Object.assign({}, row);
+			},
+			//显示批量修改专家医生
+			editDoctor: function (index, row) {
+				this.editDoctorFormVisible = true;
+				this.editDoctorForm = Object.assign({}, row);
+			},
+			//显示批量修改客服
+			editCustom: function (index, row) {
+				this.editCustomFormVisible = true;
+				this.editCustomForm = Object.assign({}, row);
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {

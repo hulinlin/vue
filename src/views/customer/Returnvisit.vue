@@ -36,7 +36,10 @@
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">创建回访</el-button></router-link>
+							<el-button type="primary" size="small" v-on:click="creatEdit">创建回访</el-button>
+						</el-form-item>
+						<el-form-item>
+							<el-button type="primary" size="small" v-on:click="delay">延后回访</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -62,7 +65,7 @@
 					<el-table-column label="操作" width="200">
 						<template slot-scope="scope">
 							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">回访</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">查看计划</el-button>
+							<el-button type="text"  size="small" @click="view(scope.$index, scope.row)">查看计划</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -85,7 +88,84 @@
 				</el-col>
 			</section>
 		</el-col>
+		<!--创建回访-->
+		<el-dialog title="创建回访" v-model="creatFormVisible" :close-on-click-modal="false" class="middleDialog">
+			<el-form :model="creatForm"   ref="createForm">
 
+				<el-form-item label="回访类型" prop="region">
+					<el-select v-model="ruleForm.region" placeholder="请选择">
+						<el-option label="正常回访" value="shanghai"></el-option>
+						<el-option label="手术回访" value="beijing"></el-option>
+						<el-option label="休眠回访" value="shanghai"></el-option>
+					</el-select>
+				</el-form-item>
+				<el-form-item label="选择回访人" prop="name">
+					<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+						<el-table-column type="selection" width="30">
+						</el-table-column>
+						<el-table-column prop="name" label="顾客姓名">
+						</el-table-column>
+						<el-table-column prop="birth" label="治疗时间">
+						</el-table-column>
+						<el-table-column prop="birth" label="治疗项目">
+						</el-table-column>
+					</el-table>
+				</el-form-item>
+
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">生成回访计划</el-button>
+				<el-button @click.native="creatFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<!--延后回访-->
+		<el-dialog title="延后回访" v-model="delayFormVisible" :close-on-click-modal="false">
+			<el-form :model="delayForm" label-width="80px" :rules="editFormRules" ref="delayForm">
+
+				<el-form-item label="延后日期" prop="region">
+					<el-form-item prop="date1">
+						<el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+					</el-form-item>
+				</el-form-item>
+				<el-form-item label="延后原因" prop="region">
+					<el-input type="textarea" v-model="delayForm.desc"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click.native="delayFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">生成回访计划</el-button>
+			</div>
+		</el-dialog>
+		<!--查看计划-->
+		<el-dialog title="查看计划" v-model="viewFormVisible" :close-on-click-modal="false">
+			<el-form :model="viewForm" label-width="80px" :rules="editFormRules" ref="createForm">
+
+				<el-form-item label="">
+					<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+
+						<el-table-column prop="name" label="回访时间">
+						</el-table-column>
+						<el-table-column prop="birth" label="顾客姓名">
+						</el-table-column>
+						<el-table-column prop="birth" label="联系方式">
+						</el-table-column>
+						<el-table-column prop="name" label="回访类型">
+						</el-table-column>
+						<el-table-column prop="birth" label="回访人">
+						</el-table-column>
+						<el-table-column prop="birth" label="回访状态">
+						</el-table-column>
+					</el-table>
+				</el-form-item>
+
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">生成计划</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">新增回访</el-button>
+				<el-button @click.native="viewFormVisible = false">取消</el-button>
+
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -109,13 +189,23 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				creatFormVisible: false,
+				delayFormVisible: false,
+				viewFormVisible: false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
 					name: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
+				},
+				creatForm:{
+					name:''
+				},
+				delayForm:{
+					desc:'',
+				},
+				viewForm:{
 				},
 				//编辑界面数据
 				editForm: {
@@ -224,10 +314,24 @@
 
 				});
 			},
+			//创建回访
+			creatEdit: function (index, row) {
+				this.creatFormVisible = true;
+				this.creatForm = Object.assign({}, row);
+			},
+			//延迟回访
+			delay: function (index, row) {
+				this.delayFormVisible = true;
+				this.delayForm = Object.assign({}, row);
+			},
+			//创建回访
+			view: function (index, row) {
+				this.viewFormVisible = true;
+				this.viewForm = Object.assign({}, row);
+			},
 			//显示编辑界面
 			handleEdit: function (index, row) {
-				this.editFormVisible = true;
-				this.editForm = Object.assign({}, row);
+				this.$router.push({ path: '/cusVisit' });
 			},
 			//显示新增界面
 			handleAdd: function () {

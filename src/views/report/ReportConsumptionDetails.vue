@@ -128,7 +128,7 @@
 					</el-table-column>
 					<el-table-column prop="name" label="项目子类" width="120">
 					</el-table-column>
-					<el-table-column prop="name" label="消费项目/商品" width="120">
+					<el-table-column prop="name" label="消费项目/商品" width="130">
 					</el-table-column>
 					<el-table-column prop="name" label="规格" width="120">
 					</el-table-column>

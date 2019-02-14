@@ -94,31 +94,79 @@
 
 				<!--列表-->
 				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="订单号" >
+					<el-table-column prop="name" label="开单人" >
 					</el-table-column>
-					<el-table-column prop="birth" label="订单类型">
+					<el-table-column prop="birth" label="项目分类" width="120">
 					</el-table-column>
-					<el-table-column prop="birth" label="顾客姓名">
+					<el-table-column prop="birth" label="出诊">
+						<el-table-column prop="addr" label="上门数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交数">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交额">
+						</el-table-column>
+						<el-table-column prop="addr" label="客单价">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="addr" label="治疗项目">
+					<el-table-column prop="birth" label="复诊">
+						<el-table-column prop="addr" label="上门数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交数">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交额">
+						</el-table-column>
+						<el-table-column prop="addr" label="客单价">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="name" label="项目次数">
+					<el-table-column prop="birth" label="再消费">
+						<el-table-column prop="addr" label="上门数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交数">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交额">
+						</el-table-column>
+						<el-table-column prop="addr" label="客单价">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="birth" label="订单总金额">
+					<el-table-column prop="birth" label="复查">
+						<el-table-column prop="addr" label="上门数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交数">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交额">
+						</el-table-column>
+						<el-table-column prop="addr" label="客单价">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="birth" label="已付款">
+					<el-table-column prop="birth" label="其他">
+						<el-table-column prop="addr" label="上门数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交数">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交额">
+						</el-table-column>
+						<el-table-column prop="addr" label="客单价">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="addr" label="分诊人">
+					<el-table-column prop="name" label="总上门数" width="120">
 					</el-table-column>
-					<el-table-column prop="name" label="开单人">
+					<el-table-column prop="birth" label="总成交量" width="120">
 					</el-table-column>
-					<el-table-column prop="birth" label="成交时间">
+					<el-table-column prop="birth" label="总成交率" width="120">
 					</el-table-column>
-					<el-table-column prop="birth" label="治疗医生">
+					<el-table-column prop="addr" label="总成交额" width="120">
 					</el-table-column>
-					<el-table-column prop="addr" label="治疗时间">
-					</el-table-column>
-					<el-table-column prop="addr" label="客服人员">
+					<el-table-column prop="addr" label="总客单价" width="120">
 					</el-table-column>
 
 				</el-table>

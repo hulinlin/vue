@@ -16,7 +16,7 @@
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+							<el-button type="primary" size="small" v-on:click="handleAdd">新建</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -65,7 +65,146 @@
 				</el-col>
 			</section>
 		</el-col>
+		<el-dialog title="编辑子渠道"  v-model="editFormVisible" :close-on-click-modal="false" class="middleDialog">
+			<el-form :model="editForm"  label-width="100px" :rules="editFormRules" ref="editForm">
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="回访名称" prop="name">
+							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="回访类型">
+							<el-select v-model="editForm.region" placeholder="请选择">
+								<el-option label="正常回访" value="shanghai"></el-option>
+								<el-option label="手术回访" value="beijing"></el-option>
+								<el-option label="休眠回访" value="beijing"></el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="第一次回访" prop="name">
+							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						</el-form-item>
 
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="第二次回访" prop="name">
+							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="第三次回访" prop="name">
+							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="第四次回访" prop="name">
+							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="周期回访" prop="name">
+							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="状态">
+							<el-radio-group v-model="editForm.sex">
+								<el-radio class="radio" :label="1">启用</el-radio>
+								<el-radio class="radio" :label="0">禁用</el-radio>
+							</el-radio-group>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-form-item label="备注" style="width:100%;">
+					<el-input type="textarea" v-model="editForm.addr" style="width:100%;"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="editFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<!--新建界面-->
+		<el-dialog title="新建回访" v-model="addFormVisible" :close-on-click-modal="false" class="middleDialog">
+			<el-form :model="addForm" label-width="100px" :rules="addFormRules" ref="addForm">
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="回访名称" prop="name">
+							<el-input v-model="addForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="回访类型">
+							<el-select v-model="addForm.region" placeholder="请选择">
+								<el-option label="正常回访" value="shanghai"></el-option>
+								<el-option label="手术回访" value="beijing"></el-option>
+								<el-option label="休眠回访" value="beijing"></el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="第一次回访" prop="name">
+							<el-input v-model="addForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="第二次回访" prop="name">
+							<el-input v-model="addForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="第三次回访" prop="name">
+							<el-input v-model="addForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="第四次回访" prop="name">
+							<el-input v-model="addForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="周期回访" prop="name">
+							<el-input v-model="addForm.name" auto-complete="off"></el-input>
+						</el-form-item>
+
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="状态">
+							<el-radio-group v-model="addForm.sex">
+								<el-radio class="radio" :label="1">启用</el-radio>
+								<el-radio class="radio" :label="0">禁用</el-radio>
+							</el-radio-group>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-form-item label="备注">
+					<el-input type="textarea" v-model="addForm.addr"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="addFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -104,7 +243,8 @@
 					sex: -1,
 					age: 0,
 					birth: '',
-					addr: ''
+					addr: '',
+					region:''
 				},
 
 				addFormVisible: false,//新增界面是否显示
@@ -120,7 +260,8 @@
 					sex: -1,
 					age: 0,
 					birth: '',
-					addr: ''
+					addr: '',
+					region:''
 				}
 
 			}
@@ -177,8 +318,8 @@
 			},
 			//显示新增界面
 			handleAdd: function () {
-				this.$router.push('/memberAdd');
-
+				this.addFormVisible = true;
+				this.addForm = Object.assign({}, row);
 			},
 			//编辑
 			editSubmit: function () {

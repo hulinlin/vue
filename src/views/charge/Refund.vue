@@ -16,7 +16,7 @@
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">退款申请</el-button></router-link>
+							<router-link to="/RefundDetail"><el-button type="primary" size="small">退款申请</el-button></router-link>
 						</el-form-item>
 					</el-form>
 				</el-col>

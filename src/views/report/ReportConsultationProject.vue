@@ -22,27 +22,54 @@
 				</el-col>
 
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
+				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;" border>
+					<el-table-column prop="name" label="咨询项目" width="100">
 					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
+					<el-table-column prop="name" label="咨询人次" width="100">
 					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
-						</template>
+					<el-table-column prop="name" label="占比" >
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column prop="name" label="总成交人次" width="130">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column prop="name" label="成功率" >
 					</el-table-column>
-					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
-						</template>
+					<el-table-column prop="name" label="占比">
 					</el-table-column>
+					<el-table-column prop="name" label="总未成交人次" width="130">
+					</el-table-column>
+					<el-table-column prop="name" label="出诊人次">
+						<el-table-column prop="name" label="总人次">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+					</el-table-column>
+					<el-table-column prop="name" label="复诊人次">
+						<el-table-column prop="name" label="总人次">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+					</el-table-column>
+					<el-table-column prop="name" label="再消费人次">
+						<el-table-column prop="name" label="总人次">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+					</el-table-column>
+					<el-table-column prop="name" label="复查">
+						<el-table-column prop="name" label="总人次">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+					</el-table-column>
+					<el-table-column prop="name" label="其他">
+						<el-table-column prop="name" label="总人次">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+					</el-table-column>
+					<el-table-column prop="name" label="参考金额" width="100">
+					</el-table-column>
+
 				</el-table>
 
 				<!--工具条-->

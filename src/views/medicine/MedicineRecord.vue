@@ -5,9 +5,24 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
-						<el-form-item>
-							<el-input v-model="filters.name" size="small" placeholder="请输入职位名称"></el-input>
+					<el-form :inline="true" :model="filters" size="small">
+
+						<el-form-item label="取药日期" prop="region">
+							<el-col :span="11">
+								<el-form-item prop="date1">
+									<el-date-picker type="date" placeholder="选择开始日期" size="small" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+								</el-form-item>
+							</el-col>
+							<el-col class="line" :span="1">-</el-col>
+							<el-col :span="11">
+								<el-form-item prop="date2">
+									<el-time-picker type="date" placeholder="选择结束日期" size="small" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
+								</el-form-item>
+							</el-col>
+						</el-form-item>
+
+						<el-form-item label="关键字" prop="region">
+							<el-input v-model="filters.name" size="small" placeholder="请输入顾客姓名/手机号码"></el-input>
 						</el-form-item>
 						<el-form-item>
 							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
@@ -15,33 +30,87 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
+
+					</el-form>
+				</el-col>
+				<el-col :span="24" class="toolbar" style="padding: 0px;">
+					<el-form :inline="true" :model="filters" label-width="100px">
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+							<router-link to="/statement"><el-button type="primary" size="small" v-on:click="getUsers">今天</el-button></router-link>
+						</el-form-item>
+						<el-form-item>
+							<router-link to="/statement"><el-button type="primary" size="small" v-on:click="getUsers">昨天</el-button></router-link>
+						</el-form-item>
+						<el-form-item>
+							<el-button type="primary" size="small" v-on:click="getUsers">本月</el-button>
+						</el-form-item>
+						<el-form-item>
+							<el-button type="primary" size="small" v-on:click="getUsers">上月</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
-
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
-					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
-					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
+				<el-table
+						:data="tableData5"
+						style="width: 100%"
+						border
+						row-key="id"
+						:expand-row-keys="expands"
+						@row-click="rowClick">
+					<el-table-column type="expand">
+						<template slot-scope="props">
+							<el-form label-position="left" inline class="demo-table-expand" style="width:80%;margin:0 auto;">
+								<h3>取药列表</h3>
+								<el-table :data="props.row.items" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+									<el-table-column prop="shopid" label="药品条码">
+									</el-table-column>
+									<el-table-column prop="shopname" label="药品名称">
+									</el-table-column>
+									<el-table-column prop="company" label="单价">
+									</el-table-column>
+									<el-table-column prop="num" label="应发数量">
+									</el-table-column>
+									<el-table-column prop="num" label="实际发放数量">
+									</el-table-column>
+								</el-table>
+
+							</el-form>
 						</template>
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column
+							label="订单编码"
+							prop="id">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column
+							label="会员号"
+							prop="id">
+					</el-table-column>
+					<el-table-column
+							label="顾客姓名"
+							prop="name">
+					</el-table-column>
+					<el-table-column
+							label="联系方式"
+							prop="id">
+					</el-table-column>
+					<el-table-column
+							label="私密管家"
+							prop="name">
+					</el-table-column>
+					<el-table-column
+							label="发放日期"
+							prop="date">
+					</el-table-column>
+					<el-table-column
+							label="发药人"
+							prop="name">
 					</el-table-column>
 					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+
+						<template slot-scope="scope" >
+							<el-button type="text" size="small" @click="medicineGrant(scope.$index, scope.row)">申请退货</el-button>
 						</template>
+
 					</el-table-column>
 				</el-table>
 
@@ -63,6 +132,29 @@
 				</el-col>
 			</section>
 		</el-col>
+		<el-dialog title="选择退货药品" class="middleDialog" v-model="medicineFormVisible" :close-on-click-modal="false">
+			<el-form  label-width="90px"   size="mini">
+			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+				<el-table-column prop="name" label="药品条码">
+				</el-table-column>
+				<el-table-column prop="name" label="药品名称">
+				</el-table-column>
+				<el-table-column prop="name" label="单位">
+				</el-table-column>
+				<el-table-column prop="name" label="已发数量">
+				</el-table-column>
+				<el-table-column prop="name" label="退货数量">
+				</el-table-column>
+			</el-table>
+				<el-form-item label="退货原因">
+					<el-input type="textarea" size="small"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">申请退货</el-button>
+				<el-button @click.native="medicineFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 
 	</el-container>
 

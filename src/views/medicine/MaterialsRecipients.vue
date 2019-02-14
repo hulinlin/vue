@@ -7,7 +7,7 @@
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 					<el-form :inline="true" :model="filters">
 						<el-form-item>
-							<el-input v-model="filters.name" size="small" placeholder="请输入职位名称"></el-input>
+							<el-input v-model="filters.name" size="small" placeholder="请输入单据编码/顾客姓名"></el-input>
 						</el-form-item>
 						<el-form-item>
 							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
@@ -20,28 +20,86 @@
 						</el-form-item>
 					</el-form>
 				</el-col>
-
+				<el-col :span="24" class="toolbar" style="padding: 0px;">
+					<el-form :inline="true" :model="filters" label-width="100px">
+						<el-form-item>
+							<router-link to="/createMatericalUse"><el-button type="primary" size="small" v-on:click="getUsers">领用</el-button></router-link>
+						</el-form-item>
+						<el-form-item>
+							<router-link to="/createMatericalReturn"><el-button type="primary" size="small" v-on:click="getUsers">归还</el-button></router-link>
+						</el-form-item>
+					</el-form>
+				</el-col>
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
-					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
-					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
+				<el-table
+						:data="tableData5"
+						style="width: 100%"
+						border
+						row-key="id"
+						:expand-row-keys="expands"
+						@row-click="rowClick">
+					<el-table-column type="expand">
+						<template slot-scope="props">
+							<el-form label-position="left" inline class="demo-table-expand" style="width:80%;margin:0 auto;">
+
+								<el-table :data="props.row.items" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+									<el-table-column prop="shopname" label="材料/药品名称">
+									</el-table-column>
+									<el-table-column prop="shopid" label="材料/药品条码">
+									</el-table-column>
+									<el-table-column prop="company" label="单价">
+									</el-table-column>
+									<el-table-column prop="num" label="应发数量">
+									</el-table-column>
+									<el-table-column prop="num" label="实际发放数量">
+									</el-table-column>
+									<el-table-column prop="company" label="是否归还">
+									</el-table-column>
+									<el-table-column prop="num" label="已归还数量">
+									</el-table-column>
+									<el-table-column prop="num" label="待归还数量">
+									</el-table-column>
+								</el-table>
+								<el-form-item label="领用备注：" style="width:100%;">
+									<span>备注内容{{ props.row.items.desc }}</span>
+								</el-form-item>
+								<el-form-item label="归还备注：">
+									<span>备注内容{{ props.row.items.desc }}</span>
+								</el-form-item>
+							</el-form>
 						</template>
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column
+							label="单据编码"
+							prop="id">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column
+							label="顾客姓名"
+							prop="name">
+					</el-table-column>
+					<el-table-column
+							label="备注"
+							prop="desc">
+					</el-table-column>
+					<el-table-column
+							label="状态"
+							prop="state">
+					</el-table-column>
+					<el-table-column
+							label="操作人"
+							prop="name">
+					</el-table-column>
+					<el-table-column
+							label="操作日期"
+							prop="date">
 					</el-table-column>
 					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
+
+						<template slot-scope="scope" >
 							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
 							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
 						</template>
+
 					</el-table-column>
 				</el-table>
 
@@ -119,7 +177,96 @@
 					age: 0,
 					birth: '',
 					addr: ''
-				}
+				},
+				tableData5: [{
+					id: '12987122',
+					desc: '',
+					name: '张三',
+					date: '2019-01-01',
+					state: '待归还',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987123',
+					desc: '',
+					name: '里斯',
+					date: '2019-01-01',
+					state: '待归还',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987124',
+					desc: '',
+					name: '王五',
+					date: '2019-01-01',
+					state: '已归还',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987125',
+					desc: '',
+					name: '张三',
+					date: '2019-01-12',
+					state: '待归还',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}],
+
+
+				// 要展开的行，数值的元素是row的key值
+				expands: []
 
 			}
 		},

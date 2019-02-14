@@ -2,10 +2,10 @@
 	<el-container>
 		<el-col :span="4" style="padding:20px;">
 			<el-row>
-				<div v-for="o in 10">
-				<el-col :span="20"><div class="">渠道名称</div></el-col>
-				<el-col :span="4"><div class=""><el-button type="text" class="" size="small" >编辑</el-button></div></el-col>
-				</div>
+				<ul>
+				<li  v-for="o in 10">渠道名称<span class="fr themecolor"  v-on:click="handleParentEdit">编辑</span></li>
+				</ul>
+				<el-button type="primary" size="small" v-on:click="handleParentAdd" class="createBtn mt20">新建渠道</el-button>
 			</el-row>
 
 		</el-col>
@@ -24,7 +24,7 @@
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+							<el-button type="primary" size="small" v-on:click="handleAdd">新建</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -70,7 +70,80 @@
 				</el-col>
 			</section>
 		</el-col>
+		<!--编辑界面-->
+		<el-dialog title="编辑渠道" v-model="editParentFormVisible" :close-on-click-modal="false">
+			<el-form :model="editParentForm" label-width="80px" :rules="editParentFormRules" ref="editForm">
+				<el-form-item label="渠道名称" prop="name">
+					<el-input v-model="editParentForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
 
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="editParentFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<!--新建界面-->
+		<el-dialog title="新建渠道" v-model="addParentFormVisible" :close-on-click-modal="false">
+			<el-form :model="addParentForm" label-width="80px" :rules="addParentFormRules" ref="addForm">
+				<el-form-item label="渠道名称" prop="name">
+					<el-input v-model="addParentForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="addParentFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<!--编辑界面-->
+		<el-dialog title="编辑子渠道" v-model="editFormVisible" :close-on-click-modal="false">
+			<el-form :model="editForm" label-width="100px" :rules="editFormRules" ref="editForm">
+				<el-form-item label="渠道名称" prop="name">
+					父渠道名称
+				</el-form-item>
+				<el-form-item label="子渠道名称" prop="name">
+					<el-input v-model="editForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="是否返点">
+					<el-radio-group v-model="editForm.sex">
+						<el-radio class="radio" :label="1">是</el-radio>
+						<el-radio class="radio" :label="0">否</el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="返点信息">
+					<el-input type="textarea" v-model="editForm.addr"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="editFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<!--新建界面-->
+		<el-dialog title="新建子渠道" v-model="addFormVisible" :close-on-click-modal="false">
+			<el-form :model="addForm" label-width="100px" :rules="addFormRules" ref="addForm">
+				<el-form-item label="渠道名称" prop="name">
+					父渠道名称
+				</el-form-item>
+				<el-form-item label="子渠道名称" prop="name">
+					<el-input v-model="addForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="是否返点">
+					<el-radio-group v-model="addForm.sex">
+						<el-radio class="radio" :label="1">是</el-radio>
+						<el-radio class="radio" :label="0">否</el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="返点信息">
+					<el-input type="textarea" v-model="addForm.addr"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="addFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -94,7 +167,7 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				editParentFormVisible: false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
@@ -111,7 +184,16 @@
 					birth: '',
 					addr: ''
 				},
-
+				//编辑界面数据
+				editParentForm: {
+					id: 0,
+					name: '',
+					sex: -1,
+					age: 0,
+					birth: '',
+					addr: ''
+				},
+				addParentFormVisible: false,
 				addFormVisible: false,//新增界面是否显示
 				addLoading: false,
 				addFormRules: {
@@ -121,6 +203,13 @@
 				},
 
 				addForm: {
+					name: '',
+					sex: -1,
+					age: 0,
+					birth: '',
+					addr: ''
+				},
+				addParentForm: {
 					name: '',
 					sex: -1,
 					age: 0,
@@ -182,7 +271,19 @@
 			},
 			//显示新增界面
 			handleAdd: function () {
-				this.$router.push('/memberAdd');
+				this.addFormVisible = true;
+				this.addForm = Object.assign({}, row);
+
+			},
+			//显示编辑界面
+			handleParentEdit: function (index, row) {
+				this.editParentFormVisible = true;
+				this.editParentForm = Object.assign({}, row);
+			},
+			//显示新增界面
+			handleParentAdd: function () {
+				this.addParentFormVisible = true;
+				this.addParentForm = Object.assign({}, row);
 
 			},
 			//编辑

@@ -95,34 +95,53 @@
 
 				<!--列表-->
 				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="类型" >
+					<el-table-column prop="name" label="主渠道" >
 					</el-table-column>
-					<el-table-column prop="birth" label="项目名称">
+					<el-table-column prop="birth" label="子渠道">
 					</el-table-column>
-					<el-table-column prop="birth" label="业务次数">
+					<el-table-column prop="birth" label="出诊成交">
+						<el-table-column prop="addr" label="人数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="addr" label="疗程次数">
+					<el-table-column prop="birth" label="复诊成交">
+						<el-table-column prop="addr" label="人数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="name" label="服务次数">
+					<el-table-column prop="birth" label="再消费成交">
+						<el-table-column prop="addr" label="人数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="birth" label="剩余次数">
+					<el-table-column prop="birth" label="复查成交">
+						<el-table-column prop="addr" label="人数">
+						</el-table-column>
+						<el-table-column prop="name" label="成交">
+						</el-table-column>
+						<el-table-column prop="birth" label="成交率">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="birth" label="成交单价">
+					<el-table-column prop="name" label="均价">
 					</el-table-column>
-					<el-table-column prop="addr" label="销售总额">
+					<el-table-column prop="birth" label="总成交量" width="120">
 					</el-table-column>
-					<el-table-column prop="name" label="已收款总额">
+					<el-table-column prop="birth" label="总成交率" width="120">
 					</el-table-column>
-					<el-table-column prop="birth" label="已消费金额">
+					<el-table-column prop="addr" label="总成交额" width="120">
 					</el-table-column>
-					<el-table-column prop="name" label="剩余金额">
+					<el-table-column prop="addr" label="合计">
 					</el-table-column>
-					<el-table-column prop="birth" label="参考成本">
-					</el-table-column>
-					<el-table-column prop="name" label="参考毛利">
-					</el-table-column>
-					<el-table-column prop="birth" label="收款方式">
-					</el-table-column>
+
 				</el-table>
 
 				<!--工具条-->

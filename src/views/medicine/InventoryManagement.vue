@@ -26,7 +26,7 @@
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+							<router-link to="/createInventory"><el-button type="primary" size="small">新增</el-button></router-link>
 						</el-form-item>
 						<el-form-item>
 							<router-link to="/memberAdd"><el-button type="primary" size="small">导出</el-button></router-link>
@@ -48,7 +48,7 @@
 					</el-table-column>
 					<el-table-column label="操作" width="200">
 						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+							<el-button type="text" size="small" @click="purchase(scope.$index, scope.row)">查看</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -71,7 +71,31 @@
 				</el-col>
 			</section>
 		</el-col>
+		<el-dialog title="查看" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false">
+			<p>备注：<span>备注内容</span></p>
+			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+				<el-table-column type="index" label="序号">
+				</el-table-column>
+				<el-table-column prop="id" label="商品条码">
+				</el-table-column>
+				<el-table-column prop="name" label="商品名称">
+				</el-table-column>
+				<el-table-column prop="name" label="单位">
+				</el-table-column>
+				<el-table-column prop="name" label="实际数量">
+				</el-table-column>
+				<el-table-column prop="name" label="盘入数量">
+				</el-table-column>
+				<el-table-column prop="name" label="差异数量">
+				</el-table-column>
+				<el-table-column prop="name" label="状态">
+				</el-table-column>
+			</el-table>
 
+			<div slot="footer" class="dialog-footer">
+				<el-button @click.native="orderDetailFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -95,7 +119,7 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				orderDetailFormVisible: false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
@@ -209,6 +233,9 @@
 				}).catch(() => {
 
 				});
+			},
+			purchase: function (index, row) {
+				this.orderDetailFormVisible = true;
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {

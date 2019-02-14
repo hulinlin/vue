@@ -36,26 +36,22 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
-						</el-form-item>
-
 
 					</el-form>
 				</el-col>
 				<el-col :span="24" class="toolbar" style="padding: 0px;">
 					<el-form :inline="true" :model="filters" label-width="100px">
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">接诊</el-button>
+							<el-button type="primary" size="small" v-on:click="handleTreatment">接诊</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">转诊</el-button>
+							<el-button type="primary" size="small" v-on:click="doctorEdit">转诊</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">修改来诊方式</el-button>
+							<el-button type="primary" size="small" v-on:click="editWay">修改来诊方式</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">门诊简报</el-button>
+							<router-link to="/briefing"><el-button type="primary" size="small" v-on:click="getUsers">门诊简报</el-button></router-link>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -103,7 +99,36 @@
 				</el-col>
 			</section>
 		</el-col>
-
+		<!--转诊-->
+		<el-dialog title="转诊医师" v-model="doctorFormVisible" :close-on-click-modal="false">
+			<el-form :model="doctorForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+				<el-form-item label="转诊医师">
+					<el-input  v-model="doctorForm.doctor"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">确定</el-button>
+				<el-button @click.native="doctorFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<!--修改来诊方式-->
+		<el-dialog title="修改来诊方式" v-model="editWayFormVisible" :close-on-click-modal="false">
+			<el-form :model="editWayForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+				<el-form-item label="来诊方式">
+					<el-select v-model="editWayForm.way" placeholder="请选择">
+						<el-option label="初诊" value="shanghai"></el-option>
+						<el-option label="复诊" value="beijing"></el-option>
+						<el-option label="复查" value="shanghai"></el-option>
+						<el-option label="再消费" value="beijing"></el-option>
+						<el-option label="其他" value="shanghai"></el-option>
+					</el-select>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">确定</el-button>
+				<el-button @click.native="editWayFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -127,13 +152,20 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				doctorFormVisible: false,
+				editWayFormVisible: false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
 					name: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
+				},
+				doctorForm:{
+					doctor:''
+				},
+				editWayForm:{
+					way:''
 				},
 				//编辑界面数据
 				editForm: {
@@ -222,25 +254,22 @@
 				});
 			},
 			//删除
-			handleDel: function (index, row) {
-				this.$confirm('确认删除该记录吗?', '提示', {
-					type: 'warning'
+			handleTreatment: function (index, row) {
+				this.$confirm('确认接诊?', '', {
+					type: ''
 				}).then(() => {
-					this.listLoading = true;
-					//NProgress.start();
-					let para = { id: row.id };
-					removeUser(para).then((res) => {
-						this.listLoading = false;
-						//NProgress.done();
-						this.$message({
-							message: '删除成功',
-							type: 'success'
-						});
-						this.getUsers();
-					});
+					this.$router.push('/business');
 				}).catch(() => {
 
 				});
+			},
+			doctorEdit: function (index, row) {
+				this.doctorFormVisible = true;
+				this.doctorForm = Object.assign({}, row);
+			},
+			editWay: function (index, row) {
+				this.editWayFormVisible = true;
+				this.editWayForm = Object.assign({}, row);
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {

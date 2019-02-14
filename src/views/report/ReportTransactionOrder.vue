@@ -83,27 +83,27 @@
 				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
 					<el-table-column prop="name" label="开单日期" width="120">
 					</el-table-column>
-					<el-table-column prop="birth" label="会员号" width="120">
+					<el-table-column prop="birth" label="会员号">
 					</el-table-column>
-					<el-table-column prop="birth" label="顾客姓名" width="120">
+					<el-table-column prop="birth" label="顾客姓名">
 					</el-table-column>
-					<el-table-column prop="addr" label="订单编码" width="120">
+					<el-table-column prop="addr" label="订单编码">
 					</el-table-column>
-					<el-table-column prop="name" label="项目名称" width="120">
+					<el-table-column prop="name" label="项目名称">
 					</el-table-column>
-					<el-table-column prop="birth" label="治疗医生" width="120">
+					<el-table-column prop="birth" label="治疗医生">
 					</el-table-column>
-					<el-table-column prop="birth" label="客服人员" width="120">
+					<el-table-column prop="birth" label="客服人员">
 					</el-table-column>
-					<el-table-column prop="addr" label="开单人" width="120">
+					<el-table-column prop="addr" label="开单人">
 					</el-table-column>
 					<el-table-column prop="name" label="已使用/总数" width="120">
 					</el-table-column>
-					<el-table-column prop="birth" label="单价/折扣价格" width="120">
+					<el-table-column prop="birth" label="单价/折扣价格" width="130">
 					</el-table-column>
-					<el-table-column prop="birth" label="成交价" width="120">
+					<el-table-column prop="birth" label="成交价">
 					</el-table-column>
-					<el-table-column prop="addr" label="已付金额" width="120">
+					<el-table-column prop="addr" label="已付金额">
 					</el-table-column>
 					<el-table-column prop="addr" label="状态" width="120">
 					</el-table-column>

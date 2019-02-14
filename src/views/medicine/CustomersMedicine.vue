@@ -7,7 +7,7 @@
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 					<el-form :inline="true" :model="filters">
 						<el-form-item>
-							<el-input v-model="filters.name" size="small" placeholder="请输入职位名称"></el-input>
+							<el-input v-model="filters.name" size="small" placeholder="请输入顾客编码/姓名"></el-input>
 						</el-form-item>
 						<el-form-item>
 							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
@@ -15,33 +15,65 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
-						</el-form-item>
+
 					</el-form>
 				</el-col>
 
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
-					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
-					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
+				<el-table
+						:data="tableData5"
+						style="width: 100%"
+						border
+						row-key="id"
+						:expand-row-keys="expands"
+						@row-click="rowClick">
+					<el-table-column type="expand">
+						<template slot-scope="props">
+							<el-form label-position="left" inline class="demo-table-expand" style="width:80%;margin:0 auto;">
+								<h3>取药列表</h3>
+								<el-table :data="props.row.items" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+									<el-table-column prop="shopname" label="药品名称">
+									</el-table-column>
+									<el-table-column prop="shopid" label="药品条码">
+									</el-table-column>
+									<el-table-column prop="company" label="单价">
+									</el-table-column>
+									<el-table-column prop="num" label="应发数量">
+									</el-table-column>
+									<el-table-column prop="num" label="实际发放数量">
+									</el-table-column>
+								</el-table>
+
+							</el-form>
 						</template>
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column
+							label="订单编码"
+							prop="id">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column
+							label="会员号"
+							prop="id">
 					</el-table-column>
+					<el-table-column
+							label="顾客姓名"
+							prop="name">
+					</el-table-column>
+					<el-table-column
+							label="联系方式"
+							prop="id">
+					</el-table-column>
+					<el-table-column
+							label="私密管家"
+							prop="name">
+					</el-table-column>
+
 					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+
+						<template slot-scope="scope" >
+							<el-button type="text" size="small" @click="medicineGrant(scope.$index, scope.row)">发放药品</el-button>
 						</template>
+
 					</el-table-column>
 				</el-table>
 
@@ -63,7 +95,25 @@
 				</el-col>
 			</section>
 		</el-col>
+		<el-dialog title="发放药品" class="middleDialog" v-model="medicineFormVisible" :close-on-click-modal="false">
+			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+				<el-table-column prop="name" label="药品条码">
+				</el-table-column>
+				<el-table-column prop="name" label="药品名称">
+				</el-table-column>
+				<el-table-column prop="name" label="单位">
+				</el-table-column>
+				<el-table-column prop="name" label="应发数量">
+				</el-table-column>
+				<el-table-column prop="name" label="发放数量">
+				</el-table-column>
+			</el-table>
 
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">发放</el-button>
+				<el-button @click.native="medicineFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -87,7 +137,7 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				medicineFormVisible:false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
@@ -177,6 +227,9 @@
 			handleAdd: function () {
 				this.$router.push('/memberAdd');
 
+			},
+			medicineGrant: function (index, row) {
+				this.medicineFormVisible = true;
 			},
 			//编辑
 			editSubmit: function () {

@@ -69,10 +69,10 @@
 				<el-col :span="24" class="toolbar" style="padding: 0px;">
 					<el-form :inline="true" :model="filters" label-width="100px">
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">分配私密管家</el-button>
+							<el-button type="primary" size="small" v-on:click="chamberlain">分配私密管家</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">取消分诊</el-button>
+							<el-button type="primary" size="small" v-on:click="handleDel">取消分诊</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -116,7 +116,18 @@
 				</el-col>
 			</section>
 		</el-col>
-
+		<!--分配私密管家-->
+		<el-dialog title="分配私密管家" v-model="chamberlainFormVisible" :close-on-click-modal="false" showClose=false>
+			<el-form :model="chamberlainForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+				<el-form-item label="私密管家" prop="name">
+					<el-input v-model="chamberlainForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">确定</el-button>
+				<el-button @click.native="chamberlainFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -140,13 +151,16 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				chamberlainFormVisible: false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
 					name: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
+				},
+				chamberlainForm:{
+					name:''
 				},
 				//编辑界面数据
 				editForm: {
@@ -236,8 +250,8 @@
 			},
 			//删除
 			handleDel: function (index, row) {
-				this.$confirm('确认删除该记录吗?', '提示', {
-					type: 'warning'
+				this.$confirm('确认取消分诊吗?', '', {
+					//type: 'warning'
 				}).then(() => {
 					this.listLoading = true;
 					//NProgress.start();
@@ -254,6 +268,10 @@
 				}).catch(() => {
 
 				});
+			},
+			chamberlain:function (index, row) {
+				this.chamberlainFormVisible = true;
+				this.chamberlainForm = Object.assign({}, row);
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {

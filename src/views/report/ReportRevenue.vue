@@ -261,8 +261,7 @@
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {
-				this.editFormVisible = true;
-				this.editForm = Object.assign({}, row);
+				this.$router.push('/reportRevenueDetail');
 			},
 			//显示新增界面
 			handleAdd: function () {

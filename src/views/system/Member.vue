@@ -2,10 +2,10 @@
 	<el-container>
 		<el-col :span="4" style="padding:20px;">
 			<el-row>
-				<div v-for="o in 10">
-				<el-col :span="20"><div class="">部门名称（99人）</div></el-col>
-				<el-col :span="4"><div class=""><el-button type="text" class="" size="small" >编辑</el-button></div></el-col>
-				</div>
+				<ul>
+					<li  v-for="o in 10">部门名称<a class="fr themecolor"  v-on:click="handleParentEdit">编辑</a></li>
+				</ul>
+				<el-button type="primary" size="small" v-on:click="handleAdd" class="createBtn mt20">新建部门</el-button>
 			</el-row>
 
 		</el-col>
@@ -58,7 +58,7 @@
 					<el-table-column label="操作" width="200">
 						<template slot-scope="scope">
 							<el-button type="text" size="small">重置密码</el-button>
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+							<el-button type="text" size="small" @click="handleUserEdit(scope.$index, scope.row)">编辑</el-button>
 							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
 						</template>
 					</el-table-column>
@@ -73,8 +73,8 @@
 							@size-change="handleSizeChange"
 							@current-change="handleCurrentChange"
 							:current-page="currentPage4"
-							:page-sizes="[20, 50, 100]"
-							:page-size="20"
+							:page-sizes="[10,20, 50, 100]"
+							:page-size="10"
 							layout="total, sizes, prev, pager, next, jumper"
 							:total="total"
 							style="text-align: center">
@@ -82,6 +82,49 @@
 				</el-col>
 			</section>
 		</el-col>
+		<!--编辑界面-->
+		<el-dialog title="编辑部门" v-model="editFormVisible" :close-on-click-modal="false">
+			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
+				<el-form-item label="部门名称" prop="name">
+					<el-input v-model="editForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="状态">
+					<el-radio-group v-model="editForm.sex">
+						<el-radio class="radio" :label="1">启用</el-radio>
+						<el-radio class="radio" :label="0">禁用</el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="备注">
+					<el-input type="textarea" v-model="editForm.addr"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="editFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<!--新建界面-->
+		<el-dialog title="新建部门" v-model="addFormVisible" :close-on-click-modal="false">
+			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
+				<el-form-item label="部门名称" prop="name">
+					<el-input v-model="addForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="状态">
+					<el-radio-group v-model="addForm.sex">
+						<el-radio class="radio" :label="1">启用</el-radio>
+						<el-radio class="radio" :label="0">禁用</el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="备注">
+					<el-input type="textarea" v-model="editForm.addr"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="addFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -143,7 +186,7 @@
 		methods: {
 			//性别显示转换
 			formatSex: function (row, column) {
-				return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
+				return row.sex == 1 ? '启用' : row.sex == 0 ? '禁用' : '未知';
 			},
 			handleCurrentChange(val) {
 				this.page = val;
@@ -192,6 +235,11 @@
 			},
 			//显示新增界面
 			handleAdd: function () {
+				this.addFormVisible = true;
+				this.addForm = Object.assign({}, row);
+
+			},
+			handleUserEdit: function () {
 				this.$router.push('/memberAdd');
 
 			},

@@ -20,9 +20,9 @@
 							</el-col>
 						</el-form-item>
 						<el-form-item label="单据类型" prop="region">
-							<el-select v-model="ruleForm.region" placeholder="">
+							<el-select v-model="ruleForm.region" placeholder="请选择">
 								<el-option label="报废单" value="shanghai"></el-option>
-								<el-option label="丢失" value="beijing"></el-option>
+								<el-option label="丢失单" value="beijing"></el-option>
 							</el-select>
 						</el-form-item>
 						<el-form-item label="关键字">
@@ -35,32 +35,63 @@
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+							<router-link to="/createLoss"><el-button type="primary" size="small">新增</el-button></router-link>
 						</el-form-item>
 					</el-form>
 				</el-col>
 
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
-					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
-					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
+				<el-table
+						:data="tableData5"
+						style="width: 100%"
+						border
+						row-key="id"
+						:expand-row-keys="expands"
+						@row-click="rowClick">
+					<el-table-column type="expand">
+						<template slot-scope="props">
+							<el-form label-position="left" inline class="demo-table-expand" style="width:80%;margin:0 auto;">
+								<h3>取药列表</h3>
+								<el-table :data="props.row.items" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+									<el-table-column prop="shopid" label="商品条码">
+									</el-table-column>
+									<el-table-column prop="shopname" label="商品名称">
+									</el-table-column>
+									<el-table-column prop="company" label="单价">
+									</el-table-column>
+									<el-table-column prop="num" label="数量">
+									</el-table-column>
+								</el-table>
+
+							</el-form>
 						</template>
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column
+							label="订单编码"
+							prop="id">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column
+							label="单据类型"
+							prop="type">
+					</el-table-column>
+					<el-table-column
+							label="备注"
+							prop="desc">
+					</el-table-column>
+					<el-table-column
+							label="申请日期"
+							prop="date">
+					</el-table-column>
+					<el-table-column
+							label="单据状态"
+							prop="state">
 					</el-table-column>
 					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+
+						<template slot-scope="scope" >
+							<el-button type="text" size="small" @click="medicineGrant(scope.$index, scope.row)">撤销申请</el-button>
 						</template>
+
 					</el-table-column>
 				</el-table>
 

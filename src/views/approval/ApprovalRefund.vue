@@ -43,34 +43,89 @@
 				</el-col>
 
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
-					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
-					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
+				<el-table
+						:data="tableData5"
+						style="width: 100%"
+						border
+						row-key="id"
+						:expand-row-keys="expands"
+						@row-click="rowClick">
+					<el-table-column type="expand">
+						<template slot-scope="props">
+							<el-form label-position="left" inline class="demo-table-expand" style="width:80%;margin:0 auto;">
+								<el-form-item label="备注：">
+									<span>备注内容{{ props.row.items.desc }}</span>
+								</el-form-item>
+								<el-table :data="props.row.items" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+									<el-table-column prop="shopname" label="项目名称">
+									</el-table-column>
+									<el-table-column prop="shopid" label="项目金额">
+									</el-table-column>
+									<el-table-column prop="company" label="结算状态">
+									</el-table-column>
+
+								</el-table>
+							</el-form>
 						</template>
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column
+							label="订单编码"
+							prop="id">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column
+							label="会员号"
+							prop="desc">
+					</el-table-column>
+					<el-table-column
+							label="顾客姓名"
+							prop="name">
+					</el-table-column>
+					<el-table-column
+							label="联系方式"
+							prop="id">
+					</el-table-column>
+					<el-table-column
+							label="开单人"
+							prop="name">
+					</el-table-column>
+					<el-table-column
+							label="开单日期"
+							prop="date">
+					</el-table-column>
+					<el-table-column
+							label="付款总额"
+							prop="name">
+					</el-table-column>
+					<el-table-column
+						label="已付"
+						prop="name">
+				</el-table-column>
+					<el-table-column
+							label="未付"
+							prop="name">
+					</el-table-column>
+
+					<el-table-column
+							label="状态"
+							prop="state">
 					</el-table-column>
 					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+
+						<template slot-scope="scope" >
+							<div v-if="scope.row.state==='待审批'">
+								<el-button type="text" size="small" @click="approval(scope.$index, scope.row)">审批</el-button>
+							</div>
+							<div v-else>
+								<el-button type="text" size="small" >--</el-button>
+							</div>
 						</template>
+
 					</el-table-column>
 				</el-table>
 
 				<!--工具条-->
 				<el-col :span="24" class="toolbar">
-					<!--<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>-->
-					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
-					</el-pagination>-->
+
 					<el-pagination
 							@size-change="handleSizeChange"
 							@current-change="handleCurrentChange"
@@ -84,6 +139,23 @@
 				</el-col>
 			</section>
 		</el-col>
+		<el-dialog title="审批"  v-model="approvalFormVisible" :close-on-click-modal="false">
+			<el-form :model="approvalForm" label-width="90px"  ref="proTypeForm" size="mini">
+				<el-form-item label="操作行为">
+					<el-radio-group v-model="approvalForm.type">
+						<el-radio label="通过"></el-radio>
+						<el-radio label="驳回"></el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="操作意见">
+					<el-input type="textarea" v-model="approvalForm.desc" size="small"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="approvalSubmit" :loading="editLoading">确定</el-button>
+				<el-button @click.native="approvalFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 
 	</el-container>
 
@@ -108,7 +180,7 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				approvalFormVisible:false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
@@ -174,7 +246,100 @@
 					age: 0,
 					birth: '',
 					addr: ''
-				}
+				},
+				approvalForm:{
+					type:'',
+					desc:''
+				},
+				tableData5: [{
+					id: '12987122',
+					desc: '',
+					name: '张三',
+					date: '2019-01-01',
+					state: '待审批',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987123',
+					desc: '',
+					name: '里斯',
+					date: '2019-01-01',
+					state: '待审批',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987124',
+					desc: '',
+					name: '王五',
+					date: '2019-01-01',
+					state: '已驳回',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987125',
+					desc: '',
+					name: '张三',
+					date: '2019-01-12',
+					state: '审批通过',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}],
+
+
+				// 要展开的行，数值的元素是row的key值
+				expands: []
 
 			}
 		},
@@ -222,6 +387,13 @@
 				}).catch(() => {
 
 				});
+			},
+			approval:function (index, row) {
+				this.approvalFormVisible = true;
+				this.approvalForm = Object.assign({}, row);
+			},
+			approvalSubmit:function(){
+
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {

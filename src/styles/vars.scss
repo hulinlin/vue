@@ -1,11 +1,120 @@
 $color-primary: #f4355e;//#18c79c
+$color-ccc: #ccc;//#18c79c
+$color-btnhover:#fb456c;
+$color-white:#fff;
+$color-yellow:#fdb84c;
+ul,li{
+  list-style: none;
+  padding-left:0;
+  line-height:30px;
+  cursor: pointer;
+}
+.themecolor{
+  color:$color-primary
+}
+.padding20{
+  padding:20px;
+}
+.paddingright20{
+  padding-right:20px;
+}
+.pt0{
+  padding-top:0;
+}
+.fr{
+  float:right;
+}
+.mt20{
+  margin-top:20px;
+}
+.createBtn{
+  width:100%;
+}
+.color_ccc{
+  color:$color-ccc;
+}
+.borderbottom1{
+  border-bottom:1px solid $color-ccc;
+}
+.borderleft1{
+  border-left:1px solid $color-ccc;
+}
+.borderright1{
+  border-right:1px solid $color-ccc;
+}
+.middleDialog{
+  .el-dialog--small {
+    width: 700px;
+  }
+}
 .el-dialog--small{
   width:350px;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   .el-dialog__header{
-    padding: 20px;
+    padding: 10px;
     background: $color-primary;
     text-align: center;
     color:#fff;
+    border-radius: 10px 10px 0 0;
+    .el-dialog__title{
+      color:$color-white;
+    }
   }
 }
+.borderStyle{
+  border:1px solid $color-ccc;
+  padding:20px;
+  margin:10px;
+  border-radius: 10px;
+  -moz-box-shadow:0px 15px 10px -15px $color-ccc;
+  -webkit-box-shadow:0px 15px 10px -15px $color-ccc;
+  box-shadow:0px 15px 10px -15px $color-ccc;
+  .el-form-item__label{
+    color:#555;
+  }
+  h5{
+    color:$color-primary;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  h6{
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    line-height:2em;
+  }
+}
+.bgwhitecolor{
+  background:$color-white;
+}
+
+.el-select{
+  width:100%;
+}
+.el-button,.el-button:active {
+  color: $color-primary;
+  border-color: $color-primary;
+  outline: 0;
+}
+.el-button:focus, .el-button:hover {
+  color: $color-primary;
+  border-color: $color-primary;
+}
+.el-button--primary.is-active, .el-button--primary:active {
+  background: $color-primary;
+  border-color: $color-primary;
+}
+          .el-button--primary:focus, .el-button--primary:hover {
+            background: $color-btnhover;
+            border-color: $color-btnhover;
+            color: $color-white;
+          }
+
+
+          .el-button--primary {
+            background-color: $color-primary;
+            border-color: $color-primary;
+            color:$color-white;
+          }

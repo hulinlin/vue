@@ -1,50 +1,33 @@
 <template>
 	<el-container>
+		<el-col :span="24" style="padding:20px;">
 
-		<el-col :span="24" style="padding:0 20px;">
-			<section>
-				<!--工具条-->
-				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
-						<el-form-item>
-							<el-input v-model="filters.name" size="small" placeholder="请输入职位名称"></el-input>
-						</el-form-item>
-						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
-						</el-form-item>
-						<el-form-item>
-							<el-button size="small" v-on:click="getUsers">重置</el-button>
-						</el-form-item>
-						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
-						</el-form-item>
-					</el-form>
-				</el-col>
-
-				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
+		<el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
+			<el-tab-pane label="消费明细" name="first">
+				<h3>历史消费总额：￥9533.00</h3>
+				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+					<el-table-column prop="name" label="订单编码">
 					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
+					<el-table-column prop="name" label="消费日期">
 					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
+					<el-table-column prop="name" label="消费金额">
+					</el-table-column>
+					<el-table-column prop="name" label="当前余额">
+					</el-table-column>
+					<el-table-column prop="name" label="消费券额">
+					</el-table-column>
+					<el-table-column prop="name" label="消费积分">
+					</el-table-column>
+					<el-table-column prop="name" label="剩余积分">
+					</el-table-column>
+					<el-table-column prop="name" label="当前券额">
+					</el-table-column>
+					<el-table-column  width="150" label="操作">
 						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
-						</template>
-					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
-					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
-					</el-table-column>
-					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+							<el-button type="text" size="small" @click="orderDetail(scope.$index, scope.row)">订单明细</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
-
 				<!--工具条-->
 				<el-col :span="24" class="toolbar">
 					<!--<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>-->
@@ -61,9 +44,68 @@
 							style="text-align: center">
 					</el-pagination>
 				</el-col>
-			</section>
+			</el-tab-pane>
+			<el-tab-pane label="充值明细" name="second">
+				<h3>历史充值总额：￥9533.00</h3>
+				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+					<el-table-column prop="name" label="充值日期">
+					</el-table-column>
+					<el-table-column prop="name" label="充值金额">
+					</el-table-column>
+					<el-table-column prop="name" label="赠送金额">
+					</el-table-column>
+					<el-table-column prop="name" label="赠送积分">
+					</el-table-column>
+					<el-table-column prop="name" label="充值券额">
+					</el-table-column>
+					<el-table-column prop="name" label="累计充值">
+					</el-table-column>
+				</el-table>
+				<!--工具条-->
+				<el-col :span="24" class="toolbar">
+					<!--<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>-->
+					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
+					</el-pagination>-->
+					<el-pagination
+							@size-change="handleSizeChange"
+							@current-change="handleCurrentChange"
+							:current-page="currentPage4"
+							:page-sizes="[20, 50, 100]"
+							:page-size="20"
+							layout="total, sizes, prev, pager, next, jumper"
+							:total="total"
+							style="text-align: center">
+					</el-pagination>
+				</el-col>
+			</el-tab-pane>
+		</el-tabs>
 		</el-col>
-
+		<el-dialog title="订单明细" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false">
+			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+				<el-table-column prop="name" label="项目名称">
+				</el-table-column>
+				<el-table-column prop="name" label="项目金额">
+				</el-table-column>
+				<el-table-column prop="name" label="结算状态">
+				</el-table-column>
+			</el-table>
+			<!--工具条-->
+			<el-col :span="24" class="toolbar">
+				<!--<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>-->
+				<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
+                </el-pagination>-->
+				<el-pagination
+						@size-change="handleSizeChange"
+						@current-change="handleCurrentChange"
+						:current-page="currentPage4"
+						:page-sizes="[20, 50, 100]"
+						:page-size="20"
+						layout="total, sizes, prev, pager, next, jumper"
+						:total="total"
+						style="text-align: center">
+				</el-pagination>
+			</el-col>
+		</el-dialog>
 	</el-container>
 
 
@@ -82,12 +124,13 @@
 				filters: {
 					name: ''
 				},
+				activeName2: 'first',
 				users: [],
 				total: 0,
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				orderDetailFormVisible:false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
@@ -167,6 +210,9 @@
 				}).catch(() => {
 
 				});
+			},
+			orderDetail:function (index, row) {
+				this.orderDetailFormVisible = true;
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {

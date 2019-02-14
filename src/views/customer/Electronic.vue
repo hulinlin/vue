@@ -1,80 +1,34 @@
 <template>
 	<el-container>
-
-		<el-col :span="24" style="padding:0 20px;">
-			<section>
-				<!--工具条-->
-				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
-						<el-form-item>
-							<el-input v-model="filters.name" size="small" placeholder="请输入职位名称"></el-input>
-						</el-form-item>
-						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
-						</el-form-item>
-						<el-form-item>
-							<el-button size="small" v-on:click="getUsers">重置</el-button>
-						</el-form-item>
-						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
-						</el-form-item>
-					</el-form>
-				</el-col>
-
-				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
-					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
-					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
-						</template>
-					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
-					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
-					</el-table-column>
-					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
-						</template>
-					</el-table-column>
-				</el-table>
-
-				<!--工具条-->
-				<el-col :span="24" class="toolbar">
-					<!--<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>-->
-					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
-					</el-pagination>-->
-					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
-							:page-sizes="[20, 50, 100]"
-							:page-size="20"
-							layout="total, sizes, prev, pager, next, jumper"
-							:total="total"
-							style="text-align: center">
-					</el-pagination>
-				</el-col>
-			</section>
+		<el-col :span="6" style="padding:20px;">
+			<el-row>
+			<Information></Information>
+			</el-row>
 		</el-col>
-
+		<el-col :span="18" style="padding:20px;border-left:20px solid #f0f0f0;">
+			<el-row>
+			<div>
+				<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+					<el-menu-item index="0" @click="tabChange(firstVisit)">首诊</el-menu-item>
+					<el-menu-item index="1" @click="tabChange(subsequentVisit)">复诊</el-menu-item>
+					<el-menu-item index="2"  @click="tabChange(doctorAdvice)">医嘱记录</el-menu-item>
+				</el-menu>
+			</div>
+			<!--动态地绑定到它的 is 特性，我们让多个组件可以使用同一个挂载点，并动态切换。 -->
+			<div :is="currentView"></div>
+			</el-row>
+		</el-col>
 	</el-container>
-
-
-
-
 </template>
-
 <script>
 	import util from '../../common/js/util'
+	import Information from '../components/Information'
 	//import NProgress from 'nprogress'
 	import { getUserListPage, removeUser, batchRemoveUser, editUser, addUser } from '../../api/api';
+	// 导入子组件
+	import FirstVisit from '../components/FirstVisit';
+	import SubsequentVisit from '../components/SubsequentVisit';
+	import DoctorAdvice from '../components/DoctorAdvice';
 
 	export default {
 		data() {
@@ -82,6 +36,11 @@
 				filters: {
 					name: ''
 				},
+				activeIndex: '0',
+				firstVisit: 'FirstVisit',
+				subsequentVisit: 'SubsequentVisit',
+				doctorAdvice: 'DoctorAdvice',
+				currentView: 'FirstVisit', // 默认选中第一项
 				users: [],
 				total: 0,
 				page: 1,
@@ -124,6 +83,12 @@
 			}
 		},
 		methods: {
+			tabChange(tabItem) {
+				this.currentView = tabItem;
+			},
+			handleSelect(key, keyPath) {
+				console.log(key, keyPath);
+			},
 			//性别显示转换
 			formatSex: function (row, column) {
 				return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
@@ -265,6 +230,13 @@
 				});
 			}
 		},
+		components:{
+			Information,
+			FirstVisit,
+			SubsequentVisit,
+			DoctorAdvice
+
+		},
 		mounted() {
 			this.getUsers();
 		}
@@ -273,5 +245,23 @@
 </script>
 
 <style scoped>
-
+.el-menu{
+	background:#fff;
+}
+.el-menu-item{
+	height:30px;
+	line-height:30px;
+	background:#fff;
+	border:1px solid #f4355e;
+	color:#f4355e;
+}
+.el-menu-item:hover,.el-menu-item.is-active{
+	border-bottom:1px solid #f4355e;
+	background:#f4355e;
+	color:#fff;
+}
+.el-menu-item:nth-child(2){
+	border-left:0px;
+	border-right:0px;
+}
 </style>

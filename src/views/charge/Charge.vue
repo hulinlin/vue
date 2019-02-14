@@ -36,20 +36,16 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
-						</el-form-item>
-
 
 					</el-form>
 				</el-col>
 				<el-col :span="24" class="toolbar" style="padding: 0px;">
 					<el-form :inline="true" :model="filters" label-width="100px">
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">消费明细</el-button>
+							<router-link to="/statement"><el-button type="primary" size="small" v-on:click="getUsers">消费明细</el-button></router-link>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">充值记录</el-button>
+							<router-link to="/statement"><el-button type="primary" size="small" v-on:click="getUsers">充值记录</el-button></router-link>
 						</el-form-item>
 						<el-form-item>
 							<el-button type="primary" size="small" v-on:click="getUsers">打印</el-button>
@@ -57,28 +53,61 @@
 					</el-form>
 				</el-col>
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="分诊号" width="120">
+				<el-table :data="list"
+						  v-loading="listLoading"
+						  element-loading-text="给我一点时间"
+						  height="500"
+						  element-loading-background="rgba(0, 0, 0, .3)"
+						  style="width: 100%">
+					<el-table-column type="expand" prop="names">
+						<template slot-scope="scope" >
+							<el-table  :data="scope.row.names" style="width:80%;margin:0 auto;">
+								<el-table-column type="index" label="序号"  align="center" width="100">
+
+								</el-table-column>
+								<el-table-column prop="name" label="项目名称" align="center">
+									<template slot-scope="scope">
+										<span>{{scope.row.name}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column prop="num" label="项目金额" align="center">
+									<template slot-scope="scope">
+										<span>{{scope.row.num}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column prop="num" label="结算状态" align="center">
+									<template slot-scope="scope">
+										<span>{{scope.row.num}}</span>
+									</template>
+								</el-table-column>
+
+							</el-table>
+						</template>
 					</el-table-column>
-					<el-table-column prop="name" label="会员号" width="">
+					<el-table-column prop="Id" label="订单编码">
 					</el-table-column>
-					<el-table-column prop="birth" label="顾客姓名" width="120">
+					<el-table-column prop="Id" label="会员号">
 					</el-table-column>
-					<el-table-column prop="addr" label="年龄" min-width="120">
+					<el-table-column prop="Id" label="顾客姓名">
 					</el-table-column>
-					<el-table-column prop="name" label="联系电话" width="120">
+					<el-table-column prop="Id" label="联系方式">
 					</el-table-column>
-					<el-table-column prop="birth" label="时间" width="">
+					<el-table-column prop="Id" label="开单人">
 					</el-table-column>
-					<el-table-column prop="birth" label="治疗状态" width="120">
+					<el-table-column prop="Id" label="开单日期">
 					</el-table-column>
-					<el-table-column prop="addr" label="治疗师" min-width="120">
+					<el-table-column prop="Id" label="付款总额">
 					</el-table-column>
-					<el-table-column prop="name" label="治疗时间" width="120">
+					<el-table-column prop="Id" label="状态">
 					</el-table-column>
-					<el-table-column prop="name" label="客服人员" width="120">
+					<el-table-column  width="150" label="操作">
+						<template slot-scope="scope">
+							<el-button type="text" size="small" @click="settlement(scope.$index, scope.row)">结算</el-button>
+							<el-button type="text" size="small" @click="handleDel(scope.$index, scope.row)">退回</el-button>
+						</template>
 					</el-table-column>
 				</el-table>
+
 
 				<!--工具条-->
 				<el-col :span="24" class="toolbar">
@@ -98,7 +127,62 @@
 				</el-col>
 			</section>
 		</el-col>
-
+		<!--结算-->
+		<el-dialog title="结算" :inline="true" class="middleDialog" v-model="settlementFormVisible" :close-on-click-modal="false">
+			<h3>本次缴费金额：￥0.00</h3>
+			<el-form :model="settlementForm" label-width="90px"  ref="editStewardForm" size="mini">
+				<el-col :span="12">
+					<el-form-item label="现金支付" prop="name">
+						<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :span="12">
+				<el-form-item label="微信支付" prop="name">
+					<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				</el-col>
+				<el-col :span="12">
+				<el-form-item label="支付宝支付" prop="name">
+					<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				</el-col>
+				<el-col :span="12">
+				<el-form-item label="银联支付" prop="name">
+					<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				</el-col>
+				<el-col :span="12">
+				<el-form-item label="信用卡支付" prop="name">
+					<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				</el-col>
+				<el-col :span="12">
+				<el-form-item label="其他支付" prop="name">
+					<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				</el-col>
+				<el-col :span="12">
+				<el-form-item label="券支付" prop="name">
+					<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				</el-col>
+				<el-col :span="12">
+				<el-form-item label="小程序支付" prop="name">
+					<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				</el-col>
+				<el-col :span="12">
+				<el-form-item label="积分抵扣" prop="name">
+					<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
+					<span class="themecolor">1000积分=1元</span>
+				</el-form-item>
+				</el-col>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="settlementFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -117,18 +201,43 @@
 				filters: {
 					name: ''
 				},
+				list: [
+					{
+						Id: '1店',
+						names: [{
+							name: 'apple',
+							num:1
+					},{
+							name: 'banana',
+									num:2
+						}]
+					},
+					{
+						Id: '2店',
+								names: [{
+						name: 'apple',
+						num:1
+					},{
+						name: 'banana',
+								num:2
+					}]
+					}
+				],
 				users: [],
 				total: 0,
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				settlementFormVisible: false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
 					name: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
+				},
+				settlementForm:{
+					name: '',
 				},
 				//编辑界面数据
 				editForm: {
@@ -237,6 +346,10 @@
 
 				});
 			},
+			settlement:function (index, row) {
+				this.settlementFormVisible = true;
+				this.settlementForm = Object.assign({}, row);
+			},
 			//显示编辑界面
 			handleEdit: function (index, row) {
 				this.editFormVisible = true;
@@ -342,5 +455,7 @@
 </script>
 
 <style scoped>
-
+	.el-dialog--small{
+		width:700px;
+	}
 </style>

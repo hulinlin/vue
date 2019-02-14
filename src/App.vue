@@ -17,6 +17,7 @@ export default {
 </script>
 
 <style lang="scss">
+	@import '~scss_vars';
 body {
 	margin: 0px;
 	padding: 0px;

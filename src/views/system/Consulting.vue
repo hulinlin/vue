@@ -16,7 +16,7 @@
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+							<router-link to="/createConsulting"><el-button type="primary" size="small">新增</el-button></router-link>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -65,7 +65,27 @@
 				</el-col>
 			</section>
 		</el-col>
+		<el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
+			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
+				<el-form-item label="诊室名称" prop="name">
+					<el-input v-model="editForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="状态">
+					<el-radio-group v-model="editForm.sex">
+						<el-radio class="radio" :label="1">启用</el-radio>
+						<el-radio class="radio" :label="0">禁用</el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="备注">
+					<el-input type="textarea" v-model="editForm.addr"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
 
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+				<el-button @click.native="editFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 

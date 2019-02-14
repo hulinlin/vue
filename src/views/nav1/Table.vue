@@ -298,6 +298,6 @@
 
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+	@import '~scss_vars';
 </style>

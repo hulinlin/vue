@@ -16,7 +16,7 @@
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item>
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+							<el-button type="primary" size="small" v-on:click="createType">新增</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -35,7 +35,7 @@
 					</el-table-column>
 					<el-table-column label="操作" width="200">
 						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+							<el-button type="text" size="small" @click="purchase(scope.$index, scope.row)">查看</el-button>
 							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
 							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
 						</template>
@@ -60,7 +60,42 @@
 				</el-col>
 			</section>
 		</el-col>
-
+		<el-dialog title="查看" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false">
+			<p>采购订单：<span>内部采购/采购订单</span></p>
+			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
+				<el-table-column prop="name" label="商品名称">
+				</el-table-column>
+				<el-table-column prop="name" label="商品条码">
+				</el-table-column>
+				<el-table-column prop="name" label="单位">
+				</el-table-column>
+				<el-table-column prop="name" label="规格">
+				</el-table-column>
+				<el-table-column prop="name" label="采购数量">
+				</el-table-column>
+			</el-table>
+			<p>备注：<span>内部采购</span></p>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click.native="orderDetailFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
+		<el-dialog title="选择采购申请单"  v-model="proTypeFormVisible" :close-on-click-modal="false">
+			<el-form :model="proTypeForm" label-width="90px"  ref="proTypeForm" size="mini">
+				<el-form-item label="采购类型">
+					<el-radio-group v-model="proTypeForm.type">
+						<el-radio label="外部采购"></el-radio>
+						<el-radio label="内部采购"></el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="采购订单">
+					<el-input v-model="proTypeForm.orderid" size="small" placeholder="请输入采购订单编码"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="proTypeSubmit" :loading="editLoading">下一步</el-button>
+				<el-button @click.native="proTypeFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -84,13 +119,18 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				orderDetailFormVisible: false,
+				proTypeFormVisible:false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
 					name: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
+				},
+				proTypeForm:{
+					type:'',
+					orderid:''
 				},
 				//编辑界面数据
 				editForm: {
@@ -165,6 +205,14 @@
 
 				});
 			},
+			//显示采购信息
+			purchase: function (index, row) {
+				this.orderDetailFormVisible = true;
+			},
+			//新增采购信息
+			createType: function () {
+				this.proTypeFormVisible = true;
+			},
 			//显示编辑界面
 			handleEdit: function (index, row) {
 				this.editFormVisible = true;
@@ -174,6 +222,9 @@
 			handleAdd: function () {
 				this.$router.push('/memberAdd');
 
+			},
+			proTypeSubmit: function (){
+				this.$router.push({name:'新建采购入库申请',params:{type:this.proTypeForm.type,orderid:this.proTypeForm.orderid}});
 			},
 			//编辑
 			editSubmit: function () {

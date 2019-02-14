@@ -16,13 +16,13 @@
 							<el-button type="primary" size="small" v-on:click="getUsers">上一月</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button size="small" v-on:click="getUsers">本月</el-button>
+							<el-button type="primary" size="small" v-on:click="getUsers">本月</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">下一月</el-button>
+							<el-button type="primary"  size="small" v-on:click="getUsers">下一月</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button size="small" v-on:click="getUsers">批量调整</el-button>
+							<el-button type="primary" size="small" v-on:click="getUsers">批量调整</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -31,27 +31,27 @@
 				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
 					<el-table-column type="selection" width="55">
 					</el-table-column>
-					<el-table-column prop="name" label="盘点日期" width="120">
+					<el-table-column prop="name" label="盘点日期">
 					</el-table-column>
-					<el-table-column prop="birth" label="商品条码" width="120">
+					<el-table-column prop="birth" label="商品条码">
 					</el-table-column>
-					<el-table-column prop="birth" label="商品名称" width="120">
+					<el-table-column prop="birth" label="商品名称">
 					</el-table-column>
-					<el-table-column prop="name" label="单位" width="120">
+					<el-table-column prop="name" label="单位">
 					</el-table-column>
-					<el-table-column prop="birth" label="实际数量" width="120">
+					<el-table-column prop="birth" label="实际数量">
 					</el-table-column>
-					<el-table-column prop="birth" label="盘入数量" width="120">
+					<el-table-column prop="birth" label="盘入数量">
 					</el-table-column>
-					<el-table-column prop="addr" label="差异数量" width="120">
+					<el-table-column prop="addr" label="差异数量">
 					</el-table-column>
-					<el-table-column prop="birth" label="状态" width="120">
+					<el-table-column prop="birth" label="状态">
 					</el-table-column>
-					<el-table-column prop="birth" label="调整人" width="120">
+					<el-table-column prop="birth" label="调整人">
 					</el-table-column>
 					<el-table-column label="操作" width="200">
 						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+							<el-button type="text" size="small" @click="adjustment(scope.$index, scope.row)">调整差异</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -74,7 +74,18 @@
 				</el-col>
 			</section>
 		</el-col>
+		<el-dialog title="调整差异" class="middleDialog" v-model="adjustmentFormVisible" :close-on-click-modal="false">
+			<el-form  label-width="90px"   size="mini">
 
+				<el-form-item label="调整原因">
+					<el-input type="textarea" size="small"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">申请退货</el-button>
+				<el-button @click.native="adjustmentFormVisible = false">取消</el-button>
+			</div>
+		</el-dialog>
 	</el-container>
 
 
@@ -98,7 +109,7 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				adjustmentFormVisible: false,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
@@ -222,6 +233,9 @@
 			handleAdd: function () {
 				this.$router.push('/memberAdd');
 
+			},
+			adjustment: function (index, row) {
+				this.adjustmentFormVisible = true;
 			},
 			//编辑
 			editSubmit: function () {
