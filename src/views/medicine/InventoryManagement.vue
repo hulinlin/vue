@@ -25,12 +25,11 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item>
+						<el-form-item class="fr">
 							<router-link to="/createInventory"><el-button type="primary" size="small">新增</el-button></router-link>
-						</el-form-item>
-						<el-form-item>
 							<router-link to="/memberAdd"><el-button type="primary" size="small">导出</el-button></router-link>
 						</el-form-item>
+
 					</el-form>
 				</el-col>
 

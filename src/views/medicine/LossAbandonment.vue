@@ -34,7 +34,7 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item>
+						<el-form-item class="fr">
 							<router-link to="/createLoss"><el-button type="primary" size="small">新增</el-button></router-link>
 						</el-form-item>
 					</el-form>

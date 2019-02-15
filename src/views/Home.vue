@@ -53,7 +53,7 @@
 			</aside>
 			<section class="content-container">
 				<div class="grid-content bg-purple-light">
-					<el-col :span="24" class="breadcrumb-container">
+					<el-col :span="24" class="breadcrumb-container paddingleft20">
 						<!--<strong class="title">{{$route.name}}</strong>-->
 						<el-breadcrumb separator="/" class="breadcrumb-inner">
 							<el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
@@ -208,18 +208,17 @@
 				flex:0 0 230px;
 				width: 230px;
 				overflow:auto;
-
+				background:url(../assets/leftbg.png) no-repeat #fff;
+				background-size:cover;
 
 				// position: absolute;
 				// top: 0px;
 				// bottom: 0px;
 				.el-menu{
 					height: 100%;
-					background:url(../assets/leftbg.png) no-repeat #fff;
-					background-size:cover;
+
 					.el-submenu{
 						.el-menu{
-							//background-color:#fff !important;
 							.el-menu-item{
 								padding-left: 60px !important;
 								height:45px;

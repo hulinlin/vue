@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    legend: {
+        data:['上一个月', '本月','下一个月'],
+        selected:{
+            '上一个月':false,
+            '下一个月':false
+        }
+    },
+    tooltip: {},
+    xAxis: {type: 'category',data:(function(){
+            var date=new Date;
+            var year=date.getFullYear();
+            var month=date.getMonth()+1;
+            return getDaysInMonth(year,month)
+        })()},
+    yAxis: {},
+    // Declare several bar series, each will be mapped
+    // to a column of dataset.source by default.
+    series: [
+        {type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                return getDaysInMonth(year,month)
+            })(),name:'上一个月',showSymbol:false},
+        {type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                return getDaysInMonth(year,month)
+            })(),name:'本月'},
+        {type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                return getDaysInMonth(year,month)
+            })(),name:'下一个月',showSymbol:false},
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+function getDaysInMonth(year,month){
+    month = parseInt(month,10);  //parseInt(number,type)这个函数后面如果不跟第2个参数来表示进制的话，默认是10进制。
+    var temp = new Date(year,month,0);
+    var days = temp.getDate();
+    var arr = [];
+    for(var i = 1; i <= days; i++){
+        arr.push(i);
+    }
+    return arr;
+}
+
+       </script>
+   </body>
+</html>

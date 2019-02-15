@@ -1,8 +1,11 @@
 $color-primary: #f4355e;//#18c79c
 $color-ccc: #ccc;//#18c79c
+$color-bgcolor:#f0f0f0;
 $color-btnhover:#fb456c;
+$color-hover:#feebeb;
 $color-white:#fff;
 $color-yellow:#fdb84c;
+$color-tablehover:#fff9fa;
 ul,li{
   list-style: none;
   padding-left:0;
@@ -12,11 +15,21 @@ ul,li{
 .themecolor{
   color:$color-primary
 }
+h5{
+  font-size:1.2em;
+  font-weight:normal;
+}
+.textcenter{
+  text-align: center;
+}
 .padding20{
   padding:20px;
 }
 .paddingright20{
-  padding-right:20px;
+   padding-right:20px;
+ }
+.paddingleft20{
+  padding-left:20px;
 }
 .pt0{
   padding-top:0;
@@ -32,6 +45,15 @@ ul,li{
 }
 .color_ccc{
   color:$color-ccc;
+}
+.bordertop20{
+  border-top:20px solid $color-bgcolor;
+}
+.borderleft20{
+  border-left:20px solid $color-bgcolor;
+}
+.borderright20{
+  border-right:20px solid $color-bgcolor;
 }
 .borderbottom1{
   border-bottom:1px solid $color-ccc;
@@ -118,3 +140,25 @@ ul,li{
             border-color: $color-primary;
             color:$color-white;
           }
+.el-menu {
+  background: none;
+  .el-submenu{
+    .el-menu{
+      background:none;
+      li:hover{
+        background:$color-hover;
+      }
+    }
+    .el-submenu__title{
+      height:45px;
+      line-height:45px;
+    }
+    .el-submenu__title:hover{
+      background:$color-hover;
+    }
+  }
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover>td,.el-table__body tr.current-row>td{
+  background:$color-tablehover;
+}

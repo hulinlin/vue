@@ -3,7 +3,7 @@
 		<el-col :span="4" style="padding:20px;">
 			<el-row>
 				<ul>
-					<li  v-for="o in 10">部门名称<a class="fr themecolor"  v-on:click="handleParentEdit">编辑</a></li>
+					<li  v-for="o in 10">部门名称<a class="fr themecolor"  v-on:click="handleEdit">编辑</a></li>
 				</ul>
 				<el-button type="primary" size="small" v-on:click="handleAdd" class="createBtn mt20">新建部门</el-button>
 			</el-row>
@@ -23,7 +23,7 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item>
+						<el-form-item class="fr">
 							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
 
 						</el-form-item>
@@ -57,7 +57,7 @@
 					</el-table-column>
 					<el-table-column label="操作" width="200">
 						<template slot-scope="scope">
-							<el-button type="text" size="small">重置密码</el-button>
+							<el-button type="text" size="small" @click="handlePwd(scope.$index, scope.row)">重置密码</el-button>
 							<el-button type="text" size="small" @click="handleUserEdit(scope.$index, scope.row)">编辑</el-button>
 							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
 						</template>
@@ -147,7 +147,7 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-
+				currentPage4: 1,
 				editFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
@@ -188,6 +188,9 @@
 			formatSex: function (row, column) {
 				return row.sex == 1 ? '启用' : row.sex == 0 ? '禁用' : '未知';
 			},
+			handleSizeChange(val) {
+				console.log(`每页 ${val} 条`);
+			},
 			handleCurrentChange(val) {
 				this.page = val;
 				this.getUsers();
@@ -207,10 +210,23 @@
 					//NProgress.done();
 				});
 			},
+			//重置密码
+			handlePwd: function (index, row) {
+				this.$confirm('确认重置密码吗?', '提示', {
+					type: ''
+				}).then(() => {
+					this.$message({
+						message: '重置成功',
+						type: 'success'
+					});
+				}).catch(() => {
+
+				});
+			},
 			//删除
 			handleDel: function (index, row) {
 				this.$confirm('确认删除该记录吗?', '提示', {
-					type: 'warning'
+					type: ''
 				}).then(() => {
 					this.listLoading = true;
 					//NProgress.start();

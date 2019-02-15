@@ -58,9 +58,7 @@
 							<el-form-item>
 								<el-button size="small" v-on:click="getUsers">重置</el-button>
 							</el-form-item>
-							<el-form-item>
-								<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
-							</el-form-item>
+
 						</el-col>
 
 
@@ -73,6 +71,9 @@
 						</el-form-item>
 						<el-form-item>
 							<el-button type="primary" size="small" v-on:click="handleDel">取消分诊</el-button>
+						</el-form-item>
+						<el-form-item>
+							<router-link to="/memberAdd"><el-button type="primary" size="small">新建分诊</el-button></router-link>
 						</el-form-item>
 					</el-form>
 				</el-col>

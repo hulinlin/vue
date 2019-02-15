@@ -58,9 +58,7 @@
 							<el-form-item>
 								<el-button size="small" v-on:click="getUsers">重置</el-button>
 							</el-form-item>
-							<el-form-item>
-								<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
-							</el-form-item>
+
 						</el-col>
 
 
@@ -77,7 +75,9 @@
 						<el-form-item>
 							<el-button type="primary" size="small" v-on:click="record">调整预约时间</el-button>
 						</el-form-item>
-
+						<el-form-item>
+							<router-link to="/memberAdd"><el-button type="primary" size="small">新建预约</el-button></router-link>
+						</el-form-item>
 
 					</el-form>
 				</el-col>

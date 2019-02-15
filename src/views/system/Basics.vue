@@ -1,87 +1,76 @@
 <template>
-	<el-container>
+	<section>
+		<!--工具条-->
+		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
+			<el-form  :model="filters" label-width="90px">
+				<el-row>
+					<el-col :span="18">
+						<el-col :span="8">
+				<el-form-item label="医院名称">
+					<el-input v-model="filters.name" placeholder=""></el-input>
+				</el-form-item>
+						</el-col>
+						<el-col :span="8">
+				<el-form-item label="医院电话">
+					<el-input v-model="filters.name" placeholder=""></el-input>
+				</el-form-item>
+						</el-col>
+						<el-col :span="8">
+				<el-form-item label="医院地址">
+					<el-input v-model="filters.name" placeholder=""></el-input>
+				</el-form-item>
+						</el-col>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+				<el-form-item label="底部自定义">
+					<el-input type="textarea" placeholder=""></el-input>
+				</el-form-item>
+					</el-col>
+				</el-row>
+				<el-form-item>
+					<el-button type="primary" size="small" v-on:click="">保存</el-button>
+					<el-button type="primary" size="small" v-on:click="">预览</el-button>
+				</el-form-item>
+			</el-form>
+		</el-col>
+		<el-row class="padding20">
+			<el-col :span="20" :offset="2" class="padding20 preview">
+				<h5 class="textcenter">私密家园妇科门诊部</h5>
+				<p class="previewbasics"><span>类别：消费会员</span><span>诊疗号：1234567</span><span>责任咨询师：张医生</span><span>姓名：张忆莎</span><span>日期：2019-01-01</span><span>流水号：111111111111</span></p>
+				<p class="fr">No.2132424323212121</p>
+				<el-table  highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
 
-		<el-col :span="24" style="padding:0 20px;">
-			<section>
-				<!--工具条-->
-				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
-						<el-form-item label="盘点日期" prop="region">
-							<el-col :span="11">
-								<el-form-item prop="date1">
-									<el-date-picker type="date" placeholder="选择开始日期" size="small" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-								</el-form-item>
-							</el-col>
-							<el-col class="line" :span="1">-</el-col>
-							<el-col :span="11">
-								<el-form-item prop="date2">
-									<el-time-picker type="date" placeholder="选择结束日期" size="small" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-								</el-form-item>
-							</el-col>
-						</el-form-item>
-						<el-form-item label="关键字">
-							<el-input v-model="filters.name" size="small" placeholder="请输入职位名称"></el-input>
-						</el-form-item>
-						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
-						</el-form-item>
-						<el-form-item>
-							<el-button size="small" v-on:click="getUsers">重置</el-button>
-						</el-form-item>
-						<el-form-item class="fr">
-							<el-button size="small" v-on:click="getUsers">导出</el-button>
-						</el-form-item>
-					</el-form>
-				</el-col>
-
-				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
+					<el-table-column prop="id" label="类型" width="120">
 					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
+					<el-table-column prop="name" label="项目" width="120">
 					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
-						</template>
+					<el-table-column prop="sex" label="开发人员" width="120">
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column prop="age" label="数量" width="200">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column prop="birth" label="应付金额" width="120">
 					</el-table-column>
-					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
-						</template>
+					<el-table-column prop="addr" label="实付（现金券/余额/券额）" min-width="120">
+					</el-table-column>
+					<el-table-column prop="name" label="积分兑换" width="120">
+					</el-table-column>
+					<el-table-column prop="name" label="其他支付" width="120">
 					</el-table-column>
 				</el-table>
+				<p class="fr"><span>缴费细节（微信支付：190）</span><span>合计：190 （账户剩余额：0 券额：0）</span></p>
 
-				<!--工具条-->
-				<el-col :span="24" class="toolbar">
-					<!--<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>-->
-					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
-					</el-pagination>-->
-					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
-							:page-sizes="[20, 50, 100]"
-							:page-size="20"
-							layout="total, sizes, prev, pager, next, jumper"
-							:total="total"
-							style="text-align: center">
-					</el-pagination>
-				</el-col>
-			</section>
-		</el-col>
+				<p class="fr">（合计两笔 第一页/共一页）</p>
 
-	</el-container>
+				<div>
+					<p>如需开具发票，请于本月内凭此票前来换开发票<span class="fr">收银员：张宏 打印时间：2019-01-01</span></p>
+				</div>
+			</el-col>
+		</el-row>
 
 
-
-
+	</section>
 </template>
 
 <script>
@@ -126,40 +115,6 @@
 					]
 				},
 				//新增界面数据
-				ruleForm: {
-					name: '',
-					region: '',
-					date1: '',
-					date2: '',
-					delivery: false,
-					type: [],
-					resource: '',
-					desc: ''
-				},
-				rules: {
-					name: [
-						{ required: true, message: '请输入活动名称', trigger: 'blur' },
-						{ min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-					],
-					region: [
-						{ required: true, message: '请选择活动区域', trigger: 'change' }
-					],
-					date1: [
-						{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-					],
-					date2: [
-						{ type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-					],
-					type: [
-						{ type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
-					],
-					resource: [
-						{ required: true, message: '请选择活动资源', trigger: 'change' }
-					],
-					desc: [
-						{ required: true, message: '请填写活动形式', trigger: 'blur' }
-					]
-				},
 				addForm: {
 					name: '',
 					sex: -1,
@@ -222,8 +177,14 @@
 			},
 			//显示新增界面
 			handleAdd: function () {
-				this.$router.push('/memberAdd');
-
+				this.addFormVisible = true;
+				this.addForm = {
+					name: '',
+					sex: -1,
+					age: 0,
+					birth: '',
+					addr: ''
+				};
 			},
 			//编辑
 			editSubmit: function () {
@@ -273,19 +234,6 @@
 					}
 				});
 			},
-			submitForm(formName) {
-				this.$refs[formName].validate((valid) => {
-					if (valid) {
-						alert('submit!');
-					} else {
-						console.log('error submit!!');
-						return false;
-					}
-				});
-			},
-			resetForm(formName) {
-				this.$refs[formName].resetFields();
-			},
 			selsChange: function (sels) {
 				this.sels = sels;
 			},
@@ -319,6 +267,15 @@
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+	@import '~scss_vars';
+	.preview{
+		background:$color-bgcolor;
+		.previewbasics{
+			span{
+				margin-right:50px;
+			}
+		}
+	}
 
 </style>

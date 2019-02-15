@@ -15,7 +15,7 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item>
+						<el-form-item class="fr">
 							<el-button size="small" type="primary" @click="handleAdd">新建</el-button>
 						</el-form-item>
 					</el-form>

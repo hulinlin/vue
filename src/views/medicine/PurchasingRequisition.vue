@@ -23,7 +23,7 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item>
+						<el-form-item class="fr">
 							<el-button type="primary" size="small" v-on:click="createType">新增</el-button>
 						</el-form-item>
 					</el-form>
@@ -43,6 +43,40 @@
 					<el-table-column prop="birth" label="操作日期" width="120">
 					</el-table-column>
 					<el-table-column prop="addr" label="单据状态" min-width="120">
+						<template slot-scope="scope">
+							<el-popover
+									placement="left"
+									width="300"
+									trigger="hover"
+									v-model="visible2">
+								<el-steps direction="vertical" >
+									<el-step >
+										<!--<template slot="description" slot-scope="scope">
+											<div class="step-row" v-for="item in approvalProcessProject">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" class="processing_content">
+													<tr>
+														<td style="color:#98A6BE">
+															<div class="processing_content_detail" style="float:left;width:70%"><span >申请人  <span style="color:#219AFF">圆领{{}}</span>  提交了割接方案</span></div>
+															<div class="processing_content_detail" style="float:right;"><span ><i class="el-icon-time"></i>  昨天12:24</span> </div>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<div class="processing_content_detail" style="float:left;width:70%">
+																<div style="float:left;width: 2px;height: 20px; background:#C7D4E9;margin-left:10px;margin-right:10px"></div>
+																<span style="color:#919FB8">同意，建议通过</span></div>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</template>-->
+
+									</el-step>
+								</el-steps>
+								<el-button type="text" slot="reference">审批通过</el-button>
+							</el-popover>
+
+						</template>
 					</el-table-column>
 					<el-table-column label="操作" width="200">
 						<template slot-scope="scope">
@@ -116,13 +150,19 @@
 	import util from '../../common/js/util'
 	//import NProgress from 'nprogress'
 	import { getUserListPage, removeUser, batchRemoveUser, editUser, addUser } from '../../api/api';
-
+	props: ['data', 'defaultActive']
 	export default {
 		data() {
 			return {
 				filters: {
 					name: ''
 				},
+				approvalProcessProject:[
+					{ id:'4',label: "审批成功"},
+					{ id:'3',label: "割接审批"},
+					{ id:'2',label: "割接方案会审"},
+					{id:'1',label: "方案制定"},
+				],
 				users: [],
 				total: 0,
 				page: 1,

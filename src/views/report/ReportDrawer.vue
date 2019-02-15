@@ -76,14 +76,14 @@
 
 						<el-col :span="24">
 
-							<el-col :span="6">
+							<el-col :span="24">
 								<el-form-item>
 									<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
 								</el-form-item>
 								<el-form-item>
 									<el-button size="small" v-on:click="getUsers">重置</el-button>
 								</el-form-item>
-								<el-form-item>
+								<el-form-item class="fr">
 									<el-button size="small" v-on:click="getUsers">导出</el-button>
 								</el-form-item>
 							</el-col>

@@ -137,7 +137,7 @@
 			</div>
 		</el-dialog>
 		<!--查看计划-->
-		<el-dialog title="查看计划" v-model="viewFormVisible" :close-on-click-modal="false">
+		<el-dialog title="查看计划" v-model="viewFormVisible" :close-on-click-modal="false" class="middleDialog">
 			<el-form :model="viewForm" label-width="80px" :rules="editFormRules" ref="createForm">
 
 				<el-form-item label="">
@@ -432,6 +432,6 @@
 
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+	@import '~scss_vars';
 </style>

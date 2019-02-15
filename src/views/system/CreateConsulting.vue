@@ -29,7 +29,7 @@
 					</el-row>
 					<el-form-item label="关联人员">
 						<el-input v-model="addForm.name" auto-complete="off"></el-input>
-						<tree-transfer  :from_data='fromData' :to_data='toData' :defaultProps="{label:'label'}"  @addBtn='add' @removeBtn='remove' :mode='mode' height='540px' filter openAll>
+						<tree-transfer  :from_data='fromData' :to_data='toData' :defaultProps="{label:'label'}"  @addBtn='add' @removeBtn='remove' :mode='mode' width='550px' openAll ref="from-tree">
 						</tree-transfer>
 					</el-form-item>
 					<el-form-item label="备注">

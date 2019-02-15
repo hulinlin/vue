@@ -129,9 +129,7 @@
 								<el-form-item>
 									<el-button size="small" v-on:click="getUsers">重置</el-button>
 								</el-form-item>
-								<el-form-item>
-									<router-link to="/customerAdd"><el-button type="primary" size="small">新增</el-button></router-link>
-								</el-form-item>
+
 							</el-col>
 						</el-col>
 
@@ -153,10 +151,13 @@
 						</el-form-item>
 						<el-form-item>
 							<el-button type="primary" size="small" v-on:click="editDoctor">批量修改专家医生</el-button>
-						</el-form-item><el-form-item>
+						</el-form-item>
+						<el-form-item>
 						<el-button type="primary" size="small" v-on:click="editCustom">批量修改客服</el-button>
 					</el-form-item>
-
+						<el-form-item class="fr">
+							<router-link to="/customerAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+						</el-form-item>
 					</el-form>
 				</el-col>
 				<!--列表-->

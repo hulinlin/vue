@@ -2,10 +2,12 @@ import Login from './views/Login.vue'
 import NotFound from './views/404.vue'
 import Home from './views/Home.vue'
 import Main from './views/Main.vue'
+import Echarts from './views/charts/echarts.vue'
 import Table from './views/nav1/Table.vue'
 import Form from './views/nav1/Form.vue'
 import user from './views/nav1/user.vue'
 import Member from './views/system/Member.vue'
+import Basics from './views/system/Basics.vue'
 import MemberAdd from './views/system/MemberAdd.vue'
 import Job from './views/system/Job.vue'
 import CreateJob from './views/system/CreateJob.vue'
@@ -90,6 +92,7 @@ let routes = [
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/main', component: Main, name: '主页', hidden: true },
+            { path: '/echarts', component: Echarts, name: '图表', hidden: true },
             { path: '/table', component: Table, name: 'Table' },
             { path: '/form', component: Form, name: 'Form' },
             { path: '/user', component: user, name: '列表' },
@@ -106,7 +109,7 @@ let routes = [
             { path: '/job', component: Job, name: '职位管理' },
             { path: '/createJob', component: CreateJob, name: '添加成员', hidden: true },
             { path: '/department', component: Department, name: '部门管理' },
-            { path: '/basics', component: Table, name: '基础设置' },
+            { path: '/basics', component: Basics, name: '基础设置' },
             { path: '/channel', component: Channel, name: '渠道管理' },
             { path: '/consulting', component: Consulting, name: '诊室管理' },
             { path: '/createConsulting', component: CreateConsulting, name: '新建诊室', hidden: true },
