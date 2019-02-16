@@ -6,6 +6,16 @@
 				<el-form :model="proTypeForm"  label-width="90px"  ref="proTypeForm" size="mini">
 					<el-form-item label="采购类型：" style="width:50%;">
 					</el-form-item>
+					<el-form-item label="材料名称" style="width:50%;">
+							<el-select filterable remote
+    reserve-keyword
+    placeholder="请输入"
+    :remote-method="remoteMethod"
+    :loading="loading">
+    <el-option>
+    </el-option>
+  </el-select>
+						</el-form-item>
 					<el-col :span="24">
 						<el-col :span="4">
 					<el-form-item label="顾客姓名：">

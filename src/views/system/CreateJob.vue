@@ -36,6 +36,11 @@
 								</el-col>
 								<el-col :span="12" class="borderStyle pt0">
 									<p>操作功能权限<span class="color_ccc">&nbsp;&nbsp;注：只要勾选的功能，即用户操作功能授权</span></p>
+									<el-checkbox :indeterminate="isIndeterminate1" v-model="checkAll1" @change="handleCheckAllChange1">全选</el-checkbox>
+									<div style="margin: 15px 0;"></div>
+									<el-checkbox-group v-model="checkedCities1" @change="handleCheckedCitiesChange1">
+										<el-checkbox v-for="city1 in cities1" :label="city1" :key="city1">{{city}}</el-checkbox>
+									</el-checkbox-group>
 								</el-col>
 							</el-row>
 					<el-form-item>
@@ -58,6 +63,7 @@
 	//import NProgress from 'nprogress'
 	import { getUserListPage, removeUser, batchRemoveUser, editUser, addUser } from '../../api/api';
 	const cityOptions = ['用户管理', '媒体分类管理', '媒体发布'];
+	const cityOptions1 = ['创建', '编辑', '删除','查看','搜索'];
 	export default {
 		data() {
 			return {
@@ -68,6 +74,10 @@
 				checkedCities: [],
 				cities: cityOptions,
 				isIndeterminate: true,
+				checkAll1: false,
+				checkedCities1: [],
+				cities1: cityOptions,
+				isIndeterminate1: true,
 				users: [],
 				total: 0,
 				page: 1,
@@ -118,14 +128,23 @@
 				this.page = val;
 				this.getUsers();
 			},
-			handleCheckAllChange(val) {
-				this.checkedCities = val ? cityOptions : [];
+			handleCheckAllChange(event) {
+				this.checkedCities = event.target.checked ? cityOptions : [];
 				this.isIndeterminate = false;
 			},
 			handleCheckedCitiesChange(value) {
 				let checkedCount = value.length;
 				this.checkAll = checkedCount === this.cities.length;
 				this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+			},
+			handleCheckAllChange1(event) {
+				this.checkedCities1 = event.target.checked ? cityOptions1 : [];
+				this.isIndeterminate1 = false;
+			},
+			handleCheckedCitiesChange1(value) {
+				let checkedCount = value.length;
+				this.checkAll1 = checkedCount === this.cities1.length;
+				this.isIndeterminate1 = checkedCount > 0 && checkedCount < this.cities1.length;
 			},
 			//获取用户列表
 			getUsers() {

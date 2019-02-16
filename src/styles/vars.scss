@@ -69,6 +69,11 @@ h5{
     width: 700px;
   }
 }
+.bigDialog{
+  .el-dialog--small {
+    width: 1000px;
+  }
+}
 .el-dialog--small{
   width:350px;
   border-radius: 10px 10px 0 0;

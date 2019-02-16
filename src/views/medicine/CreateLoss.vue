@@ -1,7 +1,7 @@
 <template>
 	<el-container>
 
-		<el-col :span="24" style="padding:0 20px;">
+		<el-col :span="24" style="padding:20px;">
 			<section>
 				<el-form :model="proTypeForm"  label-width="90px"  ref="proTypeForm" size="mini">
 					<el-form-item label="单据类型：" style="width:50%;">
@@ -10,6 +10,16 @@
 							<el-option label="丢失单" value="beijing"></el-option>
 						</el-select>
 					</el-form-item>
+					<el-form-item label="商品名称" style="width:50%;">
+							<el-select filterable remote
+    reserve-keyword
+    placeholder="请输入"
+    :remote-method="remoteMethod"
+    :loading="loading">
+    <el-option>
+    </el-option>
+  </el-select>
+						</el-form-item>
 					<el-form-item label="数量：" style="width:50%;">
 						<el-input v-model="proTypeForm.num" size="small" auto-complete="off" style="width:80%;float:left;"></el-input>
 						<el-button type="primary" size="small" style="float:right;">加入列表</el-button>

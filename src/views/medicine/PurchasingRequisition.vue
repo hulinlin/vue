@@ -32,44 +32,32 @@
 				<!--列表-->
 
 				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="采购订单编码" width="120">
+					<el-table-column prop="name" label="采购订单编码">
 					</el-table-column>
-					<el-table-column prop="birth" label="订单类型" width="120">
+					<el-table-column prop="birth" label="订单类型">
 					</el-table-column>
-					<el-table-column prop="birth" label="备注" width="120">
+					<el-table-column prop="birth" label="备注" min-width="200">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作人" min-width="120">
+					<el-table-column prop="addr" label="操作人">
 					</el-table-column>
-					<el-table-column prop="birth" label="操作日期" width="120">
+					<el-table-column prop="birth" label="操作日期">
 					</el-table-column>
-					<el-table-column prop="addr" label="单据状态" min-width="120">
+					<el-table-column prop="addr" label="单据状态">
 						<template slot-scope="scope">
 							<el-popover
 									placement="left"
 									width="300"
 									trigger="hover"
 									v-model="visible2">
-								<el-steps direction="vertical" >
-									<el-step >
-										<!--<template slot="description" slot-scope="scope">
-											<div class="step-row" v-for="item in approvalProcessProject">
-												<table width="100%" border="0" cellspacing="0" cellpadding="0" class="processing_content">
-													<tr>
-														<td style="color:#98A6BE">
-															<div class="processing_content_detail" style="float:left;width:70%"><span >申请人  <span style="color:#219AFF">圆领{{}}</span>  提交了割接方案</span></div>
-															<div class="processing_content_detail" style="float:right;"><span ><i class="el-icon-time"></i>  昨天12:24</span> </div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<div class="processing_content_detail" style="float:left;width:70%">
-																<div style="float:left;width: 2px;height: 20px; background:#C7D4E9;margin-left:10px;margin-right:10px"></div>
-																<span style="color:#919FB8">同意，建议通过</span></div>
-														</td>
-													</tr>
-												</table>
+									<el-steps :active="active" finish-status="success" direction="vertical" >
+											<el-step :title="item.label"  v-for="item in approvalProcessProject" :id="item.id">
+										<template slot="description" slot-scope="scope">
+											<div class="step-row" >
+												<p>1</p>
+												<p>2</p>
+												<p>3</p>
 											</div>
-										</template>-->
+										</template>
 
 									</el-step>
 								</el-steps>

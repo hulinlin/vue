@@ -7,6 +7,23 @@
 					<el-form-item label="采购类型：" style="width:50%;">
 						{{proTypeForm.type}}
 					</el-form-item>
+					<el-form-item label="商品名称" style="width:50%;">
+							<el-select
+    v-model="value9"
+    filterable
+    remote
+    reserve-keyword
+    placeholder="请输入"
+    :remote-method="remoteMethod"
+    :loading="loading">
+    <el-option
+      v-for="item in options4"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
+						</el-form-item>
 					<el-form-item label="采购数量：" style="width:50%;">
 						<el-input v-model="proTypeForm.num" size="small" auto-complete="off" style="width:80%;float:left;"></el-input>
 						<el-button type="primary" size="small" style="float:right;">加入列表</el-button>
@@ -137,7 +154,28 @@
 					age: 0,
 					birth: '',
 					addr: ''
-				}
+				},
+				options4: [],
+        value9: [],
+        list: [],
+        loading: false,
+        states: ["Alabama", "Alaska", "Arizona",
+        "Arkansas", "California", "Colorado",
+        "Connecticut", "Delaware", "Florida",
+        "Georgia", "Hawaii", "Idaho", "Illinois",
+        "Indiana", "Iowa", "Kansas", "Kentucky",
+        "Louisiana", "Maine", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota",
+        "Mississippi", "Missouri", "Montana",
+        "Nebraska", "Nevada", "New Hampshire",
+        "New Jersey", "New Mexico", "New York",
+        "North Carolina", "North Dakota", "Ohio",
+        "Oklahoma", "Oregon", "Pennsylvania",
+        "Rhode Island", "South Carolina",
+        "South Dakota", "Tennessee", "Texas",
+        "Utah", "Vermont", "Virginia",
+        "Washington", "West Virginia", "Wisconsin",
+        "Wyoming"]
 
 			}
 		},
@@ -293,10 +331,27 @@
 				}).catch(() => {
 
 				});
-			}
+			},
+			remoteMethod(query) {
+        if (query !== '') {
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+            this.options4 = this.list.filter(item => {
+              return item.label.toLowerCase()
+                .indexOf(query.toLowerCase()) > -1;
+            });
+          }, 200);
+        } else {
+          this.options4 = [];
+        }
+      }
 		},
 		mounted() {
 			this.getUsers();
+			this.list = this.states.map(item => {
+				return { value: item, label: item };
+			});
 		}
 	}
 

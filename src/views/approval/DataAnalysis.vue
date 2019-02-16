@@ -28,33 +28,75 @@
 						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">重置</el-button>
 						</el-form-item>
-						<el-form-item class="fr">
+						<el-form-item>
 							<el-button size="small" v-on:click="getUsers">导出</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
 
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
-					<el-table-column prop="name" label="职位名称" width="120">
+				<el-table :data="users" border align="center" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+					<el-table-column prop="name" align="center" label="日期" width="100">
 					</el-table-column>
-					<el-table-column prop="birth" label="职位" width="">
+					<el-table-column prop="name" align="center"  label="商品名称" width="100">
 					</el-table-column>
-					<el-table-column property="status" align="center" label="状态">
-						<template slot-scope="scope">
-							<el-switch active-color="#13ce66" inactive-color="#ff4949"  v-model="scope.row.status" @change=change(scope.$index,scope.row)>
-							</el-switch>
-						</template>
+					<el-table-column prop="name" align="center" label="上期结存" width="100">
+						<el-table-column prop="name" align="center" label="数量" width="100">
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="单价" width="100">
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="金额" width="100">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column prop="name" align="center" label="本期购入" width="100">
+						<el-table-column prop="name" align="center" label="数量" width="100">
+						</el-table-column>
+						<el-table-column prop="name" align="center"  label="单价" width="100">
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="金额" width="100">
+						</el-table-column>
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column prop="name" align="center" label="本期耗用" width="100">
+						<el-table-column prop="name" align="center" label="本期销售" width="100">
+							<el-table-column prop="name" align="center" label="数量" width="100">
+							</el-table-column>
+							<el-table-column prop="name" align="center" label="单价" width="100">
+							</el-table-column>
+							<el-table-column prop="name" align="center" label="金额" width="100">
+							</el-table-column>
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="内部耗材" width="100">
+							<el-table-column prop="name" align="center" label="数量" width="100">
+							</el-table-column>
+							<el-table-column prop="name" align="center" label="单价" width="100">
+							</el-table-column>
+							<el-table-column prop="name" align="center" label="金额" width="100">
+							</el-table-column>
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="报废/丢失" width="100">
+							<el-table-column prop="name" align="center" label="数量" width="100">
+							</el-table-column>
+							<el-table-column prop="name" align="center" label="单价" width="100">
+							</el-table-column>
+							<el-table-column prop="name" align="center" label="金额" width="100">
+							</el-table-column>
+						</el-table-column>
 					</el-table-column>
-					<el-table-column label="操作" width="200">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="text"  size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
-						</template>
+					<el-table-column prop="name" align="center" label="盘点差异" width="100">
+						<el-table-column prop="name" align="center" label="数量" width="100">
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="单价" width="100">
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="金额" width="100">
+						</el-table-column>
+					</el-table-column>
+					<el-table-column prop="name" align="center" label="本期结存" width="100">
+						<el-table-column prop="name" align="center" label="数量" width="100">
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="单价" width="100">
+						</el-table-column>
+						<el-table-column prop="name" align="center" label="金额" width="100">
+						</el-table-column>
 					</el-table-column>
 				</el-table>
 
@@ -320,5 +362,5 @@
 </script>
 
 <style scoped>
-
+.el-table th{text-align:center;}
 </style>
