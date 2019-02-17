@@ -16,7 +16,7 @@
                 <el-table-column prop="" label="复诊内容" >
                 </el-table-column>
             </el-table>
-            <el-dialog title="复诊记录"  v-model="approvalFormVisible" :close-on-click-modal="false">
+            <el-dialog title="复诊记录"  v-model="approvalFormVisible" :close-on-click-modal="false" :visible.sync="approvalFormVisible">
                 <el-form :model="approvalForm"   ref="proTypeForm" size="mini">
                    
                     <el-form-item label="">

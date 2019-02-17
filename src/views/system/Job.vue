@@ -62,7 +62,7 @@
 			</section>
 		</el-col>
 		<!--编辑界面-->
-		<el-dialog title="编辑职位" v-model="editFormVisible" :close-on-click-modal="false">
+		<el-dialog title="编辑职位" v-model="editFormVisible" :close-on-click-modal="false" :visible.sync="editFormVisible">
 			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm" size="small">
 				<el-form-item label="职位名称" prop="name">
 					<el-input v-model="editForm.name" auto-complete="off"></el-input>
@@ -84,7 +84,7 @@
 			</div>
 		</el-dialog>
 		<!--新建界面-->
-		<el-dialog title="新建职位" v-model="addFormVisible" :close-on-click-modal="false">
+		<el-dialog title="新建职位" v-model="addFormVisible" :close-on-click-modal="false" :visible.sync="addFormVisible">
 			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm" size="small">
 				<el-form-item label="职位名称" prop="name">
 					<el-input v-model="addForm.name" auto-complete="off"></el-input>
@@ -210,14 +210,12 @@
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {
-				console.log(row);
 				this.editFormVisible = true;
-				//this.editForm = Object.assign({}, row);
+				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd: function () {
 				this.addFormVisible = true;
-				this.addForm = Object.assign({}, row);
 
 			},
 			//编辑

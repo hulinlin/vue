@@ -121,7 +121,7 @@
 			</section>
 		</el-col>
 		<!--确认到店-->
-		<el-dialog title="确认到店" v-model="orderedFormVisible" :close-on-click-modal="false">
+		<el-dialog title="确认到店" v-model="orderedFormVisible" :close-on-click-modal="false" :visible.sync="orderedFormVisible">
 			<el-form :model="orderedForm" label-width="90px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item label="短信验证码" class="code">
 					<el-input v-model="Register.sendcode" placeholder="请输入验证码"></el-input>
@@ -156,7 +156,7 @@
 			</div>
 		</el-dialog>
 		<!--调整预约时间-->
-		<el-dialog title="调整预约时间" v-model="recordFormVisible" :close-on-click-modal="false" showClose=false>
+		<el-dialog title="调整预约时间" v-model="recordFormVisible" :close-on-click-modal="false" showClose=false :visible.sync="recordFormVisible">
 			<el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item prop="date1" label="预约时间">
 					<el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>

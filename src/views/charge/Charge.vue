@@ -124,7 +124,7 @@
 			</section>
 		</el-col>
 		<!--结算-->
-		<el-dialog title="结算" :inline="true" class="middleDialog" v-model="settlementFormVisible" :close-on-click-modal="false">
+		<el-dialog title="结算" :inline="true" class="middleDialog" v-model="settlementFormVisible" :close-on-click-modal="false" :visible.sync="settlementFormVisible">
 			<h3>本次缴费金额：￥0.00</h3>
 			<el-form :model="settlementForm" label-width="90px"  ref="editStewardForm" size="small">
 				<el-col :span="12">

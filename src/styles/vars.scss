@@ -64,17 +64,8 @@ h5{
 .borderright1{
   border-right:1px solid $color-ccc;
 }
-.middleDialog{
-  .el-dialog--small {
-    width: 700px;
-  }
-}
-.bigDialog{
-  .el-dialog--small {
-    width: 1000px;
-  }
-}
-.el-dialog--small{
+
+.el-dialog{
   width:350px;
   border-radius: 10px 10px 0 0;
   .el-dialog__header{
@@ -86,6 +77,16 @@ h5{
     .el-dialog__title{
       color:$color-white;
     }
+  }
+}
+.middleDialog{
+  .el-dialog {
+    width: 700px;
+  }
+}
+.bigDialog{
+  .el-dialog {
+    width: 1000px;
   }
 }
 .borderStyle{

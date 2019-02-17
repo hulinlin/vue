@@ -52,7 +52,7 @@
             </el-row>
         </el-col>
         <!--预约下次来院-->
-        <el-dialog title="预约来院" v-model="orderedFormVisible" :close-on-click-modal="false">
+        <el-dialog title="预约来院" v-model="orderedFormVisible" :close-on-click-modal="false" :visible.sync="orderedFormVisible">
             <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
                 <el-form-item prop="date1" label="预约时间">
                     <el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
@@ -83,7 +83,7 @@
             </div>
         </el-dialog>
         <!--添加回访记录-->
-        <el-dialog title="添加回访记录" v-model="recordFormVisible" :close-on-click-modal="false" showClose=false>
+        <el-dialog title="添加回访记录" v-model="recordFormVisible" :close-on-click-modal="false" showClose=false :visible.sync="recordFormVisible">
             <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
                 <el-form-item label="联系方式" prop="region">
                     <el-select v-model="ruleForm.region" placeholder="请选择">

@@ -72,7 +72,7 @@
 				</el-col>
 			</section>
 		</el-col>
-		<el-dialog title="调整差异" class="middleDialog" v-model="adjustmentFormVisible" :close-on-click-modal="false">
+		<el-dialog title="调整差异" class="middleDialog" v-model="adjustmentFormVisible" :close-on-click-modal="false" :visible.sync="adjustmentFormVisible">
 			<el-form  label-width="90px"   size="small">
 
 				<el-form-item label="调整原因">

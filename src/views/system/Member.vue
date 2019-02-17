@@ -3,9 +3,9 @@
 		<el-col :span="4" style="padding:20px;">
 			<el-row>
 				<ul>
-					<li  v-for="o in 10">部门名称<a class="fr themecolor"  v-on:click="handleEdit">编辑</a></li>
+					<li  v-for="o in 10">部门名称<a class="fr themecolor"  @click="handleEdit">编辑</a></li>
 				</ul>
-				<el-button type="primary" size="small" v-on:click="handleAdd" class="createBtn mt20">新建部门</el-button>
+				<el-button type="primary" size="small" @click="handleAdd" class="createBtn mt20">新建部门</el-button>
 			</el-row>
 
 		</el-col>
@@ -81,7 +81,7 @@
 			</section>
 		</el-col>
 		<!--编辑界面-->
-		<el-dialog title="编辑部门" v-model="editFormVisible" :close-on-click-modal="false">
+		<el-dialog title="编辑部门" v-model="editFormVisible" :close-on-click-modal="false" :visible.sync="editFormVisible">
 			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm" size="small">
 				<el-form-item label="部门名称" prop="name">
 					<el-input v-model="editForm.name" auto-complete="off"></el-input>
@@ -103,7 +103,7 @@
 			</div>
 		</el-dialog>
 		<!--新建界面-->
-		<el-dialog title="新建部门" v-model="addFormVisible" :close-on-click-modal="false">
+		<el-dialog title="新建部门" v-model="addFormVisible" :close-on-click-modal="false" :visible.sync="addFormVisible">
 			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm" size="small">
 				<el-form-item label="部门名称" prop="name">
 					<el-input v-model="addForm.name" auto-complete="off"></el-input>

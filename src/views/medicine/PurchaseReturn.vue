@@ -69,7 +69,7 @@
 				</el-col>
 			</section>
 		</el-col>
-		<el-dialog title="查看" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false">
+		<el-dialog title="查看" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false" :visible.sync="orderDetailFormVisible">
 			<p>采购订单：<span>内部采购/采购订单</span></p>
 			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
 				<el-table-column prop="name" label="商品名称">
@@ -88,7 +88,7 @@
 				<el-button @click.native="orderDetailFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
-		<el-dialog title="选择采购申请单"  v-model="proTypeFormVisible" :close-on-click-modal="false">
+		<el-dialog title="选择采购申请单"  v-model="proTypeFormVisible" :close-on-click-modal="false" :visible.sync="proTypeFormVisible">
 			<el-form :model="proTypeForm" label-width="90px"  ref="proTypeForm" size="small">
 				<el-form-item label="采购类型">
 					<el-radio-group v-model="proTypeForm.type">

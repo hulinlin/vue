@@ -112,7 +112,7 @@
 			</section>
 		</el-col>
 		<!--分配私密管家-->
-		<el-dialog title="分配私密管家" v-model="chamberlainFormVisible" :close-on-click-modal="false" showClose=false>
+		<el-dialog title="分配私密管家" v-model="chamberlainFormVisible" :close-on-click-modal="false" showClose=false :visible.sync="chamberlainFormVisible">
 			<el-form :model="chamberlainForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item label="私密管家" prop="name">
 					<el-input v-model="chamberlainForm.name" auto-complete="off"></el-input>

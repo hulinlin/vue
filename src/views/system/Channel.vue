@@ -69,8 +69,8 @@
 			</section>
 		</el-col>
 		<!--编辑界面-->
-		<el-dialog title="编辑渠道" v-model="editParentFormVisible" :close-on-click-modal="false">
-			<el-form :model="editParentForm" label-width="80px" :rules="editParentFormRules" ref="editForm" size="small">
+		<el-dialog title="编辑渠道" v-model="editParentFormVisible" :close-on-click-modal="false" :visible.sync="editParentFormVisible">
+			<el-form :model="editParentForm" label-width="80px" :rules="editFormRules" ref="editForm" size="small">
 				<el-form-item label="渠道名称" prop="name">
 					<el-input v-model="editParentForm.name" auto-complete="off"></el-input>
 				</el-form-item>
@@ -82,8 +82,8 @@
 			</div>
 		</el-dialog>
 		<!--新建界面-->
-		<el-dialog title="新建渠道" v-model="addParentFormVisible" :close-on-click-modal="false">
-			<el-form :model="addParentForm" label-width="80px" :rules="addParentFormRules" ref="addForm" size="small">
+		<el-dialog title="新建渠道" v-model="addParentFormVisible" :close-on-click-modal="false" :visible.sync="addParentFormVisible">
+			<el-form :model="addParentForm" label-width="80px" :rules="addFormRules" ref="addForm" size="small">
 				<el-form-item label="渠道名称" prop="name">
 					<el-input v-model="addParentForm.name" auto-complete="off"></el-input>
 				</el-form-item>
@@ -94,7 +94,7 @@
 			</div>
 		</el-dialog>
 		<!--编辑界面-->
-		<el-dialog title="编辑子渠道" v-model="editFormVisible" :close-on-click-modal="false">
+		<el-dialog title="编辑子渠道" v-model="editFormVisible" :close-on-click-modal="false" :visible.sync="editFormVisible">
 			<el-form :model="editForm" label-width="100px" :rules="editFormRules" ref="editForm" size="small">
 				<el-form-item label="渠道名称" prop="name">
 					父渠道名称
@@ -119,7 +119,7 @@
 			</div>
 		</el-dialog>
 		<!--新建界面-->
-		<el-dialog title="新建子渠道" v-model="addFormVisible" :close-on-click-modal="false">
+		<el-dialog title="新建子渠道" v-model="addFormVisible" :close-on-click-modal="false" :visible.sync="addFormVisible">
 			<el-form :model="addForm" label-width="100px" :rules="addFormRules" ref="addForm" size="small">
 				<el-form-item label="渠道名称" prop="name">
 					父渠道名称
@@ -270,7 +270,6 @@
 			//显示新增界面
 			handleAdd: function () {
 				this.addFormVisible = true;
-				this.addForm = Object.assign({}, row);
 
 			},
 			//显示编辑界面
@@ -281,7 +280,6 @@
 			//显示新增界面
 			handleParentAdd: function () {
 				this.addParentFormVisible = true;
-				this.addParentForm = Object.assign({}, row);
 
 			},
 			//编辑

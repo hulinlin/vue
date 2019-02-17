@@ -217,7 +217,7 @@
 			</section>
 		</el-col>
 		<!--批量修改私密管家-->
-		<el-dialog title="批量修改私密管家" v-model="editStewardFormVisible" :close-on-click-modal="false">
+		<el-dialog title="批量修改私密管家" v-model="editStewardFormVisible" :close-on-click-modal="false" :visible.sync="editStewardFormVisible">
 			<el-form :model="editStewardForm" label-width="80px" :rules="editFormRules" ref="editStewardForm" size="small">
 				<el-form-item label="私密管家" prop="name">
 					<el-input v-model="editStewardForm.name" auto-complete="off"></el-input>
@@ -229,7 +229,7 @@
 			</div>
 		</el-dialog>
 		<!--批量修改专家医生-->
-		<el-dialog title="批量修改专家医生" v-model="editDoctorFormVisible" :close-on-click-modal="false">
+		<el-dialog title="批量修改专家医生" v-model="editDoctorFormVisible" :close-on-click-modal="false" :visible.sync="editDoctorFormVisible">
 			<el-form :model="editDoctorForm" label-width="80px" :rules="editFormRules" ref="editDoctorForm" size="small">
 				<el-form-item label="专家医生" prop="name">
 					<el-input v-model="editDoctorForm.name" auto-complete="off"></el-input>
@@ -241,7 +241,7 @@
 			</div>
 		</el-dialog>
 		<!--批量修改客服-->
-		<el-dialog title="批量修改客服" v-model="editCustomFormVisible" :close-on-click-modal="false">
+		<el-dialog title="批量修改客服" v-model="editCustomFormVisible" :close-on-click-modal="false" :visible.sync="editCustomFormVisible">
 			<el-form :model="editCustomForm" label-width="80px" :rules="editFormRules" ref="editCustomForm" size="small">
 				<el-form-item label="客服人员" prop="name">
 					<el-input v-model="editCustomForm.name" auto-complete="off"></el-input>

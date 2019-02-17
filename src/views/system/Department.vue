@@ -62,7 +62,7 @@
 			</section>
 		</el-col>
 		<!--编辑界面-->
-		<el-dialog title="编辑部门" v-model="editFormVisible" :close-on-click-modal="false">
+		<el-dialog title="编辑部门" v-model="editFormVisible" :close-on-click-modal="false" :visible.sync="editFormVisible">
 			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm" size="small">
 				<el-form-item label="部门名称" prop="name">
 					<el-input v-model="editForm.name" auto-complete="off"></el-input>
@@ -84,7 +84,7 @@
 			</div>
 		</el-dialog>
 		<!--新建界面-->
-		<el-dialog title="新建部门" v-model="addFormVisible" :close-on-click-modal="false">
+		<el-dialog title="新建部门" v-model="addFormVisible" :close-on-click-modal="false" :visible.sync="addFormVisible">
 			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm" size="small">
 				<el-form-item label="部门名称" prop="name">
 					<el-input v-model="addForm.name" auto-complete="off"></el-input>
@@ -216,7 +216,6 @@
 			//显示新增界面
 			handleAdd: function () {
 				this.addFormVisible = true;
-				this.addForm = Object.assign({}, row);
 
 			},
 			//编辑

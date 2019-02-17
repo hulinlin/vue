@@ -134,7 +134,7 @@
 			</div>
 		</el-dialog>
 		<!--新建界面-->
-		<el-dialog title="新建回访" v-model="addFormVisible" :close-on-click-modal="false" class="middleDialog">
+		<el-dialog title="新建回访" v-model="addFormVisible" :close-on-click-modal="false" class="middleDialog" :visible.sync="addFormVisible">
 			<el-form :model="addForm" label-width="100px" :rules="addFormRules" ref="addForm" size="small">
 				<el-row>
 					<el-col :span="12">
@@ -317,7 +317,6 @@
 			//显示新增界面
 			handleAdd: function () {
 				this.addFormVisible = true;
-				this.addForm = Object.assign({}, row);
 			},
 			//编辑
 			editSubmit: function () {

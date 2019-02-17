@@ -64,7 +64,7 @@
 				</el-col>
 			</section>
 		</el-col>
-		<el-dialog title="查看" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false">
+		<el-dialog title="查看" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false" :visible.sync="orderDetailFormVisible">
 			<p>备注：<span>备注内容</span></p>
 			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
 				<el-table-column type="index" label="序号">

@@ -93,7 +93,7 @@
 				</el-col>
 			</section>
 		</el-col>
-		<el-dialog title="发放药品" class="middleDialog" v-model="medicineFormVisible" :close-on-click-modal="false">
+		<el-dialog title="发放药品" class="middleDialog" v-model="medicineFormVisible" :close-on-click-modal="false" :visible.sync="medicineFormVisible">
 			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
 				<el-table-column prop="name" label="药品条码">
 				</el-table-column>

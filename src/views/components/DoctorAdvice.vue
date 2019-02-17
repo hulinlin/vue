@@ -33,7 +33,7 @@
             <el-table-column prop="" label="备注" >
             </el-table-column>
         </el-table>
-        <el-dialog title="新建医嘱记录"  v-model="approvalFormVisible" :close-on-click-modal="false" class="bigDialog">
+        <el-dialog title="新建医嘱记录"  v-model="approvalFormVisible" :close-on-click-modal="false" class="bigDialog" :visible.sync="approvalFormVisible">
             <el-form :model="approvalForm" :inline="true"  ref="" size="mini">
                             <el-form-item label="就诊号" >
                                     <el-input  size="small" placeholder=""></el-input>

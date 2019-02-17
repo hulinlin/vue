@@ -92,7 +92,7 @@
 			</section>
 		</el-col>
 		<!--转治疗医生-->
-		<el-dialog title="分配治疗医生" v-model="doctorFormVisible" :close-on-click-modal="false">
+		<el-dialog title="分配治疗医生" v-model="doctorFormVisible" :close-on-click-modal="false" :visible.sync="doctorFormVisible">
 			<el-form :model="doctorForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item label="治疗医生">
 					<el-input  v-model="doctorForm.doctor"></el-input>

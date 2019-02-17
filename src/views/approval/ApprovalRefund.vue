@@ -133,7 +133,7 @@
 				</el-col>
 			</section>
 		</el-col>
-		<el-dialog title="审批"  v-model="approvalFormVisible" :close-on-click-modal="false">
+		<el-dialog title="审批"  v-model="approvalFormVisible" :close-on-click-modal="false" :visible.sync="approvalFormVisible">
 			<el-form :model="approvalForm" label-width="90px"  ref="proTypeForm" size="small">
 				<el-form-item label="操作行为">
 					<el-radio-group v-model="approvalForm.type">

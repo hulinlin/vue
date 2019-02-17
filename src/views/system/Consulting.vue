@@ -63,7 +63,7 @@
 				</el-col>
 			</section>
 		</el-col>
-		<el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
+		<el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false" :visible.sync="editFormVisible">
 			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm" size="small">
 				<el-form-item label="诊室名称" prop="name">
 					<el-input v-model="editForm.name" auto-complete="off"></el-input>

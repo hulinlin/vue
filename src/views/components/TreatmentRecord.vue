@@ -29,7 +29,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <el-dialog title="治疗记录" v-model="orderedFormVisible" :close-on-click-modal="false" class="middleDialog">
+        <el-dialog title="治疗记录" v-model="orderedFormVisible" :close-on-click-modal="false" class="middleDialog" :visible.sync="orderedFormVisible">
             <el-table  highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
 
                 <el-table-column prop="name" label="项目名称">

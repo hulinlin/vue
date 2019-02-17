@@ -83,7 +83,7 @@
 			</section>
 		</el-col>
 		<!--创建回访-->
-		<el-dialog title="创建回访" v-model="creatFormVisible" :close-on-click-modal="false" class="middleDialog">
+		<el-dialog title="创建回访" v-model="creatFormVisible" :close-on-click-modal="false" class="middleDialog" :visible.sync="creatFormVisible">
 			<el-form :model="creatForm"   ref="createForm" size="small">
 
 				<el-form-item label="回访类型" prop="region">
@@ -113,7 +113,7 @@
 			</div>
 		</el-dialog>
 		<!--延后回访-->
-		<el-dialog title="延后回访" v-model="delayFormVisible" :close-on-click-modal="false">
+		<el-dialog title="延后回访" v-model="delayFormVisible" :close-on-click-modal="false" :visible.sync="delayFormVisible">
 			<el-form :model="delayForm" label-width="80px" :rules="editFormRules" ref="delayForm" size="small">
 
 				<el-form-item label="延后日期" prop="region">
@@ -131,7 +131,7 @@
 			</div>
 		</el-dialog>
 		<!--查看计划-->
-		<el-dialog title="查看计划" v-model="viewFormVisible" :close-on-click-modal="false" class="middleDialog">
+		<el-dialog title="查看计划" v-model="viewFormVisible" :close-on-click-modal="false" class="middleDialog" :visible.sync="viewFormVisible">
 			<el-form :model="viewForm" label-width="80px" :rules="editFormRules" ref="createForm" size="small">
 
 				<el-form-item label="">

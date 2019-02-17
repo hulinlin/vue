@@ -100,7 +100,7 @@
 			</section>
 		</el-col>
 		<!--转诊-->
-		<el-dialog title="转诊医师" v-model="doctorFormVisible" :close-on-click-modal="false">
+		<el-dialog title="转诊医师" v-model="doctorFormVisible" :close-on-click-modal="false" :visible.sync="doctorFormVisible">
 			<el-form :model="doctorForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item label="转诊医师">
 					<el-input  v-model="doctorForm.doctor"></el-input>
@@ -112,7 +112,7 @@
 			</div>
 		</el-dialog>
 		<!--修改来诊方式-->
-		<el-dialog title="修改来诊方式" v-model="editWayFormVisible" :close-on-click-modal="false">
+		<el-dialog title="修改来诊方式" v-model="editWayFormVisible" :close-on-click-modal="false" :visible.sync="editWayFormVisible">
 			<el-form :model="editWayForm" label-width="80px" :rules="editFormRules" ref="orderedForm"  size="small">
 				<el-form-item label="来诊方式">
 					<el-select v-model="editWayForm.way" placeholder="请选择">

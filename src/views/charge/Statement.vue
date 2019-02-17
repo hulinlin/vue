@@ -76,7 +76,7 @@
 			</el-tab-pane>
 		</el-tabs>
 		</el-col>
-		<el-dialog title="订单明细" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false">
+		<el-dialog title="订单明细" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false" :visible.sync="orderDetailFormVisible">
 			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
 				<el-table-column prop="name" label="项目名称">
 				</el-table-column>
