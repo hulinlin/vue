@@ -243,7 +243,7 @@
 							name: '面积模式',
 							type: 'pie',
 							radius: [30, 110],
-							center: ['75%', '50%'],
+							center: ['50%', '50%'],
 							roseType: 'area',
 							data: [
 								{ value: 10, name: 'rose1' },
