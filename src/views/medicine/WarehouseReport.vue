@@ -5,19 +5,15 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
+					<el-form :inline="true" :model="filters" size="small">
 						<el-form-item label="日期" prop="region">
-							<el-col :span="11">
-								<el-form-item prop="date1">
-									<el-date-picker type="date" placeholder="选择开始日期" size="small" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-								</el-form-item>
-							</el-col>
-							<el-col class="line" :span="1">-</el-col>
-							<el-col :span="11">
-								<el-form-item prop="date2">
-									<el-time-picker type="date" placeholder="选择结束日期" size="small" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-								</el-form-item>
-							</el-col>
+							<el-date-picker
+      v-model="ruleForm.date1"
+      type="daterange"
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期">
+    </el-date-picker>
 						</el-form-item>
 						<el-form-item label="关键字">
 							<el-input v-model="filters.name" size="small" placeholder="请输入职位名称"></el-input>
@@ -62,9 +58,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"

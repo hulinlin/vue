@@ -7,24 +7,22 @@
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 					<el-form :inline="true" :model="filters" size="small">
 
-						<el-form-item label="状态" prop="region">
-							<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-								<el-option label="区域一" value="shanghai"></el-option>
-								<el-option label="区域二" value="beijing"></el-option>
+						<el-form-item label="状态" prop="state">
+							<el-select v-model="ruleForm.state" placeholder="请选择" size="small">
+								<el-option label="待缴费" value="待缴费"></el-option>
+								<el-option label="已缴费" value="已缴费"></el-option>
+								<el-option label="已退费" value="已退费"></el-option>
+								<el-option label="全部" value="全部"></el-option>
 							</el-select>
 						</el-form-item>
 						<el-form-item label="开单日期" prop="region">
-							<el-col :span="11">
-								<el-form-item prop="date1">
-									<el-date-picker type="date" placeholder="选择开始日期" size="small" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-								</el-form-item>
-							</el-col>
-							<el-col class="line" :span="1">-</el-col>
-							<el-col :span="11">
-								<el-form-item prop="date2">
-									<el-time-picker type="date" placeholder="选择结束日期" size="small" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-								</el-form-item>
-							</el-col>
+							<el-date-picker
+      v-model="ruleForm.date1"
+      type="daterange"
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期">
+    </el-date-picker>
 						</el-form-item>
 
 						<el-form-item label="关键字" prop="region">
@@ -115,9 +113,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -130,7 +126,7 @@
 		<!--结算-->
 		<el-dialog title="结算" :inline="true" class="middleDialog" v-model="settlementFormVisible" :close-on-click-modal="false">
 			<h3>本次缴费金额：￥0.00</h3>
-			<el-form :model="settlementForm" label-width="90px"  ref="editStewardForm" size="mini">
+			<el-form :model="settlementForm" label-width="90px"  ref="editStewardForm" size="small">
 				<el-col :span="12">
 					<el-form-item label="现金支付" prop="name">
 						<el-input v-model="settlementForm.name" auto-complete="off"></el-input>
@@ -179,8 +175,8 @@
 				</el-col>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-				<el-button @click.native="settlementFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
+				<el-button @click.native="settlementFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 	</el-container>
@@ -269,11 +265,11 @@
 				},
 				rules: {
 					name: [
-						{ required: true, message: '请输入活动名称', trigger: 'blur' },
+						{ required: true, message: '请输入名称', trigger: 'blur' },
 						{ min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
 					],
 					region: [
-						{ required: true, message: '请选择活动区域', trigger: 'change' }
+						{ required: true, message: '请选择', trigger: 'change' }
 					],
 					date1: [
 						{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }
@@ -282,13 +278,13 @@
 						{ type: 'date', required: true, message: '请选择时间', trigger: 'change' }
 					],
 					type: [
-						{ type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+						{ type: 'array', required: true, message: '请至少选择一个性质', trigger: 'change' }
 					],
 					resource: [
-						{ required: true, message: '请选择活动资源', trigger: 'change' }
+						{ required: true, message: '请选择资源', trigger: 'change' }
 					],
 					desc: [
-						{ required: true, message: '请填写活动形式', trigger: 'blur' }
+						{ required: true, message: '请填写形式', trigger: 'blur' }
 					]
 				},
 				addForm: {

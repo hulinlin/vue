@@ -3,7 +3,7 @@
 
 		<el-col :span="20" style="padding:20px;">
 			<section>
-				<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
+				<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm" size="small">
 					<el-row>
 						<el-col :span="8">
 							<el-form-item label="诊室名称" prop="name">

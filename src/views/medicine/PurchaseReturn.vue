@@ -5,11 +5,13 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
+					<el-form :inline="true" :model="filters" size="small">
 						<el-form-item label="单据状态" prop="region">
 							<el-select v-model="ruleForm.region" placeholder="请选择" size="small">
-								<el-option label="区域一" value="shanghai"></el-option>
-								<el-option label="区域二" value="beijing"></el-option>
+								<el-option label="未提交" value="未提交"></el-option>
+								<el-option label="审批中" value="审批中"></el-option>
+								<el-option label="审批通过" value="审批通过"></el-option>
+								<el-option label="已驳回" value="已驳回"></el-option>
 							</el-select>
 						</el-form-item>
 						<el-form-item label="关键字" prop="region">
@@ -57,9 +59,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -85,11 +85,11 @@
 			</el-table>
 			<p>退货原因：<span>库存不够</span></p>
 			<div slot="footer" class="dialog-footer">
-				<el-button @click.native="orderDetailFormVisible = false">取消</el-button>
+				<el-button @click.native="orderDetailFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 		<el-dialog title="选择采购申请单"  v-model="proTypeFormVisible" :close-on-click-modal="false">
-			<el-form :model="proTypeForm" label-width="90px"  ref="proTypeForm" size="mini">
+			<el-form :model="proTypeForm" label-width="90px"  ref="proTypeForm" size="small">
 				<el-form-item label="采购类型">
 					<el-radio-group v-model="proTypeForm.type">
 						<el-radio label="外部采购"></el-radio>
@@ -101,8 +101,8 @@
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="proTypeSubmit" :loading="editLoading">下一步</el-button>
-				<el-button @click.native="proTypeFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="proTypeSubmit" :loading="editLoading" size="small">下一步</el-button>
+				<el-button @click.native="proTypeFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 	</el-container>

@@ -3,7 +3,7 @@
 
 		<el-col :span="24" style="padding:0 20px;">
 			<section>
-				<el-form :model="proTypeForm"  label-width="90px"  ref="proTypeForm" size="mini">
+				<el-form :model="proTypeForm"  label-width="90px"  ref="proTypeForm" size="small">
 					<el-form-item label="采购订单：" style="width:50%;">
 						{{proTypeForm.type}}/{{proTypeForm.orderid}}
 					</el-form-item>

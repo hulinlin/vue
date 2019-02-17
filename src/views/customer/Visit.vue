@@ -40,9 +40,7 @@
                         <!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
                         </el-pagination>-->
                         <el-pagination
-                                @size-change="handleSizeChange"
-                                @current-change="handleCurrentChange"
-                                :current-page="currentPage4"
+                               
                                 :page-sizes="[20, 50, 100]"
                                 :page-size="20"
                                 layout="total, sizes, prev, pager, next, jumper"
@@ -55,7 +53,7 @@
         </el-col>
         <!--预约下次来院-->
         <el-dialog title="预约来院" v-model="orderedFormVisible" :close-on-click-modal="false">
-            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
                 <el-form-item prop="date1" label="预约时间">
                     <el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
                 </el-form-item>
@@ -80,13 +78,13 @@
             </el-form>
             <div slot="footer" class="dialog-footer">
 
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-                <el-button @click.native="orderedFormVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
+                <el-button @click.native="orderedFormVisible = false" size="small">取消</el-button>
             </div>
         </el-dialog>
         <!--添加回访记录-->
         <el-dialog title="添加回访记录" v-model="recordFormVisible" :close-on-click-modal="false" showClose=false>
-            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
                 <el-form-item label="联系方式" prop="region">
                     <el-select v-model="ruleForm.region" placeholder="请选择">
                         <el-option label="微信" value="shanghai"></el-option>
@@ -99,8 +97,8 @@
             </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">确定</el-button>
-                <el-button @click.native="recordFormVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">确定</el-button>
+                <el-button @click.native="recordFormVisible = false" size="small">取消</el-button>
             </div>
         </el-dialog>
     </el-container>

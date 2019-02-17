@@ -5,19 +5,15 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
+					<el-form :inline="true" :model="filters" size="small">
 						<el-form-item label="开单日期" prop="region">
-							<el-col :span="11">
-								<el-form-item prop="date1">
-									<el-date-picker type="date" placeholder="选择开始日期" size="small" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-								</el-form-item>
-							</el-col>
-							<el-col class="line" :span="1">-</el-col>
-							<el-col :span="11">
-								<el-form-item prop="date2">
-									<el-time-picker type="date" placeholder="选择结束日期" size="small" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-								</el-form-item>
-							</el-col>
+							<el-date-picker
+      v-model="ruleForm.date1"
+      type="daterange"
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期">
+    </el-date-picker>
 						</el-form-item>
 						<el-form-item label="状态" prop="region">
 							<el-select v-model="ruleForm.region" placeholder="">
@@ -127,9 +123,7 @@
 				<el-col :span="24" class="toolbar">
 
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -140,7 +134,7 @@
 			</section>
 		</el-col>
 		<el-dialog title="审批"  v-model="approvalFormVisible" :close-on-click-modal="false">
-			<el-form :model="approvalForm" label-width="90px"  ref="proTypeForm" size="mini">
+			<el-form :model="approvalForm" label-width="90px"  ref="proTypeForm" size="small">
 				<el-form-item label="操作行为">
 					<el-radio-group v-model="approvalForm.type">
 						<el-radio label="通过"></el-radio>
@@ -152,8 +146,8 @@
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="approvalSubmit" :loading="editLoading">确定</el-button>
-				<el-button @click.native="approvalFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="approvalSubmit" :loading="editLoading" size="small">确定</el-button>
+				<el-button @click.native="approvalFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 

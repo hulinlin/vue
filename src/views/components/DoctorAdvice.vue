@@ -79,8 +79,8 @@
                 </el-table>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button type="primary" @click.native="approvalSubmit" :loading="editLoading">确定</el-button>
-                <el-button @click.native="approvalFormVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="approvalSubmit" :loading="editLoading" size="small">确定</el-button>
+                <el-button @click.native="approvalFormVisible = false" size="small">取消</el-button>
             </div>
         </el-dialog>
     </div>

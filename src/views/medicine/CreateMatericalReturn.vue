@@ -3,7 +3,7 @@
 
 		<el-col :span="24" style="padding:0 20px;">
 			<section>
-				<el-form :model="proTypeForm"  label-width="90px"  ref="proTypeForm" size="mini">
+				<el-form :model="proTypeForm"  label-width="90px"  ref="proTypeForm" size="small">
 					<el-form-item label="领用单：" style="width:50%;">
 						领用单编码
 					</el-form-item>

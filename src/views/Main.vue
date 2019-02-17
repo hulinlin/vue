@@ -112,16 +112,43 @@
 			drawColumnChart() {
 				this.chartColumn = echarts.init(document.getElementById('chartColumn'));
 				this.chartColumn.setOption({
-					tooltip: {},
-					xAxis: {
-						data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-					},
-					yAxis: {},
-					series: [{
-						name: '销量',
-						type: 'bar',
-						data: [5, 20, 36, 10, 10, 20]
-					}]
+					legend: {
+        data:['上一个月', '本月','下一个月'],
+        selected:{
+            '上一个月':false,
+            '下一个月':false
+        }
+    },
+    tooltip: {},
+    xAxis: {type: 'category',data:(function(){
+            var date=new Date;
+            var year=date.getFullYear();
+            var month=date.getMonth()+1;
+            return getDaysInMonth(year,month)
+        })()},
+    yAxis: {},
+    // Declare several bar series, each will be mapped
+    // to a column of dataset.source by default.
+    series: [
+        {type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                return getDaysInMonth(year,month)
+            })(),name:'上一个月',showSymbol:false},
+        {type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                return getDaysInMonth(year,month)
+            })(),name:'本月'},
+        {type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                return getDaysInMonth(year,month)
+            })(),name:'下一个月',showSymbol:false},
+    ]
 				});
 			},
 			drawLineChart() {
@@ -204,7 +231,16 @@
 					]
 				});
 			},
-
+			getDaysInMonth(year,month){
+    month = parseInt(month,10);  //parseInt(number,type)这个函数后面如果不跟第2个参数来表示进制的话，默认是10进制。
+    var temp = new Date(year,month,0);
+    var days = temp.getDate();
+    var arr = [];
+    for(var i = 1; i <= days; i++){
+        arr.push(i);
+    }
+    return arr;
+},
 			drawCharts() {
 				this.drawColumnChart()
 				this.drawLineChart()

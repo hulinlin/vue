@@ -5,18 +5,18 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
+					<el-form :inline="true" :model="filters" size="small">
 						<el-form-item>
-							<el-input v-model="filters.name" size="small" placeholder="请输入回访名称"></el-input>
+							<el-input v-model="filters.name"  placeholder="请输入回访名称"></el-input>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
+							<el-button type="primary" v-on:click="getUsers">查询</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button size="small" v-on:click="getUsers">重置</el-button>
+							<el-button v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item class="fr">
-							<el-button type="primary" size="small" v-on:click="handleAdd">新建</el-button>
+							<el-button type="primary" v-on:click="handleAdd">新建</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>
@@ -53,9 +53,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -66,7 +64,7 @@
 			</section>
 		</el-col>
 		<el-dialog title="编辑子渠道"  v-model="editFormVisible" :close-on-click-modal="false" class="middleDialog">
-			<el-form :model="editForm"  label-width="100px" :rules="editFormRules" ref="editForm">
+			<el-form :model="editForm"  label-width="100px" :rules="editFormRules" ref="editForm size="small">
 				<el-row>
 					<el-col :span="12">
 						<el-form-item label="回访名称" prop="name">
@@ -85,34 +83,34 @@
 				</el-row>
 				<el-row>
 					<el-col :span="12">
-						<el-form-item label="第一次回访" prop="name">
-							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						<el-form-item label="第一次回访" prop="name1">
+							<el-input v-model="editForm.name1" auto-complete="off"></el-input>
 						</el-form-item>
 
 					</el-col>
 					<el-col :span="12">
-						<el-form-item label="第二次回访" prop="name">
-							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						<el-form-item label="第二次回访" prop="name2">
+							<el-input v-model="editForm.name2" auto-complete="off"></el-input>
 						</el-form-item>
 					</el-col>
 				</el-row>
 				<el-row>
 					<el-col :span="12">
-						<el-form-item label="第三次回访" prop="name">
-							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						<el-form-item label="第三次回访" prop="name3">
+							<el-input v-model="editForm.name3" auto-complete="off"></el-input>
 						</el-form-item>
 
 					</el-col>
 					<el-col :span="12">
-						<el-form-item label="第四次回访" prop="name">
-							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						<el-form-item label="第四次回访" prop="name4">
+							<el-input v-model="editForm.name4" auto-complete="off"></el-input>
 						</el-form-item>
 					</el-col>
 				</el-row>
 				<el-row>
 					<el-col :span="12">
-						<el-form-item label="周期回访" prop="name">
-							<el-input v-model="editForm.name" auto-complete="off"></el-input>
+						<el-form-item label="周期回访" prop="name5">
+							<el-input v-model="editForm.name5" auto-complete="off"></el-input>
 						</el-form-item>
 
 					</el-col>
@@ -131,13 +129,13 @@
 			</el-form>
 			<div slot="footer" class="dialog-footer">
 
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-				<el-button @click.native="editFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
+				<el-button @click.native="editFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 		<!--新建界面-->
 		<el-dialog title="新建回访" v-model="addFormVisible" :close-on-click-modal="false" class="middleDialog">
-			<el-form :model="addForm" label-width="100px" :rules="addFormRules" ref="addForm">
+			<el-form :model="addForm" label-width="100px" :rules="addFormRules" ref="addForm" size="small">
 				<el-row>
 					<el-col :span="12">
 						<el-form-item label="回访名称" prop="name">
@@ -201,8 +199,8 @@
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-				<el-button @click.native="addFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
+				<el-button @click.native="addFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 	</el-container>

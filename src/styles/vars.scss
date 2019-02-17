@@ -125,6 +125,9 @@ h5{
   border-color: $color-primary;
   outline: 0;
 }
+.el-button--text,.el-button--text:active {
+  border:0;
+}
 .el-button:focus, .el-button:hover {
   color: $color-primary;
   border-color: $color-primary;
@@ -163,7 +166,13 @@ h5{
     }
   }
 }
-
+.el-table{
+  border:1px solid $color-bgcolor;
+}
+.el-table thead tr,.el-table thead th{
+  background:$color-bgcolor;
+  color:#555;
+}
 .el-table--enable-row-hover .el-table__body tr:hover>td,.el-table__body tr.current-row>td{
   background:$color-tablehover;
 }

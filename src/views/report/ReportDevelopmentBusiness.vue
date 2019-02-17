@@ -5,7 +5,7 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters" label-width="100px">
+					<el-form :inline="true" :model="filters" label-width="100px" size="small">
 						<el-col :span="24">
 							<el-col :span="6">
 								<el-form-item label="顾客姓名" prop="region">
@@ -13,62 +13,27 @@
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="项目大类" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="项目大类" prop="dalei">
+									<el-select v-model="ruleForm.dalei" placeholder="请选择">
+										<el-option label="一" value="shanghai"></el-option>
+										<el-option label="二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="项目子类" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
-									</el-select>
-								</el-form-item>
-							</el-col>
-
-							<el-col :span="6">
-								<el-form-item label="市场经理" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="项目子类" prop="zilei">
+									<el-select v-model="ruleForm.zilei" placeholder="请选择">
+										<el-option label="一" value="shanghai"></el-option>
+										<el-option label="二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 
-						</el-col>
-						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="私密管家" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
-									</el-select>
-								</el-form-item>
-							</el-col>
-							<el-col :span="6">
-								<el-form-item label="治疗医生" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
-									</el-select>
-								</el-form-item>
-							</el-col>
-							<el-col :span="6">
-								<el-form-item label="客服人员" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
-									</el-select>
-								</el-form-item>
-							</el-col>
-							<el-col :span="6">
-								<el-form-item label="收款方式" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="市场经理" prop="shic">
+									<el-select v-model="ruleForm.shic" placeholder="">
+										<el-option label="经理一" value="shanghai"></el-option>
+										<el-option label="经理二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -76,18 +41,53 @@
 						</el-col>
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="主渠道" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="私密管家" prop="guanjia">
+									<el-select v-model="ruleForm.guanjia" placeholder="">
+										<el-option label="管家一" value="shanghai"></el-option>
+										<el-option label="管家二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="子渠道" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="治疗医生" prop="doctor">
+									<el-select v-model="ruleForm.doctor" placeholder="">
+										<el-option label="医生一" value="shanghai"></el-option>
+										<el-option label="医生二" value="beijing"></el-option>
+									</el-select>
+								</el-form-item>
+							</el-col>
+							<el-col :span="6">
+								<el-form-item label="客服人员" prop="kefu">
+									<el-select v-model="ruleForm.kefu" placeholder="">
+										<el-option label="客服一" value="shanghai"></el-option>
+										<el-option label="客服二" value="beijing"></el-option>
+									</el-select>
+								</el-form-item>
+							</el-col>
+							<el-col :span="6">
+								<el-form-item label="收款方式" prop="shoukuan">
+									<el-select v-model="ruleForm.shoukuan" placeholder="请选择">
+										<el-option label="微信" value="shanghai"></el-option>
+										<el-option label="支付宝" value="beijing"></el-option>
+									</el-select>
+								</el-form-item>
+							</el-col>
+
+						</el-col>
+						<el-col :span="24">
+							<el-col :span="6">
+								<el-form-item label="主渠道" prop="zhuqud">
+									<el-select v-model="ruleForm.zhuqud" placeholder="请选择">
+										<el-option label="渠道一" value="shanghai"></el-option>
+										<el-option label="渠道二" value="beijing"></el-option>
+									</el-select>
+								</el-form-item>
+							</el-col>
+							<el-col :span="6">
+								<el-form-item label="子渠道" prop="ziqud">
+									<el-select v-model="ruleForm.ziqud" placeholder="请选择">
+										<el-option label="渠道一" value="shanghai"></el-option>
+										<el-option label="渠道二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -101,17 +101,13 @@
 						<el-col :span="24">
 							<el-col :span="9">
 								<el-form-item label="消费日期" prop="region">
-									<el-col :span="11">
-										<el-form-item prop="date1">
-											<el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-										</el-form-item>
-									</el-col>
-									<el-col class="line" :span="1">-</el-col>
-									<el-col :span="11">
-										<el-form-item prop="date2">
-											<el-time-picker type="date" placeholder="选择结束日期" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-										</el-form-item>
-									</el-col>
+									<el-date-picker
+      v-model="ruleForm.date1"
+      type="daterange"
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期">
+    </el-date-picker>
 								</el-form-item>
 							</el-col>
 
@@ -173,9 +169,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"

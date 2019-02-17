@@ -64,9 +64,7 @@
                         <!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
                         </el-pagination>-->
                         <el-pagination
-                                @size-change="handleSizeChange"
-                                @current-change="handleCurrentChange"
-                                :current-page="currentPage4"
+                                
                                 :page-sizes="[20, 50, 100]"
                                 :page-size="20"
                                 layout="total, sizes, prev, pager, next, jumper"
@@ -79,7 +77,7 @@
         </el-col>
         <!--预约下次来院-->
         <el-dialog title="预约下次来院" v-model="orderedFormVisible" :close-on-click-modal="false">
-            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
                 <el-form-item prop="date1" label="预约时间">
                     <el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
                 </el-form-item>
@@ -103,8 +101,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click.native="orderedFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+                <el-button @click.native="orderedFormVisible = false" size="small">取消</el-button>
+                <el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
             </div>
         </el-dialog>
         <!--查看沟通记录-->
@@ -115,7 +113,7 @@
                     择；</li>
             </ul>
             <div slot="footer" class="dialog-footer">
-                <el-button @click.native="recordFormVisible = false">关闭</el-button>
+                <el-button @click.native="recordFormVisible = false" size="small">关闭</el-button>
             </div>
         </el-dialog>
     </el-container>

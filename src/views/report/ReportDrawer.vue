@@ -5,37 +5,37 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters" label-width="100px">
+					<el-form :inline="true" :model="filters" label-width="100px" size="small">
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="项目分类" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="项目分类" prop="fenlei">
+									<el-select v-model="ruleForm.fenlei" placeholder="请选择">
+										<el-option label="分类一" value="shanghai"></el-option>
+										<el-option label="分类二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="咨询管家" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="咨询管家" prop="guanjia">
+									<el-select v-model="ruleForm.guanjia" placeholder="">
+										<el-option label="管家一" value="shanghai"></el-option>
+										<el-option label="管家二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="客服人员" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="客服人员" prop="kefu">
+									<el-select v-model="ruleForm.kefu" placeholder="">
+										<el-option label="客服一" value="shanghai"></el-option>
+										<el-option label="客服二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="市场经理" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="市场经理" prop="shic">
+									<el-select v-model="ruleForm.shic" placeholder="">
+										<el-option label="经理一" value="shanghai"></el-option>
+										<el-option label="经理二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -43,10 +43,10 @@
 						</el-col>
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="专家医生" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="专家医生" prop="zhuanjia">
+									<el-select v-model="ruleForm.zhuanjia" placeholder="">
+										<el-option label="专家一" value="shanghai"></el-option>
+										<el-option label="专家二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -57,17 +57,13 @@
 							</el-col>
 							<el-col :span="9">
 								<el-form-item label="日期" prop="region">
-									<el-col :span="11">
-										<el-form-item prop="date1">
-											<el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-										</el-form-item>
-									</el-col>
-									<el-col class="line" :span="1">-</el-col>
-									<el-col :span="11">
-										<el-form-item prop="date2">
-											<el-time-picker type="date" placeholder="选择结束日期" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-										</el-form-item>
-									</el-col>
+									<el-date-picker
+      v-model="ruleForm.date1"
+      type="daterange"
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期">
+    </el-date-picker>
 								</el-form-item>
 							</el-col>
 
@@ -177,9 +173,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"

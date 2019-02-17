@@ -3,7 +3,7 @@
 
 		<el-col :span="20" style="padding:20px;">
 			<section>
-				<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
+				<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm" size="small">
 					<el-row>
 						<el-col :span="12">
 							<el-form-item label="职位名称" prop="name">
@@ -39,7 +39,7 @@
 									<el-checkbox :indeterminate="isIndeterminate1" v-model="checkAll1" @change="handleCheckAllChange1">全选</el-checkbox>
 									<div style="margin: 15px 0;"></div>
 									<el-checkbox-group v-model="checkedCities1" @change="handleCheckedCitiesChange1">
-										<el-checkbox v-for="city1 in cities1" :label="city1" :key="city1">{{city}}</el-checkbox>
+										<el-checkbox v-for="city1 in cities1" :label="city1" :key="city1">{{city1}}</el-checkbox>
 									</el-checkbox-group>
 								</el-col>
 							</el-row>
@@ -76,7 +76,7 @@
 				isIndeterminate: true,
 				checkAll1: false,
 				checkedCities1: [],
-				cities1: cityOptions,
+				cities1: cityOptions1,
 				isIndeterminate1: true,
 				users: [],
 				total: 0,
@@ -128,8 +128,8 @@
 				this.page = val;
 				this.getUsers();
 			},
-			handleCheckAllChange(event) {
-				this.checkedCities = event.target.checked ? cityOptions : [];
+			handleCheckAllChange(val) {
+				this.checkedCities = val ? cityOptions : [];
 				this.isIndeterminate = false;
 			},
 			handleCheckedCitiesChange(value) {
@@ -137,8 +137,8 @@
 				this.checkAll = checkedCount === this.cities.length;
 				this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
 			},
-			handleCheckAllChange1(event) {
-				this.checkedCities1 = event.target.checked ? cityOptions1 : [];
+			handleCheckAllChange1(val) {
+				this.checkedCities1 = val ? cityOptions1 : [];
 				this.isIndeterminate1 = false;
 			},
 			handleCheckedCitiesChange1(value) {

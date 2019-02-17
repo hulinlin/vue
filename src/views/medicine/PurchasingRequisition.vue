@@ -5,7 +5,7 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
+					<el-form :inline="true" :model="filters" size="small">
 						<el-form-item label="单据状态" prop="region">
 							<el-select v-model="ruleForm.region" placeholder="请选择" size="small">
 								<el-option label="未提交" value="1"></el-option>
@@ -81,9 +81,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -109,11 +107,11 @@
 			</el-table>
 			<p>备注：<span>内部采购</span></p>
 			<div slot="footer" class="dialog-footer">
-				<el-button @click.native="orderDetailFormVisible = false">取消</el-button>
+				<el-button @click.native="orderDetailFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 		<el-dialog title="选择采购类型"  v-model="proTypeFormVisible" :close-on-click-modal="false">
-			<el-form :model="proTypeForm" label-width="90px"  ref="proTypeForm" size="mini">
+			<el-form :model="proTypeForm" label-width="90px"  ref="proTypeForm" size="small">
 				<el-form-item label="采购类型">
 					<el-radio-group v-model="proTypeForm.type">
 						<el-radio label="外部采购"></el-radio>
@@ -123,8 +121,8 @@
 
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="proTypeSubmit" :loading="editLoading">下一步</el-button>
-				<el-button @click.native="proTypeFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="proTypeSubmit" :loading="editLoading" size="small">下一步</el-button>
+				<el-button @click.native="proTypeFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 	</el-container>

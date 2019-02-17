@@ -1,8 +1,9 @@
 <template>
 	<section>
 		<!--工具条-->
+		<el-row>
 		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-			<el-form  :model="filters" label-width="90px">
+			<el-form  :model="filters" label-width="90px" size="small">
 				<el-row>
 					<el-col :span="18">
 						<el-col :span="8">
@@ -12,12 +13,12 @@
 						</el-col>
 						<el-col :span="8">
 				<el-form-item label="医院电话">
-					<el-input v-model="filters.name" placeholder=""></el-input>
+					<el-input v-model="filters.phone" placeholder=""></el-input>
 				</el-form-item>
 						</el-col>
 						<el-col :span="8">
 				<el-form-item label="医院地址">
-					<el-input v-model="filters.name" placeholder=""></el-input>
+					<el-input v-model="filters.addr" placeholder=""></el-input>
 				</el-form-item>
 						</el-col>
 					</el-col>
@@ -35,6 +36,7 @@
 				</el-form-item>
 			</el-form>
 		</el-col>
+		</el-row>
 		<el-row class="padding20">
 			<el-col :span="20" :offset="2" class="padding20 preview">
 				<h5 class="textcenter">私密家园妇科门诊部</h5>

@@ -3,7 +3,7 @@
 
 		<el-col :span="24" style="padding:20px;">
 			<section>
-				<el-form :model="proTypeForm"  label-width="90px"  ref="proTypeForm" size="mini">
+				<el-form :model="proTypeForm"  label-width="90px"  ref="proTypeForm" size="small">
 					<el-form-item label="单据类型：" style="width:50%;">
 						<el-select  placeholder="请选择">
 							<el-option label="报废单" value="shanghai"></el-option>

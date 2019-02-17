@@ -7,26 +7,22 @@
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 					<el-form :inline="true" :model="filters" size="small">
 						<el-form-item label="回访日期" prop="region">
-							<el-col :span="11">
-								<el-form-item prop="date1">
-									<el-date-picker type="date" placeholder="选择开始日期" size="small" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-								</el-form-item>
-							</el-col>
-							<el-col class="line" :span="1">-</el-col>
-							<el-col :span="11">
-								<el-form-item prop="date2">
-									<el-time-picker type="date" placeholder="选择结束日期" size="small" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-								</el-form-item>
-							</el-col>
+							<el-date-picker
+      v-model="ruleForm.date1"
+      type="daterange"
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期">
+    </el-date-picker>
 						</el-form-item>
 
 						<el-form-item label="回访人" prop="region">
 							<el-input v-model="filters.name" size="small" placeholder="请输入回访人姓名"></el-input>
 						</el-form-item>
 						<el-form-item label="回访状态" prop="region">
-							<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-								<el-option label="区域一" value="shanghai"></el-option>
-								<el-option label="区域二" value="beijing"></el-option>
+							<el-select v-model="ruleForm.region" placeholder="请选择" size="small">
+								<el-option label="一" value="shanghai"></el-option>
+								<el-option label="二" value="beijing"></el-option>
 							</el-select>
 						</el-form-item>
 						<el-form-item>
@@ -76,9 +72,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -90,13 +84,13 @@
 		</el-col>
 		<!--创建回访-->
 		<el-dialog title="创建回访" v-model="creatFormVisible" :close-on-click-modal="false" class="middleDialog">
-			<el-form :model="creatForm"   ref="createForm">
+			<el-form :model="creatForm"   ref="createForm" size="small">
 
 				<el-form-item label="回访类型" prop="region">
 					<el-select v-model="ruleForm.region" placeholder="请选择">
-						<el-option label="正常回访" value="shanghai"></el-option>
-						<el-option label="手术回访" value="beijing"></el-option>
-						<el-option label="休眠回访" value="shanghai"></el-option>
+						<el-option label="正常回访" value="正常回访"></el-option>
+						<el-option label="手术回访" value="手术回访"></el-option>
+						<el-option label="休眠回访" value="休眠回访"></el-option>
 					</el-select>
 				</el-form-item>
 				<el-form-item label="选择回访人" prop="name">
@@ -114,13 +108,13 @@
 
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">生成回访计划</el-button>
-				<el-button @click.native="creatFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">生成回访计划</el-button>
+				<el-button @click.native="creatFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 		<!--延后回访-->
 		<el-dialog title="延后回访" v-model="delayFormVisible" :close-on-click-modal="false">
-			<el-form :model="delayForm" label-width="80px" :rules="editFormRules" ref="delayForm">
+			<el-form :model="delayForm" label-width="80px" :rules="editFormRules" ref="delayForm" size="small">
 
 				<el-form-item label="延后日期" prop="region">
 					<el-form-item prop="date1">
@@ -132,13 +126,13 @@
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button @click.native="delayFormVisible = false">取消</el-button>
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">生成回访计划</el-button>
+				<el-button @click.native="delayFormVisible = false" size="small">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">生成回访计划</el-button>
 			</div>
 		</el-dialog>
 		<!--查看计划-->
 		<el-dialog title="查看计划" v-model="viewFormVisible" :close-on-click-modal="false" class="middleDialog">
-			<el-form :model="viewForm" label-width="80px" :rules="editFormRules" ref="createForm">
+			<el-form :model="viewForm" label-width="80px" :rules="editFormRules" ref="createForm" size="small">
 
 				<el-form-item label="">
 					<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
@@ -160,9 +154,9 @@
 
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">生成计划</el-button>
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">新增回访</el-button>
-				<el-button @click.native="viewFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">生成计划</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">新增回访</el-button>
+				<el-button @click.native="viewFormVisible = false" size="small">取消</el-button>
 
 			</div>
 		</el-dialog>
@@ -237,11 +231,11 @@
 				},
 				rules: {
 					name: [
-						{ required: true, message: '请输入活动名称', trigger: 'blur' },
+						{ required: true, message: '请输入名称', trigger: 'blur' },
 						{ min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
 					],
 					region: [
-						{ required: true, message: '请选择活动区域', trigger: 'change' }
+						{ required: true, message: '请选择', trigger: 'change' }
 					],
 					date1: [
 						{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }
@@ -250,13 +244,13 @@
 						{ type: 'date', required: true, message: '请选择时间', trigger: 'change' }
 					],
 					type: [
-						{ type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+						{ type: 'array', required: true, message: '请至少选择一个性质', trigger: 'change' }
 					],
 					resource: [
-						{ required: true, message: '请选择活动资源', trigger: 'change' }
+						{ required: true, message: '请选择资源', trigger: 'change' }
 					],
 					desc: [
-						{ required: true, message: '请填写活动形式', trigger: 'blur' }
+						{ required: true, message: '请填写形式', trigger: 'blur' }
 					]
 				},
 				addForm: {

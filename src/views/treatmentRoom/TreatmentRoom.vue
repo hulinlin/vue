@@ -8,9 +8,10 @@
 					<el-form :inline="true" :model="filters" size="small">
 
 						<el-form-item label="治疗状态" prop="region">
-							<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-								<el-option label="区域一" value="shanghai"></el-option>
-								<el-option label="区域二" value="beijing"></el-option>
+							<el-select v-model="ruleForm.region" placeholder="请选择" size="small">
+								<el-option label="等待治疗" value="1"></el-option>
+								<el-option label="治疗中" value="2"></el-option>
+								<el-option label="完成治疗" value="3"></el-option>
 							</el-select>
 						</el-form-item>
 						<el-form-item label="治疗日期" prop="region">
@@ -80,9 +81,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -94,14 +93,14 @@
 		</el-col>
 		<!--转治疗医生-->
 		<el-dialog title="分配治疗医生" v-model="doctorFormVisible" :close-on-click-modal="false">
-			<el-form :model="doctorForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+			<el-form :model="doctorForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item label="治疗医生">
 					<el-input  v-model="doctorForm.doctor"></el-input>
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">确定</el-button>
-				<el-button @click.native="doctorFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">确定</el-button>
+				<el-button @click.native="doctorFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 	</el-container>
