@@ -1,7 +1,7 @@
-<<<<<<< HEAD
+
 # vue
 =======
-**demo**: [https://taylorchen709.github.io/vue-admin/](https://taylorchen709.github.io/vue-admin/)
+**demo**: [https://github.com/hulinlin/vue](https://github.com/hulinlin/vue)
 
 # To start
 

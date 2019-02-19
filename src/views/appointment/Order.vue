@@ -8,26 +8,26 @@
 					<el-form :inline="true" :model="filters" size="small">
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="渠道来源" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="渠道来源" prop="laiyuan">
+									<el-select v-model="ruleForm.laiyuan" placeholder="请选择" size="small">
+										<el-option label="一" value="shanghai"></el-option>
+										<el-option label="二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="顾客需求" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="顾客需求" prop="xuqiu">
+									<el-select v-model="ruleForm.xuqiu" placeholder="请选择" size="small">
+										<el-option label="一" value="shanghai"></el-option>
+										<el-option label="二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="预约项目" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="预约项目" prop="xiangmu">
+									<el-select v-model="ruleForm.xiangmu" placeholder="请选择" size="small">
+										<el-option label="一" value="shanghai"></el-option>
+										<el-option label="二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -40,17 +40,13 @@
 						</el-col>
 						<el-col :span="24">
 							<el-form-item label="回访日期" prop="region">
-								<el-col :span="11">
-									<el-form-item prop="date1">
-										<el-date-picker type="date" placeholder="选择开始日期" size="small" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-									</el-form-item>
-								</el-col>
-								<el-col class="line" :span="1">-</el-col>
-								<el-col :span="11">
-									<el-form-item prop="date2">
-										<el-time-picker type="date" placeholder="选择结束日期" size="small" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-									</el-form-item>
-								</el-col>
+								<el-date-picker
+								v-model="ruleForm.date1"
+								type="daterange"
+								range-separator="至"
+								start-placeholder="开始日期"
+								end-placeholder="结束日期">
+							  </el-date-picker>
 							</el-form-item>
 							<el-form-item>
 								<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
@@ -114,9 +110,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -127,8 +121,8 @@
 			</section>
 		</el-col>
 		<!--确认到店-->
-		<el-dialog title="确认到店" v-model="orderedFormVisible" :close-on-click-modal="false">
-			<el-form :model="orderedForm" label-width="90px" :rules="editFormRules" ref="orderedForm">
+		<el-dialog title="确认到店" v-model="orderedFormVisible" :close-on-click-modal="false" :visible.sync="orderedFormVisible">
+			<el-form :model="orderedForm" label-width="90px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item label="短信验证码" class="code">
 					<el-input v-model="Register.sendcode" placeholder="请输入验证码"></el-input>
 					<el-button type="button" @click="sendcode" :disabled="disabled" v-if="disabled==false">发送验证码
@@ -157,20 +151,20 @@
 			</el-form>
 			<div slot="footer" class="dialog-footer">
 
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-				<el-button @click.native="orderedFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
+				<el-button @click.native="orderedFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 		<!--调整预约时间-->
-		<el-dialog title="调整预约时间" v-model="recordFormVisible" :close-on-click-modal="false" showClose=false>
-			<el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+		<el-dialog title="调整预约时间" v-model="recordFormVisible" :close-on-click-modal="false" showClose=false :visible.sync="recordFormVisible">
+			<el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item prop="date1" label="预约时间">
 					<el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">确定</el-button>
-				<el-button @click.native="recordFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">确定</el-button>
+				<el-button @click.native="recordFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 	</el-container>
@@ -252,7 +246,7 @@
 						{ min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
 					],
 					region: [
-						{ required: true, message: '请选择活动区域', trigger: 'change' }
+						{ required: true, message: '请选择', trigger: 'change' }
 					],
 					date1: [
 						{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }

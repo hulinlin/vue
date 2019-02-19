@@ -31,6 +31,9 @@ h5{
 .paddingleft20{
   padding-left:20px;
 }
+.magging0{
+  margin:0px;
+}
 .pt0{
   padding-top:0;
 }
@@ -45,6 +48,9 @@ h5{
 }
 .color_ccc{
   color:$color-ccc;
+}
+.border1{
+  border:1px solid $color-bgcolor;
 }
 .bordertop20{
   border-top:20px solid $color-bgcolor;
@@ -64,12 +70,10 @@ h5{
 .borderright1{
   border-right:1px solid $color-ccc;
 }
-.middleDialog{
-  .el-dialog--small {
-    width: 700px;
-  }
+.container .header .tools{
+  display:none;
 }
-.el-dialog--small{
+.el-dialog{
   width:350px;
   border-radius: 10px 10px 0 0;
   .el-dialog__header{
@@ -81,6 +85,16 @@ h5{
     .el-dialog__title{
       color:$color-white;
     }
+  }
+}
+.middleDialog{
+  .el-dialog {
+    width: 700px;
+  }
+}
+.bigDialog{
+  .el-dialog {
+    width: 1000px;
   }
 }
 .borderStyle{
@@ -120,6 +134,9 @@ h5{
   border-color: $color-primary;
   outline: 0;
 }
+.el-button--text,.el-button--text:active {
+  border:0;
+}
 .el-button:focus, .el-button:hover {
   color: $color-primary;
   border-color: $color-primary;
@@ -158,7 +175,13 @@ h5{
     }
   }
 }
-
+.el-table{
+  border:1px solid $color-bgcolor;
+}
+.el-table thead tr,.el-table thead th{
+  background:$color-bgcolor;
+  color:#555;
+}
 .el-table--enable-row-hover .el-table__body tr:hover>td,.el-table__body tr.current-row>td{
   background:$color-tablehover;
 }

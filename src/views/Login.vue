@@ -62,7 +62,7 @@
                 });
               } else {
                 sessionStorage.setItem('user', JSON.stringify(user));
-                this.$router.push({ path: '/main' });
+                this.$router.push({ path: '/member' });
               }
             });
           } else {

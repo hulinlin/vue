@@ -5,53 +5,53 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
+					<el-form :inline="true" :model="filters" size="small">
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="治疗医生" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="">
-										<el-option label="报废单" value="shanghai"></el-option>
-										<el-option label="丢失" value="beijing"></el-option>
+								<el-form-item label="治疗医生" prop="doctor">
+									<el-select v-model="ruleForm.doctor" placeholder="">
+										<el-option label="医生一" value="shanghai"></el-option>
+										<el-option label="医生二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="客服人员" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="">
-										<el-option label="报废单" value="shanghai"></el-option>
-										<el-option label="丢失" value="beijing"></el-option>
+								<el-form-item label="客服人员" prop="kefu">
+									<el-select v-model="ruleForm.kefu" placeholder="">
+										<el-option label="客服一" value="shanghai"></el-option>
+										<el-option label="客服二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="咨询管家" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="">
-										<el-option label="报废单" value="shanghai"></el-option>
-										<el-option label="丢失" value="beijing"></el-option>
+								<el-form-item label="咨询管家" prop="guanjia">
+									<el-select v-model="ruleForm.guanjia" placeholder="">
+										<el-option label="管家一" value="shanghai"></el-option>
+										<el-option label="管家二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="市场经理" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="">
-										<el-option label="报废单" value="shanghai"></el-option>
-										<el-option label="丢失" value="beijing"></el-option>
+								<el-form-item label="市场经理" prop="shic">
+									<el-select v-model="ruleForm.shic" placeholder="">
+										<el-option label="经理一" value="shanghai"></el-option>
+										<el-option label="经理二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 						</el-col>
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="专家医生" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="">
-										<el-option label="报废单" value="shanghai"></el-option>
-										<el-option label="丢失" value="beijing"></el-option>
+								<el-form-item label="专家医生" prop="zhuanjia">
+									<el-select v-model="ruleForm.zhuanjia" placeholder="">
+										<el-option label="专家一" value="shanghai"></el-option>
+										<el-option label="专家二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="订单状态" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="">
+								<el-form-item label="订单状态" prop="zhunagtai">
+									<el-select v-model="ruleForm.zhunagtai" placeholder="">
 										<el-option label="报废单" value="shanghai"></el-option>
 										<el-option label="丢失" value="beijing"></el-option>
 									</el-select>
@@ -120,9 +120,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"

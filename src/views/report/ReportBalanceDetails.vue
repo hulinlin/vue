@@ -5,37 +5,41 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters" label-width="100px">
+					<el-form :inline="true" :model="filters" label-width="100px"  size="small">
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="充值类型" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="充值类型" prop="type">
+									<el-select v-model="ruleForm.type" placeholder="请选择">
+										<el-option label="充值" value="充值"></el-option>
+										<el-option label="赠送" value="赠送"></el-option>
+										<el-option label="退款存入" value="退款存入"></el-option>
+										<el-option label="存款" value="存款"></el-option>
+										<el-option label="提现" value="提现"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="结算状态" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="结算状态" prop="state">
+									<el-select v-model="ruleForm.state" placeholder="请选择">
+										<el-option label="未结算" value="未结算"></el-option>
+										<el-option label="已结算" value="已结算"></el-option>
+										<el-option label="已撤销" value="已撤销"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="咨询管家" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="咨询管家" prop="guanjia">
+									<el-select v-model="ruleForm.guanjia" placeholder="请选择">
+										<el-option label="管家一" value="shanghai"></el-option>
+										<el-option label="管家二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="客服人员" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="客服人员" prop="kefu">
+									<el-select v-model="ruleForm.kefu" placeholder="请选择">
+										<el-option label="客服一" value="shanghai"></el-option>
+										<el-option label="客服二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -43,18 +47,18 @@
 						</el-col>
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="市场经理" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="市场经理" prop="shichang">
+									<el-select v-model="ruleForm.shichang" placeholder="请选择">
+										<el-option label="经理一" value="shanghai"></el-option>
+										<el-option label="经理二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="专家医生" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="专家医生" prop="doctor">
+									<el-select v-model="ruleForm.doctor" placeholder="请选择">
+										<el-option label="医生一" value="shanghai"></el-option>
+										<el-option label="医生二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -131,9 +135,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"

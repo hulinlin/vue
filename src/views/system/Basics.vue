@@ -1,8 +1,9 @@
 <template>
 	<section>
 		<!--工具条-->
+		<el-row>
 		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-			<el-form  :model="filters" label-width="90px">
+			<el-form  :model="filters" label-width="90px" size="small">
 				<el-row>
 					<el-col :span="18">
 						<el-col :span="8">
@@ -12,12 +13,12 @@
 						</el-col>
 						<el-col :span="8">
 				<el-form-item label="医院电话">
-					<el-input v-model="filters.name" placeholder=""></el-input>
+					<el-input v-model="filters.phone" placeholder=""></el-input>
 				</el-form-item>
 						</el-col>
 						<el-col :span="8">
 				<el-form-item label="医院地址">
-					<el-input v-model="filters.name" placeholder=""></el-input>
+					<el-input v-model="filters.addr" placeholder=""></el-input>
 				</el-form-item>
 						</el-col>
 					</el-col>
@@ -35,11 +36,13 @@
 				</el-form-item>
 			</el-form>
 		</el-col>
+		</el-row>
 		<el-row class="padding20">
-			<el-col :span="20" :offset="2" class="padding20 preview">
+			<el-col :span="20" :offset="2" class="padding20 preview border1">
 				<h5 class="textcenter">私密家园妇科门诊部</h5>
 				<p class="previewbasics"><span>类别：消费会员</span><span>诊疗号：1234567</span><span>责任咨询师：张医生</span><span>姓名：张忆莎</span><span>日期：2019-01-01</span><span>流水号：111111111111</span></p>
 				<p class="fr">No.2132424323212121</p>
+				<el-col :span="24" class="border1 padding20">
 				<el-table  highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
 
 					<el-table-column prop="id" label="类型" width="120">
@@ -59,13 +62,16 @@
 					<el-table-column prop="name" label="其他支付" width="120">
 					</el-table-column>
 				</el-table>
+				<el-col :span="24">
 				<p class="fr"><span>缴费细节（微信支付：190）</span><span>合计：190 （账户剩余额：0 券额：0）</span></p>
-
-				<p class="fr">（合计两笔 第一页/共一页）</p>
-
-				<div>
+				</el-col>
+				<el-col :span="24">
+				<p class="fr magging0">（合计两笔 第一页/共一页）</p>
+				</el-col>
+				</el-col>
+				<el-col :span="24">
 					<p>如需开具发票，请于本月内凭此票前来换开发票<span class="fr">收银员：张宏 打印时间：2019-01-01</span></p>
-				</div>
+				</el-col>
 			</el-col>
 		</el-row>
 
@@ -270,10 +276,9 @@
 <style scoped lang="scss">
 	@import '~scss_vars';
 	.preview{
-		background:$color-bgcolor;
 		.previewbasics{
 			span{
-				margin-right:50px;
+				margin-right:30px;
 			}
 		}
 	}

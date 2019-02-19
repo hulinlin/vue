@@ -5,37 +5,37 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters" label-width="100px">
+					<el-form :inline="true" :model="filters" label-width="100px" size="small">
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="主渠道" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="主渠道" prop="qudao">
+									<el-select v-model="ruleForm.qudao" placeholder="请选择">
+										<el-option label="主渠道一" value="shanghai"></el-option>
+										<el-option label="主渠道二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="子渠道" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="子渠道" prop="ziqudao">
+									<el-select v-model="ruleForm.ziqudao" placeholder="请选择">
+										<el-option label="子渠道一" value="shanghai"></el-option>
+										<el-option label="子渠道二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="咨询管家" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="咨询管家" prop="guanjia">
+									<el-select v-model="ruleForm.guanjia" placeholder="请选择">
+										<el-option label="管家一" value="shanghai"></el-option>
+										<el-option label="管家二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="客服人员" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="客服人员" prop="kefu">
+									<el-select v-model="ruleForm.kefu" placeholder="请选择">
+										<el-option label="客服一" value="shanghai"></el-option>
+										<el-option label="客服二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -43,18 +43,18 @@
 						</el-col>
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="市场经理" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="市场经理" prop="shic">
+									<el-select v-model="ruleForm.shic" placeholder="请选择">
+										<el-option label="经理一" value="shanghai"></el-option>
+										<el-option label="经理二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="专家医生" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="专家医生" prop="doctor">
+									<el-select v-model="ruleForm.doctor" placeholder="请选择">
+										<el-option label="医生一" value="shanghai"></el-option>
+										<el-option label="医生二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -150,9 +150,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -227,7 +225,7 @@
 						{ min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
 					],
 					region: [
-						{ required: true, message: '请选择活动区域', trigger: 'change' }
+						{ required: true, message: '请选择', trigger: 'change' }
 					],
 					date1: [
 						{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }

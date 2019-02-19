@@ -1,28 +1,36 @@
 <template>
 	<section>
 		<el-row class="cityCount">
-			<el-col :span="6" class="textcenter"><div>
-				<p>加盟机构总数</p>
-				<h5 class="rotate">5000</h5>
-			</div></el-col>
-			<el-col :span="6"><div>
-				<h5>一线城市</h5>
-				<p>标准诊所：600</p>
-				<p>形象诊所：1000</p>
-				<p>旗舰诊所：1600</p>
-			</div></el-col>
-			<el-col :span="6"><div>
-				<h5>二线城市</h5>
-				<p>标准诊所：500</p>
-				<p>形象诊所：800</p>
-				<p>旗舰诊所：1000</p>
-			</div></el-col>
-			<el-col :span="6"><div>
-				<h5>三线城市</h5>
-				<p>标准诊所：300</p>
-				<p>形象诊所：500</p>
-				<p>旗舰诊所：600</p>
-			</div></el-col>
+			<el-col :span="6" class="textcenter">
+				<div>
+					<p>加盟机构总数</p>
+					<h5 class="rotate">5000</h5>
+				</div>
+			</el-col>
+			<el-col :span="6">
+				<div>
+					<h5>一线城市</h5>
+					<p>标准诊所：600</p>
+					<p>形象诊所：1000</p>
+					<p>旗舰诊所：1600</p>
+				</div>
+			</el-col>
+			<el-col :span="6">
+				<div>
+					<h5>二线城市</h5>
+					<p>标准诊所：500</p>
+					<p>形象诊所：800</p>
+					<p>旗舰诊所：1000</p>
+				</div>
+			</el-col>
+			<el-col :span="6">
+				<div>
+					<h5>三线城市</h5>
+					<p>标准诊所：300</p>
+					<p>形象诊所：500</p>
+					<p>旗舰诊所：600</p>
+				</div>
+			</el-col>
 		</el-row>
 		<el-row type="flex" class="row-bg bordertop20 flowSheet" justify="space-around">
 			<el-col :span="3">
@@ -73,7 +81,7 @@
 				<el-tabs v-model="activeName" @tab-click="handleClick">
 					<el-tab-pane label="日流水排名" name="first">
 						<h5>当月流水累计</h5>
-							<div id="chartColumn" style="width:100%; height:400px;"></div>
+						<div id="chartColumn" style="width:100%; height:400px;"></div>
 					</el-tab-pane>
 					<el-tab-pane label="日顾客上门量排名" name="second">日顾客上门量排名</el-tab-pane>
 					<el-tab-pane label="上月流水排名" name="third">上月流水排名</el-tab-pane>
@@ -109,19 +117,60 @@
 		},
 
 		methods: {
+
 			drawColumnChart() {
 				this.chartColumn = echarts.init(document.getElementById('chartColumn'));
+				let _this = this;
 				this.chartColumn.setOption({
-					tooltip: {},
-					xAxis: {
-						data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+					tooltip: {
+						trigger: 'axis',
+						
 					},
-					yAxis: {},
-					series: [{
-						name: '销量',
-						type: 'bar',
-						data: [5, 20, 36, 10, 10, 20]
-					}]
+					legend: {
+						
+						data: ['上一个月', '本月', '下一个月']
+						
+					},
+					
+					xAxis: {
+						type: 'category',
+						data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                return _this.getDaysInMonth(year,month)
+            })()
+
+					},
+					yAxis: {
+						type: 'value'
+					},
+					grid: {
+						
+					},
+					// Declare several bar series, each will be mapped
+					// to a column of dataset.source by default.
+					series: [
+					{type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth();
+                return _this.getDaysInMonth(year,month)
+            })(),name:'上一个月',showSymbol:false},
+        {type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                return _this.getDaysInMonth(year,month)
+            })(),name:'本月'},
+        {type: 'bar',data:(function(){
+                var date=new Date;
+                var year=date.getFullYear();
+                var month=date.getMonth()+2;
+                return _this.getDaysInMonth(year,month)
+            })(),name:'下一个月',showSymbol:false},
+						
+					]
 				});
 			},
 			drawLineChart() {
@@ -179,32 +228,49 @@
 						formatter: "{a} <br/>{b} : {c} ({d}%)"
 					},
 					legend: {
-						x : 'center',
-						y : 'bottom',
-						data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+						x: 'center',
+						y: 'bottom',
+						data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
 					},
 					series: [
 						{
-							name:'面积模式',
-							type:'pie',
-							radius : [30, 110],
-							center : ['75%', '50%'],
-							roseType : 'area',
-							data:[
-								{value:10, name:'rose1'},
-								{value:5, name:'rose2'},
-								{value:15, name:'rose3'},
-								{value:25, name:'rose4'},
-								{value:20, name:'rose5'},
-								{value:35, name:'rose6'},
-								{value:30, name:'rose7'},
-								{value:40, name:'rose8'}
+							name: '面积模式',
+							type: 'pie',
+							radius: [30, 110],
+							center: ['50%', '50%'],
+							roseType: 'area',
+							data: [
+								{ value: 10, name: 'rose1' },
+								{ value: 5, name: 'rose2' },
+								{ value: 15, name: 'rose3' },
+								{ value: 25, name: 'rose4' },
+								{ value: 20, name: 'rose5' },
+								{ value: 35, name: 'rose6' },
+								{ value: 30, name: 'rose7' },
+								{ value: 40, name: 'rose8' }
 							]
 						}
 					]
 				});
 			},
+			getDaysInMonth(year, month) {
+				month = parseInt(month, 10);  //parseInt(number,type)这个函数后面如果不跟第2个参数来表示进制的话，默认是10进制。
+				var temp = new Date(year, month, 0);
+				var days = temp.getDate();
+				var arr = [];
+				for (var i = 1; i <= days; i++) {
+					arr.push(i);
+				}
+				console.log(arr);
+				return arr;
 
+			},
 			drawCharts() {
 				this.drawColumnChart()
 				this.drawLineChart()
@@ -214,51 +280,61 @@
 
 		mounted: function () {
 			this.drawCharts()
-		}
+			this.getDaysInMonth(2019,2)
+		},
+
 
 	}
 </script>
 
 <style scoped lang="scss">
 	@import '~scss_vars';
-	.breadcrumb-container{
-		display:none;
+
+	.breadcrumb-container {
+		display: none;
 	}
-	h5{
-		padding:0;
-		margin:0;
-		font-size:14px;
+
+	h5 {
+		padding: 0;
+		margin: 0;
+		font-size: 14px;
 	}
-.cityCount{
-	background:url(../assets/citycount.png) no-repeat;
-	background-size: 100% auto;
-	h5{
-		color:$color-primary;
-		padding:0;
-		padding-top:20px;
-		margin:0;
-	}
-	.rotate{
-		font-size:24px;
-		padding-top:0;
-	}
-}
-	.flowSheet{
-		text-align:center;
-		padding:20px 0;
-		h5{
-			color:$color-yellow;
-			font-size:24px;
-			margin:0;
-			span{
-				color:#555;
-				font-size:12px;
-			}
+
+	.cityCount {
+		background: url(../assets/citycount.png) no-repeat;
+		background-size: 100% auto;
+
+		h5 {
+			color: $color-primary;
+			padding: 0;
+			padding-top: 20px;
+			margin: 0;
 		}
-		p{
-			color:#999;
-			font-size:12px;
+
+		.rotate {
+			font-size: 24px;
+			padding-top: 0;
 		}
 	}
 
+	.flowSheet {
+		text-align: center;
+		padding: 20px 0;
+
+		h5 {
+			color: $color-yellow;
+			font-size: 24px;
+			margin: 0;
+
+			span {
+				color: #555;
+				font-size: 12px;
+			}
+		}
+
+		p {
+			color: #999;
+			font-size: 12px;
+		}
+	}
 </style>

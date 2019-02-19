@@ -67,9 +67,7 @@
                         <!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
                         </el-pagination>-->
                         <el-pagination
-                                @size-change="handleSizeChange"
-                                @current-change="handleCurrentChange"
-                                :current-page="currentPage4"
+                                
                                 :page-sizes="[20, 50, 100]"
                                 :page-size="20"
                                 layout="total, sizes, prev, pager, next, jumper"
@@ -81,7 +79,7 @@
             </el-row>
         </el-col>
         <!--预约下次来院-->
-        <el-dialog title="预约来院" v-model="orderedFormVisible" :close-on-click-modal="false">
+        <el-dialog title="预约来院" v-model="orderedFormVisible" :close-on-click-modal="false" :visible.sync="orderedFormVisible">
             <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
                 <el-form-item prop="date1" label="预约时间">
                     <el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
@@ -111,7 +109,7 @@
             </div>
         </el-dialog>
         <!--查看沟通记录-->
-        <el-dialog title="沟通记录" v-model="recordFormVisible" :close-on-click-modal="false">
+        <el-dialog title="沟通记录" v-model="recordFormVisible" :close-on-click-modal="false" :visible.sync="recordFormVisible">
             <ul>
                 <li>预约：确定后，数据进入预约管理页面；分诊：确定后，数据进入
                     分诊管理和业务管理页面分诊：选择分诊后，预约时间置灰不可选
@@ -122,7 +120,7 @@
             </div>
         </el-dialog>
         <!--查看沟通记录-->
-        <el-dialog title="添加沟通记录" v-model="creatRecordFormVisible" :close-on-click-modal="false">
+        <el-dialog title="添加沟通记录" v-model="creatRecordFormVisible" :close-on-click-modal="false" :visible.sync="creatRecordFormVisible">
             <el-form :model="createRecordForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
                 <el-form-item label="沟通记录" prop="name">
                     <el-input type="textarea" auto-complete="off"></el-input>

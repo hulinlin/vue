@@ -1,11 +1,11 @@
 import Login from './views/Login.vue'
 import NotFound from './views/404.vue'
 import Home from './views/Home.vue'
-import Main from './views/Main.vue'
+/*import Main from './views/Main.vue'
 import Echarts from './views/charts/echarts.vue'
 import Table from './views/nav1/Table.vue'
 import Form from './views/nav1/Form.vue'
-import user from './views/nav1/user.vue'
+import user from './views/nav1/user.vue'*/
 import Member from './views/system/Member.vue'
 import Basics from './views/system/Basics.vue'
 import MemberAdd from './views/system/MemberAdd.vue'
@@ -17,6 +17,7 @@ import Consulting from './views/system/Consulting.vue'
 import CreateConsulting from './views/system/CreateConsulting.vue'
 import Visit from './views/system/Visit.vue'
 import Customer from './views/customer/Customer.vue'
+import CustomerDetail from './views/customer/CustomerDetail.vue'
 import CustomerAdd from './views/customer/CustomerAdd.vue'
 import Returnvisit from './views/customer/Returnvisit.vue'
 import Electronic from './views/customer/Electronic.vue'
@@ -85,7 +86,7 @@ let routes = [
         hidden: true
     },
     //{ path: '/main', component: Main },
-    {
+    /*{
         path: '/',
         component: Home,
         name: '导航一',
@@ -97,7 +98,7 @@ let routes = [
             { path: '/form', component: Form, name: 'Form' },
             { path: '/user', component: user, name: '列表' },
         ]
-    },
+    },*/
     {
         path: '/',
         component: Home,
@@ -123,6 +124,7 @@ let routes = [
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/customer', component: Customer, name: '顾客管理' },
+            { path: '/customerDetail', component: CustomerDetail, name: '顾客详情', hidden: true  },
             { path: '/customerAdd', component: CustomerAdd, name: '新建顾客', hidden: true },
             { path: '/returnVisit', component: Returnvisit, name: '回访管理' },
             { path: '/electronic', component: Electronic, name: '电子病历' },

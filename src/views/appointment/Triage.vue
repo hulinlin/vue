@@ -8,26 +8,26 @@
 					<el-form :inline="true" :model="filters" size="small">
 						<el-col :span="24">
 							<el-col :span="6">
-								<el-form-item label="渠道来源" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="渠道来源" prop="laiyuan">
+									<el-select v-model="ruleForm.laiyuan" placeholder="请选择" size="small">
+										<el-option label="一" value="shanghai"></el-option>
+										<el-option label="二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="顾客需求" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="顾客需求" prop="xuqiu">
+									<el-select v-model="ruleForm.xuqiu" placeholder="请选择" size="small">
+										<el-option label="一" value="shanghai"></el-option>
+										<el-option label="二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
 							<el-col :span="6">
-								<el-form-item label="预约项目" prop="region">
-									<el-select v-model="ruleForm.region" placeholder="请选择活动区域" size="small">
-										<el-option label="区域一" value="shanghai"></el-option>
-										<el-option label="区域二" value="beijing"></el-option>
+								<el-form-item label="预约项目" prop="xiangmu">
+									<el-select v-model="ruleForm.xiangmu" placeholder="请选择" size="small">
+										<el-option label="一" value="shanghai"></el-option>
+										<el-option label="二" value="beijing"></el-option>
 									</el-select>
 								</el-form-item>
 							</el-col>
@@ -40,17 +40,13 @@
 						</el-col>
 						<el-col :span="24">
 							<el-form-item label="回访日期" prop="region">
-								<el-col :span="11">
-									<el-form-item prop="date1">
-										<el-date-picker type="date" placeholder="选择开始日期" size="small" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-									</el-form-item>
-								</el-col>
-								<el-col class="line" :span="1">-</el-col>
-								<el-col :span="11">
-									<el-form-item prop="date2">
-										<el-time-picker type="date" placeholder="选择结束日期" size="small" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-									</el-form-item>
-								</el-col>
+								<el-date-picker
+								v-model="ruleForm.date1"
+								type="daterange"
+								range-separator="至"
+								start-placeholder="开始日期"
+								end-placeholder="结束日期">
+							  </el-date-picker>
 							</el-form-item>
 							<el-form-item>
 								<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
@@ -105,9 +101,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -118,15 +112,15 @@
 			</section>
 		</el-col>
 		<!--分配私密管家-->
-		<el-dialog title="分配私密管家" v-model="chamberlainFormVisible" :close-on-click-modal="false" showClose=false>
-			<el-form :model="chamberlainForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+		<el-dialog title="分配私密管家" v-model="chamberlainFormVisible" :close-on-click-modal="false" showClose=false :visible.sync="chamberlainFormVisible">
+			<el-form :model="chamberlainForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
 				<el-form-item label="私密管家" prop="name">
 					<el-input v-model="chamberlainForm.name" auto-complete="off"></el-input>
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">确定</el-button>
-				<el-button @click.native="chamberlainFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">确定</el-button>
+				<el-button @click.native="chamberlainFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 	</el-container>
@@ -193,11 +187,11 @@
 				},
 				rules: {
 					name: [
-						{ required: true, message: '请输入活动名称', trigger: 'blur' },
+						{ required: true, message: '请输入名称', trigger: 'blur' },
 						{ min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
 					],
 					region: [
-						{ required: true, message: '请选择活动区域', trigger: 'change' }
+						{ required: true, message: '请选择', trigger: 'change' }
 					],
 					date1: [
 						{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }
@@ -206,13 +200,13 @@
 						{ type: 'date', required: true, message: '请选择时间', trigger: 'change' }
 					],
 					type: [
-						{ type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+						{ type: 'array', required: true, message: '请至少选择一个性质', trigger: 'change' }
 					],
 					resource: [
-						{ required: true, message: '请选择活动资源', trigger: 'change' }
+						{ required: true, message: '请选择资源', trigger: 'change' }
 					],
 					desc: [
-						{ required: true, message: '请填写活动形式', trigger: 'blur' }
+						{ required: true, message: '请填写形式', trigger: 'blur' }
 					]
 				},
 				addForm: {

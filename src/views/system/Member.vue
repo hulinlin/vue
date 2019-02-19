@@ -3,9 +3,9 @@
 		<el-col :span="4" style="padding:20px;">
 			<el-row>
 				<ul>
-					<li  v-for="o in 10">部门名称<a class="fr themecolor"  v-on:click="handleEdit">编辑</a></li>
+					<li  v-for="o in 10">部门名称<a class="fr themecolor"  @click="handleEdit">编辑</a></li>
 				</ul>
-				<el-button type="primary" size="small" v-on:click="handleAdd" class="createBtn mt20">新建部门</el-button>
+				<el-button type="primary" size="small" @click="handleAdd" class="createBtn mt20">新建部门</el-button>
 			</el-row>
 
 		</el-col>
@@ -13,18 +13,18 @@
 			<section>
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-					<el-form :inline="true" :model="filters">
+					<el-form :inline="true" :model="filters" size="small">
 						<el-form-item>
-							<el-input v-model="filters.name" size="small" placeholder="请输入姓名/手机号码"></el-input>
+							<el-input v-model="filters.name"  placeholder="请输入姓名/手机号码"></el-input>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
+							<el-button type="primary"  v-on:click="getUsers">查询</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button size="small" v-on:click="getUsers">重置</el-button>
+							<el-button  v-on:click="getUsers">重置</el-button>
 						</el-form-item>
 						<el-form-item class="fr">
-							<router-link to="/memberAdd"><el-button type="primary" size="small">新增</el-button></router-link>
+							<router-link to="/memberAdd"><el-button type="primary">新增</el-button></router-link>
 
 						</el-form-item>
 					</el-form>
@@ -33,7 +33,7 @@
 				<!--列表-->
 				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
 
-					<el-table-column prop="id" label="用户ID" width="120">
+					<el-table-column prop="name" label="用户ID" width="120">
 					</el-table-column>
 					<el-table-column prop="name" label="姓名" width="120">
 					</el-table-column>
@@ -51,9 +51,9 @@
 							</el-switch>
 						</template>
 					</el-table-column>
-					<el-table-column prop="birth" label="操作人" width="120">
+					<el-table-column prop="name" label="操作人" width="120">
 					</el-table-column>
-					<el-table-column prop="addr" label="操作日期" min-width="120">
+					<el-table-column prop="birth" label="操作日期" min-width="120">
 					</el-table-column>
 					<el-table-column label="操作" width="200">
 						<template slot-scope="scope">
@@ -70,9 +70,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[10,20, 50, 100]"
 							:page-size="10"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -83,8 +81,8 @@
 			</section>
 		</el-col>
 		<!--编辑界面-->
-		<el-dialog title="编辑部门" v-model="editFormVisible" :close-on-click-modal="false">
-			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
+		<el-dialog title="编辑部门" v-model="editFormVisible" :close-on-click-modal="false" :visible.sync="editFormVisible">
+			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm" size="small">
 				<el-form-item label="部门名称" prop="name">
 					<el-input v-model="editForm.name" auto-complete="off"></el-input>
 				</el-form-item>
@@ -100,13 +98,13 @@
 			</el-form>
 			<div slot="footer" class="dialog-footer">
 
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-				<el-button @click.native="editFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
+				<el-button @click.native="editFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 		<!--新建界面-->
-		<el-dialog title="新建部门" v-model="addFormVisible" :close-on-click-modal="false">
-			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
+		<el-dialog title="新建部门" v-model="addFormVisible" :close-on-click-modal="false" :visible.sync="addFormVisible">
+			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm" size="small">
 				<el-form-item label="部门名称" prop="name">
 					<el-input v-model="addForm.name" auto-complete="off"></el-input>
 				</el-form-item>
@@ -121,8 +119,8 @@
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-				<el-button @click.native="addFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
+				<el-button @click.native="addFormVisible = false" size="small">取消</el-button>
 			</div>
 		</el-dialog>
 	</el-container>
@@ -245,14 +243,14 @@
 				});
 			},
 			//显示编辑界面
-			handleEdit: function (index, row) {
+			handleEdit: function (index) {
 				this.editFormVisible = true;
-				this.editForm = Object.assign({}, row);
+				this.editForm = Object.assign({});
 			},
 			//显示新增界面
 			handleAdd: function () {
 				this.addFormVisible = true;
-				this.addForm = Object.assign({}, row);
+				this.addForm = Object.assign({});
 
 			},
 			handleUserEdit: function () {

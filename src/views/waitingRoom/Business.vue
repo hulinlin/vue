@@ -35,12 +35,7 @@
                     <!--工具条-->
                     <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
                         <el-form :inline="true" :model="filters" size="small">
-                           <!-- <el-form-item>
-                                <el-button type="primary" size="small" v-on:click="createRecord">添加沟通记录</el-button>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-button type="primary" size="small" v-on:click="ordered">预约下次来院</el-button>
-                            </el-form-item>-->
+                           
                             <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
                                 <el-menu-item index="0" @click="tabChange(treatmentRecord)">治疗记录</el-menu-item>
                                 <el-menu-item index="1" @click="tabChange(firstVisit)">首诊</el-menu-item>
@@ -66,8 +61,8 @@
             </el-row>
         </el-col>
         <!--预约下次来院-->
-        <el-dialog title="预约来院" v-model="orderedFormVisible" :close-on-click-modal="false">
-            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm">
+        <el-dialog title="预约来院" v-model="orderedFormVisible" :close-on-click-modal="false" :visible.sync="orderedFormVisible">
+            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
                 <el-form-item prop="date1" label="预约时间">
                     <el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
                 </el-form-item>
@@ -91,12 +86,12 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click.native="orderedFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+                <el-button @click.native="orderedFormVisible = false" size="small">取消</el-button>
+                <el-button type="primary" @click.native="editSubmit" :loading="editLoading" size="small">提交</el-button>
             </div>
         </el-dialog>
         <!--查看沟通记录-->
-        <el-dialog title="沟通记录" v-model="recordFormVisible" :close-on-click-modal="false">
+        <el-dialog title="沟通记录" v-model="recordFormVisible" :close-on-click-modal="false" :visible.sync="recordFormVisible">
             <ul>
                 <li>预约：确定后，数据进入预约管理页面；分诊：确定后，数据进入
                     分诊管理和业务管理页面分诊：选择分诊后，预约时间置灰不可选
@@ -107,7 +102,7 @@
             </div>
         </el-dialog>
         <!--查看沟通记录-->
-        <el-dialog title="开单" v-model="orderFormVisible" :close-on-click-modal="false" class="middleDialog">
+        <el-dialog title="开单" v-model="orderFormVisible" :close-on-click-modal="false" class="middleDialog" :visible.sync="orderFormVisible">
             <el-form :model="orderForm" label-width="80px"  ref="orderedForm">
                 <el-checkbox-group>
                     <el-checkbox label="材料开单"></el-checkbox>

@@ -12,18 +12,8 @@
                     <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
                         <el-form :inline="true" :model="filters" size="small">
 
-                            <el-form-item label="项目名称" prop="region">
-                                <el-input v-model="filters.name" size="small" placeholder="请输入"></el-input>
-                            </el-form-item>
-
                             <el-form-item>
-                                <el-button type="primary" size="small" v-on:click="getUsers">查询</el-button>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-button size="small" v-on:click="getUsers">打印</el-button>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-button type="primary" size="small" v-on:click="ordered">预约下次来院</el-button>
+                                <el-button type="primary" size="small" v-on:click="ordered">预约或分诊</el-button>
                             </el-form-item>
                         </el-form>
                     </el-col>
@@ -54,6 +44,9 @@
                             </template>
                         </el-table-column>
                         <el-table-column prop="name" label="状态" width="120">
+                            <template slot-scope="scope">
+                                <span>未结清</span>
+                            </template>
                         </el-table-column>
 
                     </el-table>
@@ -76,8 +69,14 @@
             </el-row>
         </el-col>
         <!--预约下次来院-->
-        <el-dialog title="预约下次来院" v-model="orderedFormVisible" :close-on-click-modal="false" :visible.sync="orderedFormVisible">
-            <el-form :model="orderedForm" label-width="80px" :rules="editFormRules" ref="orderedForm" size="small">
+        <el-dialog title="预约或分诊" v-model="orderedFormVisible" :close-on-click-modal="false" :visible.sync="orderedFormVisible">
+            <el-form :model="orderedForm" label-width="80px"  ref="orderedForm" size="small">
+                <el-form-item label="类型">
+                    <el-radio-group v-model="orderedForm.type">
+                        <el-radio label="预约"></el-radio>
+                        <el-radio label="分诊"></el-radio>
+                    </el-radio-group>
+                </el-form-item>
                 <el-form-item prop="date1" label="预约时间">
                     <el-date-picker type="date" placeholder="选择开始日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
                 </el-form-item>
@@ -90,11 +89,11 @@
                         <el-option label="其他" value="beijing"></el-option>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="私密管家" prop="name">
-                    <el-input v-model="orderedForm.name" auto-complete="off"></el-input>
+                <el-form-item label="私密管家">
+                    <el-input v-model="orderedForm.guanjia" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="专家医生" prop="name">
-                    <el-input v-model="orderedForm.name" auto-complete="off"></el-input>
+                <el-form-item label="专家医生">
+                    <el-input v-model="orderedForm.doctor" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="客服人员" prop="name">
                     <el-input v-model="orderedForm.name" auto-complete="off"></el-input>
@@ -156,7 +155,7 @@
                     name: '',
                 },
                 orderedForm:{
-
+                    type:''
                 },
                 //编辑界面数据
                 editForm: {
@@ -294,27 +293,12 @@
             },
             //编辑
             editSubmit: function () {
-                this.$refs.editForm.validate((valid) => {
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.editLoading = true;
-                            //NProgress.start();
-                            let para = Object.assign({}, this.editForm);
-                            para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                            editUser(para).then((res) => {
-                                this.editLoading = false;
-                                //NProgress.done();
-                                this.$message({
-                                    message: '提交成功',
-                                    type: 'success'
-                                });
-                                this.$refs['editForm'].resetFields();
-                                this.editFormVisible = false;
-                                this.getUsers();
-                            });
-                        });
-                    }
-                });
+                        this.addFormVisible = false;
+                  if(this.orderedForm.type=='预约'){
+                      this.$router.push('/order');
+                  }else{
+                      this.$router.push('/triage');
+                  }
             },
             //新增
             addSubmit: function () {

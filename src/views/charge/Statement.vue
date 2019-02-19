@@ -34,9 +34,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -67,9 +65,7 @@
 					<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 					</el-pagination>-->
 					<el-pagination
-							@size-change="handleSizeChange"
-							@current-change="handleCurrentChange"
-							:current-page="currentPage4"
+							
 							:page-sizes="[20, 50, 100]"
 							:page-size="20"
 							layout="total, sizes, prev, pager, next, jumper"
@@ -80,7 +76,7 @@
 			</el-tab-pane>
 		</el-tabs>
 		</el-col>
-		<el-dialog title="订单明细" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false">
+		<el-dialog title="订单明细" class="middleDialog" v-model="orderDetailFormVisible" :close-on-click-modal="false" :visible.sync="orderDetailFormVisible">
 			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
 				<el-table-column prop="name" label="项目名称">
 				</el-table-column>
@@ -95,9 +91,7 @@
 				<!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
                 </el-pagination>-->
 				<el-pagination
-						@size-change="handleSizeChange"
-						@current-change="handleCurrentChange"
-						:current-page="currentPage4"
+						
 						:page-sizes="[20, 50, 100]"
 						:page-size="20"
 						layout="total, sizes, prev, pager, next, jumper"
