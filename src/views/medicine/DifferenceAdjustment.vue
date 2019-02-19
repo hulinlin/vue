@@ -22,7 +22,7 @@
 							<el-button type="primary"  size="small" v-on:click="getUsers">下一月</el-button>
 						</el-form-item>
 						<el-form-item>
-							<el-button type="primary" size="small" v-on:click="getUsers">批量调整</el-button>
+							<el-button type="primary" size="small" v-on:click="adjustment">批量调整</el-button>
 						</el-form-item>
 					</el-form>
 				</el-col>

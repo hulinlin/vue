@@ -167,7 +167,98 @@
 					age: 0,
 					birth: '',
 					addr: ''
-				}
+				},
+				tableData5: [{
+					id: '12987122',
+					desc: '',
+					name: '张三',
+					date: '2019-01-01',
+					state: '待归还',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987123',
+					desc: '',
+					name: '里斯',
+					date: '2019-01-01',
+					state: '待归还',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987124',
+					desc: '',
+					name: '王五',
+					date: '2019-01-01',
+					state: '已归还',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}, {
+					id: '12987125',
+					desc: '',
+					name: '张三',
+					date: '2019-01-12',
+					state: '待归还',
+					items: [{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					},{
+						shopname: '医疗器械',
+						shopid: '1234567',
+						desc: '',
+						company: '协和',
+						spec: '',
+						num:1
+					}],
+				}],
+
+
+				// 要展开的行，数值的元素是row的key值
+				expands: []
+
+
 
 			}
 		},

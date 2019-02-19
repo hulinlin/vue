@@ -2,88 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f098251d-18d0-42d6-9ccb-56995dd38164" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/customer/CustomerDetail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/vars.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/vars.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Main.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/appointment/Order.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/appointment/Order.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/appointment/Triage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/appointment/Triage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/approval/ApprovalLoss.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/approval/ApprovalLoss.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/approval/ApprovalOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/approval/ApprovalOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/approval/ApprovalRefund.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/approval/ApprovalRefund.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/approval/ApprovalRefundGoods.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/approval/ApprovalRefundGoods.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/approval/DataAnalysis.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/approval/DataAnalysis.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/charge/Charge.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/charge/Charge.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/charge/Refund.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/charge/Refund.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/charge/Statement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/charge/Statement.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/DoctorAdvice.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/DoctorAdvice.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/SubsequentVisit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/SubsequentVisit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/TreatmentRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/TreatmentRecord.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/Customer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/Customer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/Returnvisit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/Returnvisit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/ViewOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/ViewOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/Visit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/Visit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/CreateApply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CreateApply.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/CreateInventory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CreateInventory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/CreateLoss.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CreateLoss.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/CreateMatericalReturn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CreateMatericalReturn.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/medicine/CreateMatericalUse.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CreateMatericalUse.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/CreateOutbound.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CreateOutbound.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/CreateReturn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CreateReturn.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/CreateWarehousing.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CreateWarehousing.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/medicine/CustomersMedicine.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/CustomersMedicine.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/medicine/DifferenceAdjustment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/DifferenceAdjustment.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/medicine/InventoryManagement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/InventoryManagement.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/LossAbandonment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/LossAbandonment.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/medicine/MaterialsRecipients.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/MaterialsRecipients.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/medicine/MedicineRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/MedicineRecord.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/ProcurementOutbound.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/ProcurementOutbound.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/ProcurementWarehousing.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/ProcurementWarehousing.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/PurchaseReturn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/PurchaseReturn.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/PurchasingRequisition.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/PurchasingRequisition.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/medicine/WarehouseReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/medicine/WarehouseReport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportBalanceDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportBalanceDetails.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportChannel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportChannel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportConsultationProject.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportConsultationProject.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportConsultationProjectM.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportConsultationProjectM.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportConsumptionDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportConsumptionDetails.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportDevelopmentBusiness.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportDevelopmentBusiness.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportDrawer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportDrawer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportMerchandiseSales.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportMerchandiseSales.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportOperatedItems.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportOperatedItems.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportProjectSales.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportProjectSales.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportRegionalInformation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportRegionalInformation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportRevenue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportRevenue.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportRevenueDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportRevenueDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/report/ReportTransactionOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/report/ReportTransactionOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/Basics.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/Basics.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/Channel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/Channel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/Consulting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/Consulting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/CreateConsulting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/CreateConsulting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/CreateJob.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/CreateJob.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/Department.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/Department.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/Job.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/Job.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/Member.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/Member.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/MemberAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/MemberAdd.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/Visit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/Visit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/treatmentRoom/TreatmentDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/treatmentRoom/TreatmentDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/treatmentRoom/TreatmentRoom.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/treatmentRoom/TreatmentRoom.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/waitingRoom/Briefing.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/waitingRoom/Briefing.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/waitingRoom/Business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/waitingRoom/Business.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/waitingRoom/WaitingRoom.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/waitingRoom/WaitingRoom.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/dataset-simple0.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery-2.2.3.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.countup.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue0214.zip" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -97,98 +24,58 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.js">
+        <entry file="file://$PROJECT_DIR$/src/views/medicine/CustomersMedicine.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+            <state relative-caret-position="399">
+              <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/medicine/MaterialsRecipients.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="264" column="27" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/medicine/MedicineRecord.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding>
-                <element signature="e#0#42#0" expanded="true" />
+                <element signature="n#style#0;n#el-table#0;n#section#0;n#el-col#0;n#el-container#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+        <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            <state relative-caret-position="513">
+              <caret line="27" column="10" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/build.js">
+        <entry file="file://$PROJECT_DIR$/src/views/charge/Charge.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/webpack.prod.conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/webpack.dev.conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/dev.env.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="106">
+              <caret line="131" column="35" selection-start-line="131" selection-start-column="35" selection-end-line="131" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/index.js">
+        <entry file="file://$PROJECT_DIR$/src/views/medicine/DifferenceAdjustment.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/system/Member.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
-              <folding>
-                <element signature="n#style#0;n#el-col#0;n#el-container#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#script#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/system/MemberAdd.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="160" column="25" selection-start-line="160" selection-start-column="25" selection-end-line="160" selection-end-column="25" />
+            <state relative-caret-position="462">
+              <caret line="196" column="53" lean-forward="true" selection-start-line="196" selection-start-column="53" selection-end-line="196" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -211,7 +98,6 @@
       <find>selsChange</find>
       <find>users</find>
       <find>region</find>
-      <find>ruleForm</find>
       <find>scope</find>
       <find>#20a0ff</find>
       <find>.el-breadcrumb</find>
@@ -223,6 +109,9 @@
       <find>handleParentEdit</find>
       <find>der</find>
       <find>element</find>
+      <find>ruleForm</find>
+      <find>adjustment</find>
+      <find>filters</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -231,11 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/views/treatmentRoom/TreatmentDetail.vue" />
-        <option value="$PROJECT_DIR$/src/views/waitingRoom/WaitingRoom.vue" />
-        <option value="$PROJECT_DIR$/src/views/components/FirstVisit.vue" />
-        <option value="$PROJECT_DIR$/src/views/components/TreatmentRecord.vue" />
-        <option value="$PROJECT_DIR$/src/views/waitingRoom/Business.vue" />
         <option value="$PROJECT_DIR$/src/views/report/ReportDevelopmentBusiness.vue" />
         <option value="$PROJECT_DIR$/src/views/system/CreateJob.vue" />
         <option value="$PROJECT_DIR$/src/views/customer/CustomerAdd.vue" />
@@ -249,9 +133,7 @@
         <option value="$PROJECT_DIR$/src/views/customer/Returnvisit.vue" />
         <option value="$PROJECT_DIR$/src/views/appointment/Triage.vue" />
         <option value="$PROJECT_DIR$/src/views/appointment/Order.vue" />
-        <option value="$PROJECT_DIR$/src/views/medicine/InventoryManagement.vue" />
         <option value="$PROJECT_DIR$/src/views/medicine/LossAbandonment.vue" />
-        <option value="$PROJECT_DIR$/src/views/medicine/MaterialsRecipients.vue" />
         <option value="$PROJECT_DIR$/src/views/medicine/ProcurementOutbound.vue" />
         <option value="$PROJECT_DIR$/src/views/medicine/ProcurementWarehousing.vue" />
         <option value="$PROJECT_DIR$/src/views/medicine/PurchaseReturn.vue" />
@@ -282,6 +164,13 @@
         <option value="$PROJECT_DIR$/src/views/system/MemberAdd.vue" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/config/index.js" />
+        <option value="$PROJECT_DIR$/src/views/medicine/CreateMatericalUse.vue" />
+        <option value="$PROJECT_DIR$/src/views/medicine/InventoryManagement.vue" />
+        <option value="$PROJECT_DIR$/src/views/medicine/MaterialsRecipients.vue" />
+        <option value="$PROJECT_DIR$/src/views/medicine/CustomersMedicine.vue" />
+        <option value="$PROJECT_DIR$/src/views/medicine/MedicineRecord.vue" />
+        <option value="$PROJECT_DIR$/src/views/charge/Charge.vue" />
+        <option value="$PROJECT_DIR$/src/views/medicine/DifferenceAdjustment.vue" />
       </list>
     </option>
   </component>
@@ -332,7 +221,14 @@
               <item name="vue" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="charge" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="medicine" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vue" type="b2602c69:ProjectViewProjectNode" />
@@ -398,7 +294,7 @@
       <workItem from="1550107505452" duration="30471000" />
       <workItem from="1550193624641" duration="29477000" />
       <workItem from="1550452730474" duration="3063000" />
-      <workItem from="1550547940363" duration="1516000" />
+      <workItem from="1550547940363" duration="8302000" />
     </task>
     <task id="LOCAL-00001" summary="列表">
       <created>1548839872529</created>
@@ -428,11 +324,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550231121573</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge branch 'master' of https://github.com/hulinlin/vue&#10;&#10;# Conflicts:&#10;#&#9;package.json">
+      <created>1550549560763</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1550549560763</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183758000" />
+    <option name="totallyTimeSpent" value="190544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -452,7 +355,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2657267" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.03253796" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -465,62 +368,14 @@
     <MESSAGE value="列表" />
     <MESSAGE value="..." />
     <MESSAGE value="。。。" />
-    <option name="LAST_COMMIT_MESSAGE" value="。。。" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/hulinlin/vue&#10;&#10;# Conflicts:&#10;#&#9;package.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/hulinlin/vue&#10;&#10;# Conflicts:&#10;#&#9;package.json" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/appointment/Triage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="74" column="38" lean-forward="true" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/appointment/Order.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="77" column="37" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/medicine/CustomersMedicine.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/medicine/DifferenceAdjustment.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
-          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/medicine/InventoryManagement.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/medicine/LossAbandonment.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/medicine/MaterialsRecipients.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/medicine/MedicineRecord.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -662,13 +517,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Main.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4655">
@@ -742,13 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -794,20 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/dev.env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/webpack.prod.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/build.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -815,24 +642,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/webpack.dev.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/webpack.prod.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-475">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/medicine/InventoryManagement.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/medicine/CreateMatericalUse.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/index.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/dev.env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/medicine/MedicineRecord.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#el-table#0;n#section#0;n#el-col#0;n#el-container#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/medicine/MaterialsRecipients.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="264" column="27" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/medicine/CustomersMedicine.vue">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="10" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/charge/Charge.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="131" column="35" selection-start-line="131" selection-start-column="35" selection-end-line="131" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/medicine/DifferenceAdjustment.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="196" column="53" lean-forward="true" selection-start-line="196" selection-start-column="53" selection-end-line="196" selection-end-column="53" />
         </state>
       </provider>
     </entry>

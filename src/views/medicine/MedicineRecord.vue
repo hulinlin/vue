@@ -9,7 +9,7 @@
 
 						<el-form-item label="取药日期" prop="region">
 							<el-date-picker
-      v-model="ruleForm.date1"
+      v-model="filters.date1"
       type="daterange"
       range-separator="至"
       start-placeholder="开始日期"
@@ -140,7 +140,7 @@
 				<el-table-column prop="name" label="退货数量">
 				</el-table-column>
 			</el-table>
-				<el-form-item label="退货原因">
+				<el-form-item label="退货原因" class="mt20">
 					<el-input type="textarea" size="small"></el-input>
 				</el-form-item>
 			</el-form>
@@ -166,7 +166,8 @@
 		data() {
 			return {
 				filters: {
-					name: ''
+					name: '',
+					date1:''
 				},
 				users: [],
 				total: 0,
@@ -174,7 +175,7 @@
 				listLoading: false,
 				sels: [],//列表选中列
 
-				editFormVisible: false,//编辑界面是否显示
+				medicineFormVisible: false,//编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
 					name: [
@@ -347,6 +348,9 @@
 			handleEdit: function (index, row) {
 				this.editFormVisible = true;
 				this.editForm = Object.assign({}, row);
+			},
+			medicineGrant:function (index, row) {
+				this.medicineFormVisible = true;
 			},
 			//显示新增界面
 			handleAdd: function () {

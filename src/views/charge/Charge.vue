@@ -52,10 +52,7 @@
 				</el-col>
 				<!--列表-->
 				<el-table :data="list"
-						  v-loading="listLoading"
-						  element-loading-text="给我一点时间"
 						  height="500"
-						  element-loading-background="rgba(0, 0, 0, .3)"
 						  style="width: 100%">
 					<el-table-column type="expand" prop="names">
 						<template slot-scope="scope" >

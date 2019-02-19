@@ -69,7 +69,7 @@
 			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange">
 				<el-table-column type="index" label="序号">
 				</el-table-column>
-				<el-table-column prop="id" label="商品条码">
+				<el-table-column prop="name" label="商品条码">
 				</el-table-column>
 				<el-table-column prop="name" label="商品名称">
 				</el-table-column>

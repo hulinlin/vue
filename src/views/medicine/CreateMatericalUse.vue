@@ -36,9 +36,11 @@
 					</el-form-item>
 						</el-col>
 					</el-col>
+					<el-col :span="24">
 					<el-form-item >
 						<el-button type="primary" size="small">加入列表</el-button>
 					</el-form-item>
+					</el-col>
 					<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 80%;">
 						<el-table-column prop="name" label="材料/药品名称" width="150">
 						</el-table-column>
